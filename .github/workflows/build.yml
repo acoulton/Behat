@@ -84,6 +84,9 @@ jobs:
         if: matrix.composer-mode == 'lowest'
         run: composer update --prefer-lowest
 
+      - name: Display version
+        run: ./bin/behat -V
+
       - name: Run tests (phpunit)
         run: ./vendor/bin/phpunit
 

@@ -39,6 +39,7 @@ use Behat\Testwork\ServiceContainer\ServiceProcessor;
 use Behat\Testwork\Specification\ServiceContainer\SpecificationExtension;
 use Behat\Testwork\Suite\ServiceContainer\SuiteExtension;
 use Behat\Testwork\Translator\ServiceContainer\TranslatorExtension;
+use Composer\InstalledVersions;
 
 /**
  * Defines the way behat is created.
@@ -47,6 +48,10 @@ use Behat\Testwork\Translator\ServiceContainer\TranslatorExtension;
  */
 final class ApplicationFactory extends BaseFactory
 {
+    /**
+     * @deprecated this constant will not be updated for releases after 3.13.0 and will be removed in the next major.
+     * You can use composer's runtime API if you need to check the installed behat version.
+     */
     public const VERSION = '3.13.0';
 
     /**
@@ -62,7 +67,8 @@ final class ApplicationFactory extends BaseFactory
      */
     protected function getVersion()
     {
-        return self::VERSION;
+        // Get the currently installed behat version from composer's runtime API
+        return InstalledVersions::getVersion('behat/behat');
     }
 
     /**

@@ -445,7 +445,6 @@ EOL;
     {
         $text = strtr($expectedText, [
             '\'\'\'' => '"""',
-            '%%TMP_DIR%%' => sys_get_temp_dir() . DIRECTORY_SEPARATOR,
             '%%WORKING_DIR%%' => realpath($this->workingDir . DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR,
             '%%DS%%' => DIRECTORY_SEPARATOR,
         ]);

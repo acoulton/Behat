@@ -84,26 +84,26 @@ Feature: Pretty Formatter
         As a features developer
         I want, that "World" flushes between scenarios
 
-        Background:               # features/World.feature:6
+        Background:               # {{PATH:features/World.feature}}:6
           Given I have entered 10 # FeatureContext::iHaveEntered()
 
-        Scenario: Undefined   # features/World.feature:9
+        Scenario: Undefined   # {{PATH:features/World.feature}}:9
           Then I must have 10 # FeatureContext::iMustHave()
           And Something new
           Then I must have 10 # FeatureContext::iMustHave()
 
-        Scenario: Pending            # features/World.feature:14
+        Scenario: Pending            # {{PATH:features/World.feature}}:14
           Then I must have 10        # FeatureContext::iMustHave()
           And Something not done yet # FeatureContext::somethingNotDoneYet()
             TODO: write pending definition
           Then I must have 10        # FeatureContext::iMustHave()
 
-        Scenario: Failed      # features/World.feature:19
+        Scenario: Failed      # {{PATH:features/World.feature}}:19
           When I add 4        # FeatureContext::iAdd()
           Then I must have 13 # FeatureContext::iMustHave()
             Failed asserting that 14 matches expected '13'.
 
-        Scenario Outline: Passed & Failed # features/World.feature:23
+        Scenario Outline: Passed & Failed # {{PATH:features/World.feature}}:23
           Given I must have 10            # FeatureContext::iMustHave()
           When I add <value>              # FeatureContext::iAdd()
           Then I must have <result>       # FeatureContext::iMustHave()
@@ -120,9 +120,9 @@ Feature: Pretty Formatter
 
       --- Failed scenarios:
 
-          features/World.feature:19
-          features/World.feature:30
-          features/World.feature:32
+          {{PATH:features/World.feature}}:19
+          {{PATH:features/World.feature}}:30
+          {{PATH:features/World.feature}}:32
 
       6 scenarios (1 passed, 3 failed, 1 undefined, 1 pending)
       23 steps (16 passed, 3 failed, 1 undefined, 1 pending, 2 skipped)
@@ -200,16 +200,16 @@ Feature: Pretty Formatter
         As a features developer
         I want, that "World" flushes between scenarios
 
-        Background:               # features/World.feature:6
+        Background:               # {{PATH:features/World.feature}}:6
           Given I have entered 10 # FeatureContext::iHaveEntered()
 
-        Scenario: Adding some interesting # features/World.feature:9
+        Scenario: Adding some interesting # {{PATH:features/World.feature}}:9
                   value
           Then I must have 10             # FeatureContext::iMustHave()
           And I add the value 6           # FeatureContext::iAddOrSubtract()
           Then I must have 16             # FeatureContext::iMustHave()
 
-        Scenario: Subtracting        # features/World.feature:15
+        Scenario: Subtracting        # {{PATH:features/World.feature}}:15
                   some
                   value
           Then I must have 10        # FeatureContext::iMustHave()
@@ -287,22 +287,22 @@ Feature: Pretty Formatter
           As a UNIX user
           I need to be able to list the current directory's contents
 
-          Background:                       # features/ls.feature:6
+          Background:                       # {{PATH:features/ls.feature}}:6
             Given I have a file named "foo"
 
-          Scenario: List 2 files in a directory # features/ls.feature:9
+          Scenario: List 2 files in a directory # {{PATH:features/ls.feature}}:9
             Given I have a file named "bar"
             When I run "ls"
             Then I should see "bar" in output
             And I should see "foo" in output
 
-          Scenario: List 1 file and 1 dir        # features/ls.feature:15
+          Scenario: List 1 file and 1 dir        # {{PATH:features/ls.feature}}:15
             Given I have a directory named "dir"
             When I run "ls"
             Then I should see "dir" in output
             And I should see "foo" in output
 
-          Scenario Outline:                        # features/ls.feature:21
+          Scenario Outline:                        # {{PATH:features/ls.feature}}:21
             Given I have a <object> named "<name>"
             When I run "ls"
             Then I should see "<name>" in output
@@ -373,20 +373,20 @@ Feature: Pretty Formatter
         As a features developer
         I want, that "World" flushes between scenarios
 
-        Background: Some background # features/World.feature:6
+        Background: Some background # {{PATH:features/World.feature}}:6
           title
             with
           multiple lines
           Given I have entered 10
 
-        Scenario: Undefined   # features/World.feature:13
+        Scenario: Undefined   # {{PATH:features/World.feature}}:13
                   scenario or
                   whatever
           Then I must have 10
           And Something new
           Then I must have 10
 
-        Scenario Outline: Passed & Failed # features/World.feature:20
+        Scenario Outline: Passed & Failed # {{PATH:features/World.feature}}:20
           steps and other interesting stuff
           he-he-he
           Given I must have 10
@@ -448,17 +448,17 @@ Feature: Pretty Formatter
         As a customer
         I need to see the totals of my basket
 
-        Background:                                             # features/test.feature:6
+        Background:                                             # {{PATH:features/test.feature}}:6
           Given there are the following products in the catalog # FeatureContext::anything()
             | name     | price |
             | trousers | 12    |
             TODO: write pending definition
 
-        Scenario: £12 delivery £3                        # features/test.feature:11
+        Scenario: £12 delivery £3                        # {{PATH:features/test.feature}}:11
           Given I have an empty basket                   # FeatureContext::anything()
           When I add the product "trousers" to my basket # FeatureContext::anything()
 
-        Scenario: £12 delivery £3                        # features/test.feature:15
+        Scenario: £12 delivery £3                        # {{PATH:features/test.feature}}:15
           Given there are the following products in the catalog # FeatureContext::anything()
             | name     | price |
             | trousers | 12    |

@@ -9,8 +9,8 @@ Feature: Init
     Then it should pass with:
       """
       +d features - place your *.feature files here
-      +d features/bootstrap - place your context classes here
-      +f features/bootstrap/FeatureContext.php - place your definitions, transformations and hooks here
+      +d {{PATH:features/bootstrap}} - place your context classes here
+      +f {{PATH:features/bootstrap/FeatureContext.php}} - place your definitions, transformations and hooks here
       """
     And file "features/bootstrap/FeatureContext.php" should exist
 
@@ -30,7 +30,7 @@ Feature: Init
       """
       +d scenarios - place your *.feature files here
       +d supp - place your context classes here
-      +f supp/CustomContext.php - place your definitions, transformations and hooks here
+      +f {{PATH:supp/CustomContext.php}} - place your definitions, transformations and hooks here
       """
     And file "supp/CustomContext.php" should exist
 
@@ -53,9 +53,9 @@ Feature: Init
       """
       +d scenarios1 - place your *.feature files here
       +d contexts - place your context classes here
-      +f contexts/Custom1Context.php - place your definitions, transformations and hooks here
+      +f {{PATH:contexts/Custom1Context.php}} - place your definitions, transformations and hooks here
       +d scenarios2 - place your *.feature files here
-      +f contexts/Custom2Context.php - place your definitions, transformations and hooks here
+      +f {{PATH:contexts/Custom2Context.php}} - place your definitions, transformations and hooks here
       """
     And file "contexts/Custom1Context.php" should exist
     And file "contexts/Custom2Context.php" should exist
@@ -77,6 +77,6 @@ Feature: Init
       """
       +d scenarios - place your *.feature files here
       +d supp - place your context classes here
-      +f supp/CustomContext.php - place your definitions, transformations and hooks here
+      +f {{PATH:supp/CustomContext.php}} - place your definitions, transformations and hooks here
       """
     And file "supp/CustomContext.php" should exist

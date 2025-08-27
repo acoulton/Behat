@@ -48,8 +48,8 @@ Feature: Rerun with strict
 
       --- Failed steps:
 
-      001 Scenario: failing step       # features/rerun_strict.feature:6
-            When I have a failing step # features/rerun_strict.feature:7
+      001 Scenario: failing step       # {{PATH:features/rerun_strict.feature}}:6
+            When I have a failing step # {{PATH:features/rerun_strict.feature}}:7
               (Exception)
 
       1 scenario (1 failed)
@@ -65,8 +65,8 @@ Feature: Rerun with strict
 
       --- Failed steps:
 
-      001 Scenario: failing step       # features/rerun_strict.feature:6
-            When I have a failing step # features/rerun_strict.feature:7
+      001 Scenario: failing step       # {{PATH:features/rerun_strict.feature}}:6
+            When I have a failing step # {{PATH:features/rerun_strict.feature}}:7
               (Exception)
 
       2 scenarios (1 failed, 1 undefined)

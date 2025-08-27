@@ -50,12 +50,12 @@ Feature: attributes
         As a little kid
         I need to have fruit in my pocket
 
-        Scenario: I'm little hungry for apples # features/some.feature:6
+        Scenario: I'm little hungry for apples # {{PATH:features/some.feature}}:6
           Given I have 3 apples                # FeatureContext::iHaveFruit()
           When I eat 1 apple                   # FeatureContext::iEatFruit()
           Then I should have 2 apples          # FeatureContext::iShouldHaveFruit()
 
-        Scenario: I'm little hungry for bananas # features/some.feature:11
+        Scenario: I'm little hungry for bananas # {{PATH:features/some.feature}}:11
           Given I have 3 bananas                # FeatureContext::iHaveFruit()
           When I eat 1 banana                   # FeatureContext::iEatFruit()
           Then I should have 2 bananas          # FeatureContext::iShouldHaveFruit()
@@ -144,12 +144,12 @@ Feature: attributes
         As a little kid
         I need to have fruit in my pocket
 
-        Scenario: I'm little hungry for apples # features/some.feature:6
+        Scenario: I'm little hungry for apples # {{PATH:features/some.feature}}:6
           Given I have 3 apples                # FeatureContext::iHaveFruit()
           When I eat 1 apple                   # FeatureContext::iEatFruit()
           Then I should have 2 apples          # FeatureContext::iShouldHaveFruit()
 
-        Scenario: I'm little hungry for bananas # features/some.feature:11
+        Scenario: I'm little hungry for bananas # {{PATH:features/some.feature}}:11
           Given I have 3 bananas                # FeatureContext::iHaveFruit()
           When I eat 1 banana                   # FeatureContext::iEatFruit()
           Then I should have 2 bananas          # FeatureContext::iShouldHaveFruit()
@@ -245,7 +245,7 @@ Feature: attributes
         │
         │  = BEFORE SCENARIO =
         │
-        Scenario: I'm little hungry for apples # features/some.feature:6
+        Scenario: I'm little hungry for apples # {{PATH:features/some.feature}}:6
           Given I have 3 apples                # FeatureContext::iHaveFruit()
           When I eat 1 apple                   # FeatureContext::iEatFruit()
           Then I should have 2 apples          # FeatureContext::iShouldHaveFruit()
@@ -263,7 +263,7 @@ Feature: attributes
         │  = BEFORE BANANAS =
         │
         @bananas
-        Scenario: I'm little hungry for bananas # features/some.feature:12
+        Scenario: I'm little hungry for bananas # {{PATH:features/some.feature}}:12
           Given I have 3 bananas                # FeatureContext::iHaveFruit()
           When I eat 1 banana                   # FeatureContext::iEatFruit()
           Then I should have 2 bananas          # FeatureContext::iShouldHaveFruit()
@@ -363,7 +363,7 @@ Feature: attributes
         As a little kid
         I need to have fruit in my pocket
 
-        Scenario: I'm little hungry for apples # features/some.feature:6
+        Scenario: I'm little hungry for apples # {{PATH:features/some.feature}}:6
           Given I have 3 apples                # FeatureContext::iHaveFruit()
           When I eat 1 apple                   # FeatureContext::iEatFruit()
           Then I should have 2 apples          # FeatureContext::iShouldHaveFruit()
@@ -454,7 +454,7 @@ Feature: attributes
         As a little kid
         I need to have fruit in my pocket
 
-        Scenario: I'm little hungry for apples # features/some.feature:6
+        Scenario: I'm little hungry for apples # {{PATH:features/some.feature}}:6
           ┌─ @BeforeStep # FeatureContext::beforeStep()
           │
           │  = BEFORE STEP =
@@ -491,7 +491,7 @@ Feature: attributes
           │
           └─ @AfterStep # FeatureContext::afterStep()
 
-        Scenario: I'm little hungry for bananas # features/some.feature:11
+        Scenario: I'm little hungry for bananas # {{PATH:features/some.feature}}:11
           ┌─ @BeforeStep # FeatureContext::beforeStep()
           │
           │  = BEFORE STEP =

@@ -71,7 +71,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # FirstContext::iHaveApples()
           When I ate 1 apple          # FirstContext::iAteApples()
           Then I should have 2 apples # FirstContext::iShouldHaveApples()
@@ -81,7 +81,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # SecondContext::iHaveApples()
           When I ate 1 apple          # SecondContext::iAteApples()
           Then I should have 2 apples # SecondContext::iShouldHaveApples()
@@ -180,7 +180,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/first/my.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/first/my.feature}}:6
           Given I have 3 apples       # FirstContext::iHaveApples()
           When I ate 1 apple          # FirstContext::iAteApples()
           Then I should have 2 apples # FirstContext::iShouldHaveApples()
@@ -190,7 +190,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry    # features/second/my.feature:6
+        Scenario: I'm little hungry    # {{PATH:features/second/my.feature}}:6
           Given I have 30 apples       # SecondContext::iHaveApples()
           When I ate 10 apple          # SecondContext::iAteApples()
           Then I should have 20 apples # SecondContext::iShouldHaveApples()
@@ -362,7 +362,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/little_kid.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/little_kid.feature}}:6
           Given I have 3 apples       # LittleKidContext::iHaveApples()
           When I ate 1 apple          # LittleKidContext::iAteApples()
           Then I should have 2 apples # LittleKidContext::iShouldHaveApples()
@@ -372,7 +372,7 @@ Feature: Suites
         As a big brother
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/big_brother.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/big_brother.feature}}:6
           Given I have 15 apples      # BigBrotherContext::iHaveApples()
           When I ate 10 apple         # BigBrotherContext::iAteApples()
           Then I should have 5 apples # BigBrotherContext::iShouldHaveApples()
@@ -470,7 +470,7 @@ Feature: Suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/little_kid.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/little_kid.feature}}:6
           Given I have 3 apples       # LittleKidContext::iHaveApples()
           When I ate 1 apple          # LittleKidContext::iAteApples()
           Then I should have 2 apples # LittleKidContext::iShouldHaveApples()
@@ -480,7 +480,7 @@ Feature: Suites
         As a big brother
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/big_brother.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/big_brother.feature}}:6
           Given I have 15 apples      # BigBrotherContext::iHaveApples()
           When I ate 10 apple         # BigBrotherContext::iAteApples()
           Then I should have 5 apples # BigBrotherContext::iShouldHaveApples()
@@ -578,7 +578,7 @@ Feature: Suites
         As a big brother
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/big_brother.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/big_brother.feature}}:6
           Given I have 15 apples      # BigBrotherContext::iHaveApples()
           When I ate 10 apple         # BigBrotherContext::iAteApples()
           Then I should have 5 apples # BigBrotherContext::iShouldHaveApples()

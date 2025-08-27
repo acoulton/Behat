@@ -150,37 +150,37 @@ Feature: Hooks Attributes
       │
       Feature:
 
-        Scenario:             # features/test.feature:2
+        Scenario:             # {{PATH:features/test.feature}}:2
           Then I must have 50 # FeatureContext::iMustHave()
 
-        Scenario:                 # features/test.feature:4
+        Scenario:                 # {{PATH:features/test.feature}}:4
           Given I have entered 12 # FeatureContext::iHaveEntered()
           Then I must have 12     # FeatureContext::iMustHave()
 
         @thirty
-        Scenario:                # features/test.feature:9
+        Scenario:                # {{PATH:features/test.feature}}:9
           Given I must have 30   # FeatureContext::iMustHave()
           When I have entered 23 # FeatureContext::iHaveEntered()
           Then I must have 23    # FeatureContext::iMustHave()
 
         @100 @thirty
-        Scenario:               # features/test.feature:14
+        Scenario:               # {{PATH:features/test.feature}}:14
           Given I must have 30  # FeatureContext::iMustHave()
           When I have entered 1 # FeatureContext::iHaveEntered()
           Then I must have 100  # FeatureContext::iMustHave()
 
-        Scenario: 130           # features/test.feature:19
+        Scenario: 130           # {{PATH:features/test.feature}}:19
           Given I must have 130 # FeatureContext::iMustHave()
 
         @filtered
-        Scenario:                                                # features/test.feature:23
+        Scenario:                                                # {{PATH:features/test.feature}}:23
           Then I must have a scenario filter value of "filtered" # FeatureContext::iMustHaveScenarioFilter()
 
         @~filtered
-        Scenario:                                                 # features/test.feature:27
+        Scenario:                                                 # {{PATH:features/test.feature}}:27
           Then I must have a scenario filter value of "~filtered" # FeatureContext::iMustHaveScenarioFilter()
 
-        Scenario:                                                 # features/test.feature:30
+        Scenario:                                                 # {{PATH:features/test.feature}}:30
           Then I must have a scenario filter value of "~filtered" # FeatureContext::iMustHaveScenarioFilter()
 
       │
@@ -222,14 +222,14 @@ Feature: Hooks Attributes
       │
       Feature:
 
-        Scenario:             # features/1-one.feature:2
+        Scenario:             # {{PATH:features/1-one.feature}}:2
           Then I must have 50 # FeatureContext::iMustHave()
 
-        Scenario:                 # features/1-one.feature:5
+        Scenario:                 # {{PATH:features/1-one.feature}}:5
           Given I have entered 12 # FeatureContext::iHaveEntered()
           Then I must have 12     # FeatureContext::iMustHave()
 
-        Scenario: 130           # features/1-one.feature:9
+        Scenario: 130           # {{PATH:features/1-one.feature}}:9
           Given I must have 130 # FeatureContext::iMustHave()
 
       │
@@ -248,7 +248,7 @@ Feature: Hooks Attributes
       @someFeature
       Feature:
 
-        Scenario: 130           # features/2-two.feature:3
+        Scenario: 130           # {{PATH:features/2-two.feature}}:3
           Given I must have 130 # FeatureContext::iMustHave()
 
       │
@@ -285,10 +285,10 @@ Feature: Hooks Attributes
       │
       Feature:
 
-        Background:            # features/background.feature:2
+        Background:            # {{PATH:features/background.feature}}:2
           Given I must have 50 # FeatureContext::iMustHave()
 
-        Scenario:                 # features/background.feature:5
+        Scenario:                 # {{PATH:features/background.feature}}:5
           Given I have entered 12 # FeatureContext::iHaveEntered()
           Then I must have 12     # FeatureContext::iMustHave()
 
@@ -336,10 +336,10 @@ Feature: Hooks Attributes
         ╳  Exception (Exception)
         │
         @exception
-        Scenario:             # features/background.feature:4
+        Scenario:             # {{PATH:features/background.feature}}:4
           Then I must have 50 # FeatureContext::iMustHave()
 
-        Scenario:                 # features/background.feature:6
+        Scenario:                 # {{PATH:features/background.feature}}:6
           Given I have entered 12 # FeatureContext::iHaveEntered()
           Then I must have 12     # FeatureContext::iMustHave()
 
@@ -348,12 +348,12 @@ Feature: Hooks Attributes
         ╳  Exception (Exception)
         │
         @exception
-        Scenario:                # features/background.feature:11
+        Scenario:                # {{PATH:features/background.feature}}:11
           Given I must have 30   # FeatureContext::iMustHave()
           When I have entered 23 # FeatureContext::iHaveEntered()
           Then I must have 23    # FeatureContext::iMustHave()
 
-        Scenario: 130           # features/background.feature:16
+        Scenario: 130           # {{PATH:features/background.feature}}:16
           Given I must have 130 # FeatureContext::iMustHave()
 
       │
@@ -363,13 +363,13 @@ Feature: Hooks Attributes
 
       --- Failed hooks:
 
-          BeforeScenario @exception "features/background.feature:4" # FeatureContext::beforeScenarioException()
-          BeforeScenario @exception "features/background.feature:11" # FeatureContext::beforeScenarioException()
+          BeforeScenario @exception "{{PATH:features/background.feature}}:4" # FeatureContext::beforeScenarioException()
+          BeforeScenario @exception "{{PATH:features/background.feature}}:11" # FeatureContext::beforeScenarioException()
 
       --- Skipped scenarios:
 
-          features/background.feature:4
-          features/background.feature:11
+          {{PATH:features/background.feature}}:4
+          {{PATH:features/background.feature}}:11
 
       4 scenarios (2 passed, 2 skipped)
       7 steps (3 passed, 4 skipped)
@@ -465,7 +465,7 @@ Feature: Hooks Attributes
         │
         │  Is passing
         │
-        Scenario:            # features/test.feature:3
+        Scenario:            # {{PATH:features/test.feature}}:3
           ┌─ @BeforeStep # FeatureContext::passingBeforeStep()
           │
           │  Is passing
@@ -485,7 +485,7 @@ Feature: Hooks Attributes
         │
         │  Is passing
         │
-        Scenario:            # features/test.feature:6
+        Scenario:            # {{PATH:features/test.feature}}:6
           ┌─ @BeforeStep # FeatureContext::passingBeforeStep()
           │
           │  Is passing
@@ -505,7 +505,7 @@ Feature: Hooks Attributes
         │
         │  Is passing
         │
-        Scenario:                              # features/test.feature:9
+        Scenario:                              # {{PATH:features/test.feature}}:9
           ┌─ @BeforeStep # FeatureContext::passingBeforeStep()
           │
           │  Is passing
@@ -529,22 +529,22 @@ Feature: Hooks Attributes
         ╳  Is failing (RuntimeException)
         │
         @failing-before-hook
-        Scenario:            # features/test.feature:13
+        Scenario:            # {{PATH:features/test.feature}}:13
           Given passing step # FeatureContext::passingStep()
 
       --- Failed hooks:
 
-          BeforeStep passing step with failing hook "features/test.feature:10" # FeatureContext::failingBeforeStep()
-          BeforeScenario @failing-before-hook "features/test.feature:13" # FeatureContext::failingBeforeScenarioHook()
+          BeforeStep passing step with failing hook "{{PATH:features/test.feature}}:10" # FeatureContext::failingBeforeStep()
+          BeforeScenario @failing-before-hook "{{PATH:features/test.feature}}:13" # FeatureContext::failingBeforeScenarioHook()
 
       --- Skipped scenarios:
 
-          features/test.feature:13
+          {{PATH:features/test.feature}}:13
 
       --- Failed scenarios:
 
-          features/test.feature:6
-          features/test.feature:9
+          {{PATH:features/test.feature}}:6
+          {{PATH:features/test.feature}}:9
 
       4 scenarios (1 passed, 2 failed, 1 skipped)
       4 steps (1 passed, 1 failed, 2 skipped)

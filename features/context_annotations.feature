@@ -160,20 +160,20 @@ Feature: Context Consistency Annotations
 
       --- Failed steps:
 
-      001 Scenario: I'm little hungry   # features/apples.feature:9
-            Then I should have 5 apples # features/apples.feature:11
+      001 Scenario: I'm little hungry   # {{PATH:features/apples.feature}}:9
+            Then I should have 5 apples # {{PATH:features/apples.feature}}:11
               Failed asserting that 2 matches expected 5.
 
-      002 Scenario: Found more apples    # features/apples.feature:13
-            Then I should have 10 apples # features/apples.feature:15
+      002 Scenario: Found more apples    # {{PATH:features/apples.feature}}:13
+            Then I should have 10 apples # {{PATH:features/apples.feature}}:15
               Failed asserting that 13 matches expected 10.
 
-      003 Example: | 3   | 1     | 3      | # features/apples.feature:24
-            Then I should have 3 apples     # features/apples.feature:20
+      003 Example: | 3   | 1     | 3      | # {{PATH:features/apples.feature}}:24
+            Then I should have 3 apples     # {{PATH:features/apples.feature}}:20
               Failed asserting that 1 matches expected 3.
 
-      004 Example: | 2   | 2     | 4      | # features/apples.feature:26
-            Then I should have 4 apples     # features/apples.feature:20
+      004 Example: | 2   | 2     | 4      | # {{PATH:features/apples.feature}}:26
+            Then I should have 4 apples     # {{PATH:features/apples.feature}}:20
               Failed asserting that 3 matches expected 4.
 
       5 scenarios (1 passed, 4 failed)
@@ -390,7 +390,7 @@ Feature: Context Consistency Annotations
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples
           When I ate 1 apple
           Then I should have 2 apples
@@ -449,14 +449,14 @@ Feature: Context Consistency Annotations
         │
         │  Setting up
         │
-        Scenario:    # features/some.feature:2
+        Scenario:    # {{PATH:features/some.feature}}:2
           Given step # CustomContext::step()
 
         ┌─ @BeforeScenario # CustomContext::beforeScenario()
         │
         │  Setting up
         │
-        Scenario:    # features/some.feature:4
+        Scenario:    # {{PATH:features/some.feature}}:4
           Given step # CustomContext::step()
 
       2 scenarios (2 passed)

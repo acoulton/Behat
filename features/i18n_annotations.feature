@@ -92,26 +92,26 @@ Feature: I18n Annotations
         Как разработчик функционала
         Я хочу чтобы Мир сбрасывался между сценариями
 
-        Предыстория:     # features/World.feature:7
+        Предыстория:     # {{PATH:features/World.feature}}:7
           Если Я ввел 10 # FeatureContext::iHaveEntered()
 
-        Сценарий: Неопределен           # features/World.feature:10
+        Сценарий: Неопределен           # {{PATH:features/World.feature}}:10
           То Я должен иметь 10          # FeatureContext::iShouldHave()
           И Добавить "нормальное" число
           То Я должен иметь 10          # FeatureContext::iShouldHave()
 
-        Сценарий: В ожидании      # features/World.feature:15
+        Сценарий: В ожидании      # {{PATH:features/World.feature}}:15
           То Я должен иметь 10    # FeatureContext::iShouldHave()
           И Что-то еще не сделано # FeatureContext::somethingNotDone()
             TODO: write pending definition
           То Я должен иметь 10    # FeatureContext::iShouldHave()
 
-        Сценарий: Провален     # features/World.feature:20
+        Сценарий: Провален     # {{PATH:features/World.feature}}:20
           Если Я добавлю 4     # FeatureContext::iAdd()
           То Я должен иметь 13 # FeatureContext::iShouldHave()
             Failed asserting that 14 matches expected 13.
 
-        Структура сценария: Пройдено и Провалено # features/World.feature:24
+        Структура сценария: Пройдено и Провалено # {{PATH:features/World.feature}}:24
           Допустим Я должен иметь 10             # FeatureContext::iShouldHave()
           Если Я добавлю <значение>              # FeatureContext::iAdd()
           То Я должен иметь <результат>          # FeatureContext::iShouldHave()
@@ -128,9 +128,9 @@ Feature: I18n Annotations
 
       --- Проваленные сценарии:
 
-          features/World.feature:20
-          features/World.feature:31
-          features/World.feature:33
+          {{PATH:features/World.feature}}:20
+          {{PATH:features/World.feature}}:31
+          {{PATH:features/World.feature}}:33
 
       6 сценариев (1 пройден, 3 провалено, 1 не определен, 1 в ожидании)
       23 шага (16 пройдено, 3 провалено, 1 не определен, 1 в ожидании, 2 пропущено)
@@ -157,21 +157,21 @@ Feature: I18n Annotations
 
       --- Проваленные шаги:
 
-      001 Сценарий: Провален     # features/World.feature:20
-            То Я должен иметь 13 # features/World.feature:22
+      001 Сценарий: Провален     # {{PATH:features/World.feature}}:20
+            То Я должен иметь 13 # {{PATH:features/World.feature}}:22
               Failed asserting that 14 matches expected 13.
 
-      002 Example: | 5        | 16        | # features/World.feature:31
-            То Я должен иметь 16            # features/World.feature:27
+      002 Example: | 5        | 16        | # {{PATH:features/World.feature}}:31
+            То Я должен иметь 16            # {{PATH:features/World.feature}}:27
               Failed asserting that 15 matches expected 16.
 
-      003 Example: | 23       | 32        | # features/World.feature:33
-            То Я должен иметь 32            # features/World.feature:27
+      003 Example: | 23       | 32        | # {{PATH:features/World.feature}}:33
+            То Я должен иметь 32            # {{PATH:features/World.feature}}:27
               Failed asserting that 33 matches expected 32.
 
       --- Шаги в ожидании:
 
-      001 Сценарий: В ожидании      # features/World.feature:15
+      001 Сценарий: В ожидании      # {{PATH:features/World.feature}}:15
             И Что-то еще не сделано # FeatureContext::somethingNotDone()
               TODO: write pending definition
 
@@ -200,21 +200,21 @@ Feature: I18n Annotations
 
       --- Failed steps:
 
-      001 Сценарий: Провален     # features/World.feature:20
-            То Я должен иметь 13 # features/World.feature:22
+      001 Сценарий: Провален     # {{PATH:features/World.feature}}:20
+            То Я должен иметь 13 # {{PATH:features/World.feature}}:22
               Failed asserting that 14 matches expected 13.
 
-      002 Example: | 5        | 16        | # features/World.feature:31
-            То Я должен иметь 16            # features/World.feature:27
+      002 Example: | 5        | 16        | # {{PATH:features/World.feature}}:31
+            То Я должен иметь 16            # {{PATH:features/World.feature}}:27
               Failed asserting that 15 matches expected 16.
 
-      003 Example: | 23       | 32        | # features/World.feature:33
-            То Я должен иметь 32            # features/World.feature:27
+      003 Example: | 23       | 32        | # {{PATH:features/World.feature}}:33
+            То Я должен иметь 32            # {{PATH:features/World.feature}}:27
               Failed asserting that 33 matches expected 32.
 
       --- Pending steps:
 
-      001 Сценарий: В ожидании      # features/World.feature:15
+      001 Сценарий: В ожидании      # {{PATH:features/World.feature}}:15
             И Что-то еще не сделано # FeatureContext::somethingNotDone()
               TODO: write pending definition
 
@@ -243,21 +243,21 @@ Feature: I18n Annotations
 
       --- Failed steps:
 
-      001 Сценарий: Провален     # features/World.feature:20
-            То Я должен иметь 13 # features/World.feature:22
+      001 Сценарий: Провален     # {{PATH:features/World.feature}}:20
+            То Я должен иметь 13 # {{PATH:features/World.feature}}:22
               Failed asserting that 14 matches expected 13.
 
-      002 Example: | 5        | 16        | # features/World.feature:31
-            То Я должен иметь 16            # features/World.feature:27
+      002 Example: | 5        | 16        | # {{PATH:features/World.feature}}:31
+            То Я должен иметь 16            # {{PATH:features/World.feature}}:27
               Failed asserting that 15 matches expected 16.
 
-      003 Example: | 23       | 32        | # features/World.feature:33
-            То Я должен иметь 32            # features/World.feature:27
+      003 Example: | 23       | 32        | # {{PATH:features/World.feature}}:33
+            То Я должен иметь 32            # {{PATH:features/World.feature}}:27
               Failed asserting that 33 matches expected 32.
 
       --- Pending steps:
 
-      001 Сценарий: В ожидании      # features/World.feature:15
+      001 Сценарий: В ожидании      # {{PATH:features/World.feature}}:15
             И Что-то еще не сделано # FeatureContext::somethingNotDone()
               TODO: write pending definition
 

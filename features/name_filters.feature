@@ -57,22 +57,22 @@ Feature: Name filters
       """
       Feature: First Feature
 
-        Background:                # features/feature1.feature:3
+        Background:                # {{PATH:features/feature1.feature}}:3
           Given Some slow step N11 # FeatureContext::someSlowStepN()
 
-        Scenario: First Scenario   # features/feature1.feature:6
+        Scenario: First Scenario   # {{PATH:features/feature1.feature}}:6
           Given Some slow step N12 # FeatureContext::someSlowStepN()
           And Some normal step N13 # FeatureContext::someNormalStepN()
 
-        Scenario: Second Scenario  # features/feature1.feature:10
+        Scenario: Second Scenario  # {{PATH:features/feature1.feature}}:10
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       Feature: Second Feature
 
-        Background:                  # features/feature2.feature:3
+        Background:                  # {{PATH:features/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 
@@ -86,10 +86,10 @@ Feature: Name filters
       """
       Feature: First Feature
 
-        Background:                # features/feature1.feature:3
+        Background:                # {{PATH:features/feature1.feature}}:3
           Given Some slow step N11 # FeatureContext::someSlowStepN()
 
-        Scenario: Second Scenario  # features/feature1.feature:10
+        Scenario: Second Scenario  # {{PATH:features/feature1.feature}}:10
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       1 scenario (1 passed)
@@ -102,10 +102,10 @@ Feature: Name filters
       """
       Feature: First Feature
 
-        Background:                # features/feature1.feature:3
+        Background:                # {{PATH:features/feature1.feature}}:3
           Given Some slow step N11 # FeatureContext::someSlowStepN()
 
-        Scenario: Second Scenario  # features/feature1.feature:10
+        Scenario: Second Scenario  # {{PATH:features/feature1.feature}}:10
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       1 scenario (1 passed)

@@ -61,7 +61,7 @@ Feature: Show output
 
       --- Failed scenarios:
 
-          features/show_output.feature:6
+          {{PATH:features/show_output.feature}}:6
 
       1 scenario (1 failed)
       3 steps (2 passed, 1 failed)
@@ -84,7 +84,7 @@ Feature: Show output
 
       --- Failed scenarios:
 
-          features/show_output.feature:6
+          {{PATH:features/show_output.feature}}:6
 
       1 scenario (1 failed)
       3 steps (2 passed, 1 failed)
@@ -108,7 +108,7 @@ Feature: Show output
 
       --- Failed scenarios:
 
-          features/show_output.feature:6
+          {{PATH:features/show_output.feature}}:6
 
       1 scenario (1 failed)
       3 steps (2 passed, 1 failed)
@@ -122,8 +122,8 @@ Feature: Show output
 
       --- Failed steps:
 
-      001 Scenario: Some steps with output                     # features/show_output.feature:6
-            And I have a step that shows some output and fails # features/show_output.feature:9
+      001 Scenario: Some steps with output                     # {{PATH:features/show_output.feature}}:6
+            And I have a step that shows some output and fails # {{PATH:features/show_output.feature}}:9
               │ This step also has output
               step failed as supposed (Exception)
 
@@ -139,8 +139,8 @@ Feature: Show output
 
       --- Failed steps:
 
-      001 Scenario: Some steps with output                     # features/show_output.feature:6
-            And I have a step that shows some output and fails # features/show_output.feature:9
+      001 Scenario: Some steps with output                     # {{PATH:features/show_output.feature}}:6
+            And I have a step that shows some output and fails # {{PATH:features/show_output.feature}}:9
               step failed as supposed (Exception)
 
       1 scenario (1 failed)
@@ -160,8 +160,8 @@ Feature: Show output
 
       --- Failed steps:
 
-      001 Scenario: Some steps with output                     # features/show_output.feature:6
-            And I have a step that shows some output and fails # features/show_output.feature:9
+      001 Scenario: Some steps with output                     # {{PATH:features/show_output.feature}}:6
+            And I have a step that shows some output and fails # {{PATH:features/show_output.feature}}:9
               │ This step also has output
               step failed as supposed (Exception)
 
@@ -179,8 +179,8 @@ Feature: Show output
 
       --- Failed steps:
 
-      001 Scenario: Some steps with output                     # features/show_output.feature:6
-            And I have a step that shows some output and fails # features/show_output.feature:9
+      001 Scenario: Some steps with output                     # {{PATH:features/show_output.feature}}:6
+            And I have a step that shows some output and fails # {{PATH:features/show_output.feature}}:9
               │ This step also has output
               step failed as supposed (Exception)
 
@@ -212,8 +212,8 @@ Feature: Show output
 
       --- Failed steps:
 
-      001 Scenario: Some steps with output                     # features/show_output.feature:6
-            And I have a step that shows some output and fails # features/show_output.feature:9
+      001 Scenario: Some steps with output                     # {{PATH:features/show_output.feature}}:6
+            And I have a step that shows some output and fails # {{PATH:features/show_output.feature}}:9
               step failed as supposed (Exception)
 
       1 scenario (1 failed)

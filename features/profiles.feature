@@ -142,10 +142,10 @@ Feature: Profiles
       """
       Feature: Math
 
-        Background:                     # features/math.feature:2
+        Background:                     # {{PATH:features/math.feature}}:2
           Given I have basic calculator # FeatureContext::iHaveBasicCalculator()
 
-        Scenario Outline:                    # features/math.feature:5
+        Scenario Outline:                    # {{PATH:features/math.feature}}:5
           Given I have entered <number1>     # FeatureContext::iHaveEntered()
           And I have entered <number2>       # FeatureContext::iHaveEntered()
           When I add                         # FeatureContext::iAdd()

@@ -145,28 +145,28 @@ Feature: Rerun with multiple suite
 
       --- Failed steps:
 
-      001 Scenario: I'm little hungry   # features/apples.feature:9
-            Then I should have 3 apples # features/apples.feature:11
+      001 Scenario: I'm little hungry   # {{PATH:features/apples.feature}}:9
+            Then I should have 3 apples # {{PATH:features/apples.feature}}:11
               Failed asserting that 2 matches expected 3.
 
-      002 Example: | 0   | 4     | 8      | # features/apples.feature:29
-            Then I should have 8 apples     # features/apples.feature:24
+      002 Example: | 0   | 4     | 8      | # {{PATH:features/apples.feature}}:29
+            Then I should have 8 apples     # {{PATH:features/apples.feature}}:24
               Failed asserting that 7 matches expected 8.
 
-      003 Scenario: I'm little hungry    # features/bananas.feature:9
-            Then I should have 3 bananas # features/bananas.feature:11
+      003 Scenario: I'm little hungry    # {{PATH:features/bananas.feature}}:9
+            Then I should have 3 bananas # {{PATH:features/bananas.feature}}:11
               Failed asserting that 2 matches expected 3.
 
-      004 Example: | 0   | 4     | 8      | # features/bananas.feature:29
-            Then I should have 8 bananas    # features/bananas.feature:24
+      004 Example: | 0   | 4     | 8      | # {{PATH:features/bananas.feature}}:29
+            Then I should have 8 bananas    # {{PATH:features/bananas.feature}}:24
               Failed asserting that 7 matches expected 8.
 
-      005 Scenario: I'm little hungry    # features/bananas.feature:9
-            Then I should have 3 bananas # features/bananas.feature:11
+      005 Scenario: I'm little hungry    # {{PATH:features/bananas.feature}}:9
+            Then I should have 3 bananas # {{PATH:features/bananas.feature}}:11
               Failed asserting that 2 matches expected 3.
 
-      006 Example: | 0   | 4     | 8      | # features/bananas.feature:29
-            Then I should have 8 bananas    # features/bananas.feature:24
+      006 Example: | 0   | 4     | 8      | # {{PATH:features/bananas.feature}}:29
+            Then I should have 8 bananas    # {{PATH:features/bananas.feature}}:24
               Failed asserting that 7 matches expected 8.
 
       18 scenarios (12 passed, 6 failed)
@@ -182,28 +182,28 @@ Feature: Rerun with multiple suite
 
     --- Failed steps:
 
-    001 Scenario: I'm little hungry   # features/apples.feature:9
-          Then I should have 3 apples # features/apples.feature:11
+    001 Scenario: I'm little hungry   # {{PATH:features/apples.feature}}:9
+          Then I should have 3 apples # {{PATH:features/apples.feature}}:11
             Failed asserting that 2 matches expected 3.
 
-    002 Example: | 0   | 4     | 8      | # features/apples.feature:29
-          Then I should have 8 apples     # features/apples.feature:24
+    002 Example: | 0   | 4     | 8      | # {{PATH:features/apples.feature}}:29
+          Then I should have 8 apples     # {{PATH:features/apples.feature}}:24
             Failed asserting that 7 matches expected 8.
 
-    003 Scenario: I'm little hungry    # features/bananas.feature:9
-          Then I should have 3 bananas # features/bananas.feature:11
+    003 Scenario: I'm little hungry    # {{PATH:features/bananas.feature}}:9
+          Then I should have 3 bananas # {{PATH:features/bananas.feature}}:11
             Failed asserting that 2 matches expected 3.
 
-    004 Example: | 0   | 4     | 8      | # features/bananas.feature:29
-          Then I should have 8 bananas    # features/bananas.feature:24
+    004 Example: | 0   | 4     | 8      | # {{PATH:features/bananas.feature}}:29
+          Then I should have 8 bananas    # {{PATH:features/bananas.feature}}:24
             Failed asserting that 7 matches expected 8.
 
-    005 Scenario: I'm little hungry    # features/bananas.feature:9
-          Then I should have 3 bananas # features/bananas.feature:11
+    005 Scenario: I'm little hungry    # {{PATH:features/bananas.feature}}:9
+          Then I should have 3 bananas # {{PATH:features/bananas.feature}}:11
             Failed asserting that 2 matches expected 3.
 
-    006 Example: | 0   | 4     | 8      | # features/bananas.feature:29
-          Then I should have 8 bananas    # features/bananas.feature:24
+    006 Example: | 0   | 4     | 8      | # {{PATH:features/bananas.feature}}:29
+          Then I should have 8 bananas    # {{PATH:features/bananas.feature}}:24
             Failed asserting that 7 matches expected 8.
 
     6 scenarios (6 failed)
@@ -253,12 +253,12 @@ Feature: Rerun with multiple suite
 
     --- Failed steps:
 
-    001 Scenario: I'm little hungry   # features/apples.feature:9
-          Then I should have 3 apples # features/apples.feature:11
+    001 Scenario: I'm little hungry   # {{PATH:features/apples.feature}}:9
+          Then I should have 3 apples # {{PATH:features/apples.feature}}:11
             Failed asserting that 2 matches expected 3.
 
-    002 Example: | 0   | 4     | 8      | # features/apples.feature:29
-          Then I should have 8 apples     # features/apples.feature:24
+    002 Example: | 0   | 4     | 8      | # {{PATH:features/apples.feature}}:29
+          Then I should have 8 apples     # {{PATH:features/apples.feature}}:24
             Failed asserting that 7 matches expected 8.
 
     2 scenarios (2 failed)
@@ -274,12 +274,12 @@ Feature: Rerun with multiple suite
 
     --- Failed steps:
 
-    001 Scenario: I'm little hungry    # features/bananas.feature:9
-          Then I should have 3 bananas # features/bananas.feature:11
+    001 Scenario: I'm little hungry    # {{PATH:features/bananas.feature}}:9
+          Then I should have 3 bananas # {{PATH:features/bananas.feature}}:11
             Failed asserting that 2 matches expected 3.
 
-    002 Example: | 0   | 4     | 8      | # features/bananas.feature:29
-          Then I should have 8 bananas    # features/bananas.feature:24
+    002 Example: | 0   | 4     | 8      | # {{PATH:features/bananas.feature}}:29
+          Then I should have 8 bananas    # {{PATH:features/bananas.feature}}:24
             Failed asserting that 7 matches expected 8.
 
     2 scenarios (2 failed)

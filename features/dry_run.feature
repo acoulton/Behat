@@ -173,22 +173,22 @@ Feature: Dry run
         As a little kid
         I need to have an apple in my pocket
 
-        Background:             # features/apples.feature:6
+        Background:             # {{PATH:features/apples.feature}}:6
           Given I have 3 apples # FeatureContext::iHaveApples()
 
-        Scenario: I'm little hungry   # features/apples.feature:9
+        Scenario: I'm little hungry   # {{PATH:features/apples.feature}}:9
           When I ate 1 apple          # FeatureContext::iAteApples()
           Then I should have 3 apples # FeatureContext::iShouldHaveApples()
 
-        Scenario: Found more apples   # features/apples.feature:13
+        Scenario: Found more apples   # {{PATH:features/apples.feature}}:13
           When I found 5 apples       # FeatureContext::iFoundApples()
           Then I should have 8 apples # FeatureContext::iShouldHaveApples()
 
-        Scenario: Found more apples   # features/apples.feature:17
+        Scenario: Found more apples   # {{PATH:features/apples.feature}}:17
           When I found 2 apples       # FeatureContext::iFoundApples()
           Then I should have 5 apples # FeatureContext::iShouldHaveApples()
 
-        Scenario Outline: Other situations   # features/apples.feature:21
+        Scenario Outline: Other situations   # {{PATH:features/apples.feature}}:21
           When I ate <ate> apples            # FeatureContext::iAteApples()
           And I found <found> apples         # FeatureContext::iFoundApples()
           Then I should have <result> apples # FeatureContext::iShouldHaveApples()
@@ -201,12 +201,12 @@ Feature: Dry run
 
       --- Skipped scenarios:
 
-          features/apples.feature:9
-          features/apples.feature:13
-          features/apples.feature:17
-          features/apples.feature:28
-          features/apples.feature:29
-          features/apples.feature:30
+          {{PATH:features/apples.feature}}:9
+          {{PATH:features/apples.feature}}:13
+          {{PATH:features/apples.feature}}:17
+          {{PATH:features/apples.feature}}:28
+          {{PATH:features/apples.feature}}:29
+          {{PATH:features/apples.feature}}:30
 
       6 scenarios (6 skipped)
       21 steps (21 skipped)

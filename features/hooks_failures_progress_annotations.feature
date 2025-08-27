@@ -84,7 +84,7 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      BeforeFeature "features/simple.feature" # FeatureContext::beforeFeatureHook()
+      BeforeFeature "{{PATH:features/simple.feature}}" # FeatureContext::beforeFeatureHook()
       """
 
   Scenario: Handling of a error in afterFeature hook
@@ -109,7 +109,7 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      AfterFeature "features/simple.feature" # FeatureContext::afterFeatureHook()
+      AfterFeature "{{PATH:features/simple.feature}}" # FeatureContext::afterFeatureHook()
       """
 
   Scenario: Handling of a error in beforeScenario hook
@@ -134,7 +134,7 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      BeforeScenario "features/simple.feature:3" # FeatureContext::beforeScenarioHook()
+      BeforeScenario "{{PATH:features/simple.feature}}:3" # FeatureContext::beforeScenarioHook()
       """
 
   Scenario: Handling of a error in afterScenario hook
@@ -159,7 +159,7 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      AfterScenario "features/simple.feature:3" # FeatureContext::afterScenarioHook()
+      AfterScenario "{{PATH:features/simple.feature}}:3" # FeatureContext::afterScenarioHook()
       """
 
   Scenario: Handling of a error in beforeStep hook
@@ -184,7 +184,7 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      BeforeStep "features/simple.feature:4" # FeatureContext::beforeStepHook()
+      BeforeStep "{{PATH:features/simple.feature}}:4" # FeatureContext::beforeStepHook()
       """
 
   Scenario: Handling of a error in afterStep hook
@@ -209,5 +209,5 @@ Feature: Display hook failures location in progress printer using annotations
     Then it should fail
     And the output should contain:
       """
-      AfterStep "features/simple.feature:4" # FeatureContext::afterStepHook()
+      AfterStep "{{PATH:features/simple.feature}}:4" # FeatureContext::afterStepHook()
       """

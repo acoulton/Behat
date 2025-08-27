@@ -20,13 +20,13 @@ Feature: Error Reporting
     """
     --- Failed steps:
 
-    001 Scenario: Access undefined index # features/php_errors_in_scenario.feature:9
-          When I access array index 0    # features/php_errors_in_scenario.feature:10
-            Notice: Undefined offset: 0 in features/bootstrap/FeatureContext.php line 23
+    001 Scenario: Access undefined index # {{PATH:features/php_errors_in_scenario.feature}}:9
+          When I access array index 0    # {{PATH:features/php_errors_in_scenario.feature}}:10
+            Notice: Undefined offset: 0 in {{PATH:features/bootstrap/FeatureContext.php}} line 23
 
-    002 Scenario: Trigger PHP deprecation # features/php_errors_in_scenario.feature:18
-          When I trim NULL                # features/php_errors_in_scenario.feature:19
-            Deprecated: trim(): Passing null to parameter #1 ($string) of type string is deprecated in features/bootstrap/FeatureContext.php line 53
+    002 Scenario: Trigger PHP deprecation # {{PATH:features/php_errors_in_scenario.feature}}:18
+          When I trim NULL                # {{PATH:features/php_errors_in_scenario.feature}}:19
+            Deprecated: trim(): Passing null to parameter #1 ($string) of type string is deprecated in {{PATH:features/bootstrap/FeatureContext.php}} line 53
 
     3 scenarios (1 passed, 2 failed)
     9 steps (6 passed, 2 failed, 1 skipped)
@@ -54,9 +54,9 @@ Feature: Error Reporting
     """
     --- Failed steps:
 
-    001 Scenario: Access undefined index # features/php_errors_in_scenario.feature:9
-          When I access array index 0    # features/php_errors_in_scenario.feature:10
-            Notice: Undefined offset: 0 in features/bootstrap/FeatureContext.php line 23
+    001 Scenario: Access undefined index # {{PATH:features/php_errors_in_scenario.feature}}:9
+          When I access array index 0    # {{PATH:features/php_errors_in_scenario.feature}}:10
+            Notice: Undefined offset: 0 in {{PATH:features/bootstrap/FeatureContext.php}} line 23
 
     3 scenarios (2 passed, 1 failed)
     9 steps (7 passed, 1 failed, 1 skipped)
@@ -72,9 +72,9 @@ Feature: Error Reporting
     """
     --- Failed steps:
 
-    001 Scenario: Exception thrown    # features/exception_in_scenario.feature:6
-          When an exception is thrown # features/exception_in_scenario.feature:7
-            Exception: Exception is thrown in features/bootstrap/FeatureContext.php:47
+    001 Scenario: Exception thrown    # {{PATH:features/exception_in_scenario.feature}}:6
+          When an exception is thrown # {{PATH:features/exception_in_scenario.feature}}:7
+            Exception: Exception is thrown in {{PATH:features/bootstrap/FeatureContext.php}}:47
             Stack trace:
 
     1 scenario (1 failed)
@@ -91,9 +91,9 @@ Feature: Error Reporting
     """
     --- Failed steps:
 
-    001 Scenario: Exception thrown    # features/exception_in_scenario.feature:6
-          When an exception is thrown # features/exception_in_scenario.feature:7
-            Exception: Exception is thrown in features/bootstrap/FeatureContext.php:47
+    001 Scenario: Exception thrown    # {{PATH:features/exception_in_scenario.feature}}:6
+          When an exception is thrown # {{PATH:features/exception_in_scenario.feature}}:7
+            Exception: Exception is thrown in {{PATH:features/bootstrap/FeatureContext.php}}:47
             Stack trace:
             #0 {{PATH:$BEHAT_SRC/Behat/Testwork/Call/Handler/RuntimeCallHandler.php}}(102): FeatureContext->anExceptionIsThrown()
             #1 {{PATH:$BEHAT_SRC/Behat/Testwork/Call/Handler/RuntimeCallHandler.php}}(58): Behat\Testwork\Call\Handler\RuntimeCallHandler->executeCall(

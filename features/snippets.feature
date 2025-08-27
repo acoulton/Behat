@@ -142,11 +142,11 @@ Feature: Snippets generation and addition
 
       --- Pending steps:
 
-      001 Scenario: Single quotes              # features/coffee.feature:6
+      001 Scenario: Single quotes              # {{PATH:features/coffee.feature}}:6
             Given I have magically created 10$ # FeatureContext::iHaveMagicallyCreated()
               TODO: write pending definition
 
-      002 Scenario: Double quotes              # features/coffee.feature:18
+      002 Scenario: Double quotes              # {{PATH:features/coffee.feature}}:18
             Given I have magically created 10$ # FeatureContext::iHaveMagicallyCreated()
               TODO: write pending definition
 
@@ -241,11 +241,11 @@ Feature: Snippets generation and addition
 
       --- Pending steps:
 
-      001 Scenario: Single quotes              # features/coffee.feature:6
+      001 Scenario: Single quotes              # {{PATH:features/coffee.feature}}:6
             Given I have magically created 10$ # FeatureContext::iHaveMagicallyCreated()
               TODO: write pending definition
 
-      002 Scenario: Double quotes              # features/coffee.feature:18
+      002 Scenario: Double quotes              # {{PATH:features/coffee.feature}}:18
             Given I have magically created 10$ # FeatureContext::iHaveMagicallyCreated()
               TODO: write pending definition
 
@@ -275,7 +275,7 @@ Feature: Snippets generation and addition
       """
       Feature: Step Pattern
 
-        Scenario:                         # features/coffee.feature:2
+        Scenario:                         # {{PATH:features/coffee.feature}}:2
           Then 5 should have value of £10 # FeatureContext::shouldHaveValueOf£()
             TODO: write pending definition
           And 7 should have value of £7.2 # FeatureContext::shouldHaveValueOf£()

@@ -102,7 +102,7 @@ Feature: Importing suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # FirstContext::iHaveApples()
           When I ate 1 apple          # FirstContext::iAteApples()
           Then I should have 2 apples # FirstContext::iShouldHaveApples()
@@ -133,7 +133,7 @@ Feature: Importing suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # FirstContext::iHaveApples()
           When I ate 1 apple          # FirstContext::iAteApples()
           Then I should have 2 apples # FirstContext::iShouldHaveApples()
@@ -161,7 +161,7 @@ Feature: Importing suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # FirstContext::iHaveApples()
           When I ate 1 apple          # FirstContext::iAteApples()
           Then I should have 2 apples # FirstContext::iShouldHaveApples()
@@ -171,7 +171,7 @@ Feature: Importing suites
         As a little kid
         I need to have an apple in my pocket
 
-        Scenario: I'm little hungry   # features/some.feature:6
+        Scenario: I'm little hungry   # {{PATH:features/some.feature}}:6
           Given I have 3 apples       # SecondContext::iHaveApples()
           When I ate 1 apple          # SecondContext::iAteApples()
           Then I should have 2 apples # SecondContext::iShouldHaveApples()

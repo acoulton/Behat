@@ -16,11 +16,11 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: First Scenario   # features/a/feature1.feature:3
+        Scenario: First Scenario   # {{PATH:features/a/feature1.feature}}:3
           Given Some slow step N12 # FeatureContext::someSlowStepN()
           And Some normal step N13 # FeatureContext::someNormalStepN()
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       2 scenarios (2 passed)
@@ -33,10 +33,10 @@ Feature: Path filters
       """
       Feature: Second Feature
 
-        Background:                  # features/a/feature2.feature:3
+        Background:                  # {{PATH:features/a/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/a/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/a/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 
@@ -50,19 +50,19 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: First Scenario   # features/a/feature1.feature:3
+        Scenario: First Scenario   # {{PATH:features/a/feature1.feature}}:3
           Given Some slow step N12 # FeatureContext::someSlowStepN()
           And Some normal step N13 # FeatureContext::someNormalStepN()
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       Feature: Second Feature
 
-        Background:                  # features/a/feature2.feature:3
+        Background:                  # {{PATH:features/a/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/a/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/a/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 
@@ -76,19 +76,19 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: First Scenario   # features/a/feature1.feature:3
+        Scenario: First Scenario   # {{PATH:features/a/feature1.feature}}:3
           Given Some slow step N12 # FeatureContext::someSlowStepN()
           And Some normal step N13 # FeatureContext::someNormalStepN()
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       Feature: Second Feature
 
-        Background:                  # features/a/feature2.feature:3
+        Background:                  # {{PATH:features/a/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/a/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/a/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 
@@ -102,28 +102,28 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: First Scenario   # features/a/feature1.feature:3
+        Scenario: First Scenario   # {{PATH:features/a/feature1.feature}}:3
           Given Some slow step N12 # FeatureContext::someSlowStepN()
           And Some normal step N13 # FeatureContext::someNormalStepN()
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       Feature: Second Feature
 
-        Background:                  # features/a/feature2.feature:3
+        Background:                  # {{PATH:features/a/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/a/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/a/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 
       Feature: Third Feature
 
-        Scenario: First Scenario   # features/b/feature1.feature:3
+        Scenario: First Scenario   # {{PATH:features/b/feature1.feature}}:3
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
-        Scenario: Second Scenario  # features/b/feature1.feature:6
+        Scenario: Second Scenario  # {{PATH:features/b/feature1.feature}}:6
           Given Some fast step N14 # FeatureContext::someFastStepN()
           And Some fast step N14   # FeatureContext::someFastStepN()
 
@@ -137,7 +137,7 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       1 scenario (1 passed)
@@ -150,15 +150,15 @@ Feature: Path filters
       """
       Feature: First Feature
 
-        Scenario: Second Scenario  # features/a/feature1.feature:7
+        Scenario: Second Scenario  # {{PATH:features/a/feature1.feature}}:7
           Given Some fast step N14 # FeatureContext::someFastStepN()
 
       Feature: Second Feature
 
-        Background:                  # features/a/feature2.feature:3
+        Background:                  # {{PATH:features/a/feature2.feature}}:3
           Given Some normal step N21 # FeatureContext::someNormalStepN()
 
-        Scenario: First Scenario   # features/a/feature2.feature:6
+        Scenario: First Scenario   # {{PATH:features/a/feature2.feature}}:6
           Given Some slow step N22 # FeatureContext::someSlowStepN()
           And Some fast step N23   # FeatureContext::someFastStepN()
 

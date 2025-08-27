@@ -42,13 +42,13 @@ Feature: Setting order of execution
       """
       Feature: Feature 1
 
-        Scenario:               # features/order1.feature:3
+        Scenario:               # {{PATH:features/order1.feature}}:3
           Given I have 1 orange # FeatureContext::iHaveOranges()
           Then I have 1 orange  # FeatureContext::iHaveOranges()
 
       Feature: Feature 2
 
-        Scenario:                # features/order2.feature:3
+        Scenario:                # {{PATH:features/order2.feature}}:3
           Given I have 2 oranges # FeatureContext::iHaveOranges()
           Then I have 2 oranges  # FeatureContext::iHaveOranges()
 
@@ -69,13 +69,13 @@ Feature: Setting order of execution
       """
       Feature: Feature 2
 
-        Scenario:                # features/order2.feature:3
+        Scenario:                # {{PATH:features/order2.feature}}:3
           Given I have 2 oranges # FeatureContext::iHaveOranges()
           Then I have 2 oranges  # FeatureContext::iHaveOranges()
 
       Feature: Feature 1
 
-        Scenario:               # features/order1.feature:3
+        Scenario:               # {{PATH:features/order1.feature}}:3
           Given I have 1 orange # FeatureContext::iHaveOranges()
           Then I have 1 orange  # FeatureContext::iHaveOranges()
 

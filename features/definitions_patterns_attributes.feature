@@ -62,7 +62,7 @@ Feature: Step Definition Pattern Attributes
       """
       Feature: Step Pattern
 
-        Scenario:                         # features/step_patterns.feature:2
+        Scenario:                         # {{PATH:features/step_patterns.feature}}:2
           Then 5 should have value of £10 # FeatureContext::shouldHaveValueOf()
             │ 10
           And 7 should have value of £7.2 # FeatureContext::shouldHaveValueOf()
@@ -101,7 +101,7 @@ Feature: Step Definition Pattern Attributes
       """
       Feature: Step Pattern
 
-        Scenario:                               # features/step_patterns.feature:2
+        Scenario:                               # {{PATH:features/step_patterns.feature}}:2
           Then 5 should have value of two.three # FeatureContext::shouldHaveValueOf()
             │ two + three
           And 7 should have value of three.4    # FeatureContext::shouldHaveValueOf()
@@ -265,8 +265,8 @@ Feature: Step Definition Pattern Attributes
 
       --- Failed steps:
 
-      001 Scenario:                       # features/step_patterns.feature:2
-            And I can provide parameter 2 # features/step_patterns.feature:4
+      001 Scenario:                       # {{PATH:features/step_patterns.feature}}:2
+            And I can provide parameter 2 # {{PATH:features/step_patterns.feature}}:4
               Failed asserting that '2' is null.
 
       1 scenario (1 failed)

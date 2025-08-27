@@ -542,16 +542,16 @@ Feature: Append snippets option
           And table:
 
 
-      u features/bootstrap/FirstContext.php - `I have 3 apples` definition added
-      u features/bootstrap/FirstContext.php - `I ate 1 apple` definition added
-      u features/bootstrap/FirstContext.php - `I should have 3 apples` definition added
-      u features/bootstrap/FirstContext.php - `I found 5 apples` definition added
-      u features/bootstrap/FirstContext.php - `do something undefined with $` definition added
-      u features/bootstrap/FirstContext.php - `I ate 3 apples` definition added
-      u features/bootstrap/FirstContext.php - `do something undefined with \1` definition added
-      u features/bootstrap/FirstContext.php - `pystring:` definition added
-      u features/bootstrap/FirstContext.php - `pystring 5:` definition added
-      u features/bootstrap/FirstContext.php - `table:` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `I have 3 apples` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `I ate 1 apple` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `I should have 3 apples` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `I found 5 apples` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `do something undefined with $` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `I ate 3 apples` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `do something undefined with \1` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `pystring:` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `pystring 5:` definition added
+      u {{PATH:features/bootstrap/FirstContext.php}} - `table:` definition added
       """
     And "features/bootstrap/FirstContext.php" file should contain:
       """

@@ -46,14 +46,14 @@ Feature: Support PHP 7 Throwable
     Then it should fail
     And the output should contain:
       """
-        Scenario: Handling of a fatal error        # features/fatal_errors.feature:6
+        Scenario: Handling of a fatal error        # {{PATH:features/fatal_errors.feature}}:6
           When I have some code with a fatal error # FeatureContext::iHaveSomeCodeWithFatalError()
             Fatal error: Call to a member function method() on string (Behat\Testwork\Call\Exception\FatalThrowableError)
           Then I should be skipped                 # FeatureContext::iShouldBeSkipped()
 
       --- Failed scenarios:
 
-          features/fatal_errors.feature:6
+          {{PATH:features/fatal_errors.feature}}:6
 
       1 scenario (1 failed)
       2 steps (1 failed, 1 skipped)

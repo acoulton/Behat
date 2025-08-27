@@ -189,20 +189,20 @@ Feature: Scenario Outlines
 
       --- Failed steps:
 
-      001 Example: | 5       | 4       | 15     | # features/math.feature:14
-            Then The result should be 15          # features/math.feature:9
+      001 Example: | 5       | 4       | 15     | # {{PATH:features/math.feature}}:14
+            Then The result should be 15          # {{PATH:features/math.feature}}:9
               Failed asserting that 20 matches expected 15.
 
-      002 Scenario:                     # features/math.feature:16
-            Then The result should be 7 # features/math.feature:20
+      002 Scenario:                     # {{PATH:features/math.feature}}:16
+            Then The result should be 7 # {{PATH:features/math.feature}}:20
               Failed asserting that 6 matches expected 7.
 
-      003 Example: | 50      | 10      | 2      | # features/math.feature:31
-            Then The result should be 2           # features/math.feature:26
+      003 Example: | 50      | 10      | 2      | # {{PATH:features/math.feature}}:31
+            Then The result should be 2           # {{PATH:features/math.feature}}:26
               Failed asserting that 5 matches expected 2.
 
-      004 Example: | 50      | 10      | 4      | # features/math.feature:32
-            Then The result should be 4           # features/math.feature:26
+      004 Example: | 50      | 10      | 4      | # {{PATH:features/math.feature}}:32
+            Then The result should be 4           # {{PATH:features/math.feature}}:26
               Failed asserting that 5 matches expected 4.
 
       6 scenarios (2 passed, 4 failed)

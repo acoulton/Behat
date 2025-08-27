@@ -43,19 +43,19 @@ Feature: Remove prefix
 
   Scenario: Use remove prefix with editor URL
     When I run behat with the following additional options:
-      | option          | value                                        |
-      | --editor-url    | 'phpstorm://open?file={relPath}&line={line}' |
-      | --remove-prefix | features/bootstrap/,features/                |
+      | option          | value                                           |
+      | --editor-url    | 'phpstorm://open?file={relPath}&line={line}'    |
+      | --remove-prefix | {{PATH:features/bootstrap/}},{{PATH:features/}} |
     Then the output should contain:
       """
-        Scenario:                                    # <href=phpstorm://open?file=features/test.feature&line=3>test.feature:3</>
+        Scenario:                                    # <href=phpstorm://open?file={{PATH:features/test.feature}}&line=3>{{PATH:test.feature}}:3</>
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in <href=phpstorm://open?file=features/bootstrap/FeatureContext.php&line=16>FeatureContext.php line 16</>
+            Warning: Undefined variable $b in <href=phpstorm://open?file={{PATH:features/bootstrap/FeatureContext.php}}&line=16>FeatureContext.php line 16</>
 
       --- Failed scenarios:
 
-          <href=phpstorm://open?file=features/test.feature&line=3>test.feature:3</>
+          <href=phpstorm://open?file={{PATH:features/test.feature}}&line=3>{{PATH:test.feature}}:3</>
       """
 
   Scenario: Use remove prefix with absolute paths

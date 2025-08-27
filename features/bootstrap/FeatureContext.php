@@ -57,6 +57,8 @@ class FeatureContext implements Context
      */
     private $answerString;
 
+    private readonly string $behatSrcDir;
+
     /**
      * Cleans test folders in the temporary directory.
      *
@@ -72,6 +74,9 @@ class FeatureContext implements Context
     public function __construct(
         private readonly Filesystem $filesystem = new Filesystem(),
     ) {
+        $behatSrcDir = realpath(dirname(dirname(__DIR__)).'/src');
+        assert($behatSrcDir !== false, 'Should be able to find real path to behat src');
+        $this->behatSrcDir = $behatSrcDir;
     }
 
     /**
@@ -445,63 +450,41 @@ EOL;
     {
         $text = strtr($expectedText, [
             '\'\'\'' => '"""',
-            '%%WORKING_DIR%%' => realpath($this->workingDir . DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR,
-            '%%DS%%' => DIRECTORY_SEPARATOR,
         ]);
 
-        // windows path fix
-        if ('/' !== DIRECTORY_SEPARATOR) {
-            $text = preg_replace_callback(
-                '/[ "](features|tests)\/[^\n "]+/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
-            $text = preg_replace_callback(
-                '/\<span class\="path"\>features\/[^\<]+/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
-            $text = preg_replace_callback(
-                '/\+[fd] [^ ]+/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
+        return $this->replacePathPlaceholders($text);
+    }
 
-            // error stacktrace
-            $text = preg_replace_callback(
-                '/#\d+ [^:]+:/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
+    /**
+     * Replaces platform-dependent paths and directory separators inside `{{PATH:...}}` placeholder tags.
+     *
+     * Supported variables are:
+     *
+     * - $CWD: path to the temporary working directory for this scenario (e.g. for paths to feature files & contexts)
+     * - $BEHAT_SOURCE: path to the Behat source code (e.g. for exception stack traces)
+     */
+    private function replacePathPlaceholders(string $text): string
+    {
+        return preg_replace_callback(
+            '/\{\{PATH:([^}]+)}}/',
+            function ($matches) {
+                $path = strtr(
+                    $matches[1],
+                    [
+                        '$BEHAT_SRC' => $this->behatSrcDir,
+                        '$CWD' => realpath($this->workingDir),
+                    ],
+                );
 
-            // texts with absolute paths
-            $text = preg_replace_callback(
-                '/\{BASE_PATH\}[^\n \<"]+/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
+                if (DIRECTORY_SEPARATOR === '/') {
+                    return $path;
+                }
 
-            // texts in editor URLs
-            $text = preg_replace_callback(
-                '/open\?file[^\<"]+/',
-                function ($matches) {
-                    return str_replace('/', DIRECTORY_SEPARATOR, $matches[0]);
-                },
-                $text
-            );
-        }
-
-        return $text;
+                // Convert all / within the placeholder to the platform (Windows) directory separator
+                return str_replace('/', DIRECTORY_SEPARATOR, $path);
+            },
+            $text,
+        );
     }
 
     /**
@@ -560,13 +543,6 @@ EOL;
             $output = str_replace(PHP_EOL, "\n", $output);
         }
 
-        // Remove location of the project
-        $output = str_replace(
-            realpath(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR,
-            '{BASE_PATH}',
-            $output
-        );
-
         // Replace wrong warning message of HHVM
         $output = str_replace('Notice: Undefined index: ', 'Notice: Undefined offset: ', $output);
 
@@ -615,15 +591,7 @@ EOL;
             $option = $row['option'];
             $value = $row['value'];
             if ($value !== '') {
-                if (str_starts_with($value, '{BASE_PATH}')) {
-                    $basePath = realpath($this->workingDir) . DIRECTORY_SEPARATOR;
-                    $value = $basePath . substr($value, strlen('{BASE_PATH}'));
-                }
-
-                if ($option === '--remove-prefix' && DIRECTORY_SEPARATOR !== '/') {
-                    $value = str_replace('/', DIRECTORY_SEPARATOR, $value);
-                }
-                $option .= '=' . $value;
+                $option .= '=' .$this->replacePathPlaceholders($value);
             }
             $this->options .= ' ' . $option;
         }

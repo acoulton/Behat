@@ -296,7 +296,7 @@ Feature: Syntax helpers
       """
       default | [Given|*] /^I have (\d+) apples?$/
               | at `FeatureContext::iHaveApples()`
-              | on `%%WORKING_DIR%%features%%DS%%bootstrap%%DS%%FeatureContext.php[12:14]`
+              | on `{{PATH:$CWD/features/bootstrap/FeatureContext.php}}[12:14]`
 
       default | [When|*] /^I ate (\d+) apples?$/
               | Eating apples
@@ -304,15 +304,15 @@ Feature: Syntax helpers
               | - one
               | - two
               | at `FeatureContext::iAteApples()`
-              | on `%%WORKING_DIR%%features%%DS%%bootstrap%%DS%%FeatureContext.php[26:28]`
+              | on `{{PATH:$CWD/features/bootstrap/FeatureContext.php}}[26:28]`
 
       default | [When|*] /^I found (\d+) apples?$/
               | at `FeatureContext::iFoundApples()`
-              | on `%%WORKING_DIR%%features%%DS%%bootstrap%%DS%%FeatureContext.php[31:33]`
+              | on `{{PATH:$CWD/features/bootstrap/FeatureContext.php}}[31:33]`
 
       default | [Then|*] /^I should have (\d+) apples$/
               | at `FeatureContext::iShouldHaveApples()`
-              | on `%%WORKING_DIR%%features%%DS%%bootstrap%%DS%%FeatureContext.php[36:38]`
+              | on `{{PATH:$CWD/features/bootstrap/FeatureContext.php}}[36:38]`
       """
 
   Scenario: Search definition

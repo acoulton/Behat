@@ -60,17 +60,17 @@ Feature: Remove prefix
 
   Scenario: Use remove prefix with absolute paths
     When I run behat with the following additional options:
-      | option                 | value       |
-      | --print-absolute-paths |             |
-      | --remove-prefix        | {BASE_PATH} |
+      | option                 | value          |
+      | --print-absolute-paths |                |
+      | --remove-prefix        | {{PATH:$CWD/}} |
     Then the output should contain:
       """
-        Scenario:                                    # features%%DS%%test.feature:3
+        Scenario:                                    # {{PATH:features/test.feature}}:3
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in features%%DS%%bootstrap%%DS%%FeatureContext.php line 16
+            Warning: Undefined variable $b in {{PATH:features/bootstrap/FeatureContext.php}} line 16
 
       --- Failed scenarios:
 
-          features%%DS%%test.feature:3
+          {{PATH:features/test.feature}}:3
       """

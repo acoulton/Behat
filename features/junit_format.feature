@@ -6,11 +6,11 @@ Feature: JUnit Formatter
   Background:
     Given I initialise the working directory from the "JunitFormat" fixtures folder
     And I provide the following options for all behat invocations:
-      | option          | value            |
-      | --no-colors     |                  |
-      | --snippets-type | regex            |
-      | --format        | junit            |
-      | --out           | {BASE_PATH}/logs |
+      | option          | value              |
+      | --no-colors     |                    |
+      | --snippets-type | regex              |
+      | --format        | junit              |
+      | --out           | {{PATH:$CWD/logs}} |
 
   Scenario: Run a single feature
     When I run behat with the following additional options:

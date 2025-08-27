@@ -47,14 +47,14 @@ Feature: Editor URL
       | --editor-url | 'phpstorm://open?file={absPath}&line={line}' |
     Then the output should contain:
       """
-        Scenario:                                    # <href=phpstorm://open?file=%%WORKING_DIR%%features/test.feature&line=3>features/test.feature:3</>
+        Scenario:                                    # <href=phpstorm://open?file={{PATH:$CWD/features/test.feature}}&line=3>features/test.feature:3</>
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in <href=phpstorm://open?file=%%WORKING_DIR%%features/bootstrap/FeatureContext.php&line=16>features/bootstrap/FeatureContext.php line 16</>
+            Warning: Undefined variable $b in <href=phpstorm://open?file={{PATH:$CWD/features/bootstrap/FeatureContext.php}}&line=16>features/bootstrap/FeatureContext.php line 16</>
 
       --- Failed scenarios:
 
-          <href=phpstorm://open?file=%%WORKING_DIR%%features/test.feature&line=3>features/test.feature:3</>
+          <href=phpstorm://open?file={{PATH:$CWD/features/test.feature}}&line=3>features/test.feature:3</>
       """
 
   Scenario: Use relative paths in url but absolute paths in visible text
@@ -64,12 +64,12 @@ Feature: Editor URL
       | --editor-url           | 'phpstorm://open?file={relPath}&line={line}' |
     Then the output should contain:
       """
-        Scenario:                                    # <href=phpstorm://open?file=features/test.feature&line=3>%%WORKING_DIR%%features/test.feature:3</>
+        Scenario:                                    # <href=phpstorm://open?file=features/test.feature&line=3>{{PATH:$CWD/features/test.feature}}:3</>
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in <href=phpstorm://open?file=features/bootstrap/FeatureContext.php&line=16>%%WORKING_DIR%%features/bootstrap/FeatureContext.php line 16</>
+            Warning: Undefined variable $b in <href=phpstorm://open?file=features/bootstrap/FeatureContext.php&line=16>{{PATH:$CWD/features/bootstrap/FeatureContext.php}} line 16</>
 
       --- Failed scenarios:
 
-          <href=phpstorm://open?file=features/test.feature&line=3>%%WORKING_DIR%%features/test.feature:3</>
+          <href=phpstorm://open?file=features/test.feature&line=3>{{PATH:$CWD/features/test.feature}}:3</>
       """

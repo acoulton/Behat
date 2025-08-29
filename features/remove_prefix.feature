@@ -11,8 +11,8 @@ Feature: Remove prefix
 
   Scenario: Add option in command line
     When I run behat with the following additional options:
-      | option          | value                         |
-      | --remove-prefix | features/bootstrap/,features/ |
+      | option          | value                                           |
+      | --remove-prefix | {{PATH:features/bootstrap/}},{{PATH:features/}} |
     Then the output should contain:
       """
         Scenario:                                    # test.feature:3

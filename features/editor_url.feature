@@ -18,7 +18,7 @@ Feature: Editor URL
         Scenario:                                    # <href=phpstorm://open?file={{PATH:features/test.feature}}&line=3>{{PATH:features/test.feature}}:3</>
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in <href=phpstorm://open?file=features/bootstrap/FeatureContext.php&line=16>features/bootstrap/FeatureContext.php line 16</>
+            Warning: Undefined variable $b in <href=phpstorm://open?file={{PATH:features/bootstrap/FeatureContext.php}}&line=16>{{PATH:features/bootstrap/FeatureContext.php}} line 16</>
 
       --- Failed scenarios:
 
@@ -67,7 +67,7 @@ Feature: Editor URL
         Scenario:                                    # <href=phpstorm://open?file={{PATH:features/test.feature}}&line=3>{{PATH:$CWD/features/test.feature}}:3</>
           Given I have a passing step                # FeatureContext::iHaveAPassingStep()
           And I have a step that throws an exception # FeatureContext::iHaveAFailingStep()
-            Warning: Undefined variable $b in <href=phpstorm://open?file=features/bootstrap/FeatureContext.php&line=16>{{PATH:$CWD/features/bootstrap/FeatureContext.php}} line 16</>
+            Warning: Undefined variable $b in <href=phpstorm://open?file={{PATH:features/bootstrap/FeatureContext.php}}&line=16>{{PATH:$CWD/features/bootstrap/FeatureContext.php}} line 16</>
 
       --- Failed scenarios:
 

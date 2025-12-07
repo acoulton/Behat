@@ -57,11 +57,7 @@ jobs:
             composer-mode: update
             symfony-version: '6.4.*'
 
-          - php: 8.4
-            os: ubuntu-latest
-            composer-mode: update
-            composer-minimum-stability: RC
-            symfony-version: '8.0.*'
+          # Symfony 7.4 LTS already builds on our normal PHP 8.2 and PHP 8.3 jobs
 
     steps:
       - uses: actions/checkout@v4

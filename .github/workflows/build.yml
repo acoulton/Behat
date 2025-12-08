@@ -151,6 +151,17 @@ jobs:
       - name: Run Rector
         run: ./vendor/bin/rector --dry-run
 
+  check-bc:
+    name: Check for BC breaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "Check for BC breaks"
+        uses: docker://nyholm/roave-bc-check-ga
+
+
   build-phar:
     name: Build PHAR file
     runs-on: ubuntu-latest

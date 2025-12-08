@@ -158,9 +158,22 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.5"
+
+      - name: "Install roave/backward-compatibility-check"
+        run: |
+          mkdir bc-check
+          cd bc-check
+          composer require --no-interaction roave/backward-compatibility-check:^8.17
+
       - name: "Check for BC breaks"
         run: |
-          docker run -u $(id -u) -v $(pwd):/app nyholm/roave-bc-check-ga
+          echo $pwd
+          bc-check/vendor/bin/roave-backward-compatibility-check \
+            --format=github-actions
 
 
 #  build-phar:

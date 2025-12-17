@@ -106,7 +106,7 @@ final class ContextFactory
     /**
      * Creates context instance.
      */
-    private function createInstance(ReflectionClass $reflection, array $arguments)
+    private function createInstance(ReflectionClass $reflection, array $arguments): object
     {
         if (count($arguments)) {
             return $reflection->newInstanceArgs(array_values($arguments));

@@ -34,7 +34,7 @@ final class TransformationRepository
      *
      * @return Transformation[]
      */
-    public function getEnvironmentTransformations(Environment $environment)
+    public function getEnvironmentTransformations(Environment $environment): array
     {
         return array_filter(
             $this->environmentManager->readEnvironmentCallees($environment),

@@ -129,10 +129,8 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      * Splits transformations into simple and normal ones.
      *
      * @param Transformation[] $transformations
-     *
-     * @return array
      */
-    private function splitSimpleAndNormalTransformations(array $transformations)
+    private function splitSimpleAndNormalTransformations(array $transformations): array
     {
         return array_reduce($transformations, fn ($acc, $t): array => [
             $t instanceof SimpleArgumentTransformation ? array_merge($acc[0], [$t]) : $acc[0],

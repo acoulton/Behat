@@ -35,7 +35,7 @@ final class HookRepository
      *
      * @return Hook[]
      */
-    public function getEnvironmentHooks(Environment $environment)
+    public function getEnvironmentHooks(Environment $environment): array
     {
         return array_filter(
             $this->environmentManager->readEnvironmentCallees($environment),
@@ -48,7 +48,7 @@ final class HookRepository
      *
      * @return Hook[]
      */
-    public function getScopeHooks(HookScope $scope)
+    public function getScopeHooks(HookScope $scope): array
     {
         return array_filter(
             $this->getEnvironmentHooks($scope->getEnvironment()),

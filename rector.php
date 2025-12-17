@@ -10,6 +10,7 @@ use Rector\TypeDeclaration\Rector\ClassMethod\NumericReturnTypeFromStrictReturns
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNullableTypeRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromReturnNewRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictConstantReturnRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNativeCallRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\StringReturnTypeFromStrictScalarReturnsRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\StringReturnTypeFromStrictStringReturnsRector;
@@ -23,7 +24,7 @@ return RectorConfig::configure()
     ->withRootFiles()
     ->withPreparedSets(codeQuality: true)
     ->withPhpSets(php81: true)
-    ->withTypeCoverageLevel(25)
+    ->withTypeCoverageLevel(29)
     ->withSkip([
         StringableForToStringRector::class,
         ReturnTypeFromStrictConstantReturnRector::class => [
@@ -110,6 +111,9 @@ return RectorConfig::configure()
         ],
         TypedPropertyFromStrictConstructorRector::class => [
             __DIR__.'/src/Behat/Testwork/EventDispatcher/ServiceContainer/EventDispatcherExtension.php',
+        ],
+        ReturnTypeFromStrictNativeCallRector::class => [
+            __DIR__.'/src/Behat/Behat/Tester/Exception/Stringer/PendingExceptionStringer.php',
         ],
     ])
     ->withImportNames(

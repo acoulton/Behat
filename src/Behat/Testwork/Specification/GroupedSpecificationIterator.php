@@ -49,7 +49,7 @@ final class GroupedSpecificationIterator implements SpecificationIterator
      *
      * @return array<string, GroupedSpecificationIterator<TSpec>>
      */
-    public static function group(array $specificationIterators)
+    public static function group(array $specificationIterators): array
     {
         $groupedSpecifications = [];
         foreach ($specificationIterators as $specificationIterator) {

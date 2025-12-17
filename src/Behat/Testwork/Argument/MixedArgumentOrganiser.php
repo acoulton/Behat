@@ -374,10 +374,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
      *
      * @param  ReflectionClass $reflectionClass Typehinted argument
      * @param  mixed           $candidate       Resolved argument
-     *
-     * @return bool
      */
-    private function isInstancePredicateForTypehintedArguments(ReflectionClass $reflectionClass, $candidate)
+    private function isInstancePredicateForTypehintedArguments(ReflectionClass $reflectionClass, $candidate): bool
     {
         return $reflectionClass->isInstance($candidate);
     }

@@ -35,7 +35,7 @@ final class ServicesResolver implements ArgumentResolver
     /**
      * @throws ContainerExceptionInterface
      */
-    public function resolveArguments(ReflectionClass $classReflection, array $arguments)
+    public function resolveArguments(ReflectionClass $classReflection, array $arguments): array
     {
         return array_map([$this, 'resolveArgument'], $arguments);
     }

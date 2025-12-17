@@ -40,10 +40,8 @@ final class GenericSuiteGenerator implements SuiteGenerator
 
     /**
      * Merges provided settings into default ones.
-     *
-     * @return array
      */
-    private function mergeDefaultSettings(array $settings)
+    private function mergeDefaultSettings(array $settings): array
     {
         return array_merge($this->defaultSettings, $settings);
     }

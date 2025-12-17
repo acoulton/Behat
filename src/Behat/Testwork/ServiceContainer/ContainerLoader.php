@@ -51,10 +51,8 @@ final class ContainerLoader
 
     /**
      * Processes config against extensions.
-     *
-     * @return array
      */
-    private function processConfig(array $configs)
+    private function processConfig(array $configs): array
     {
         $tree = $this->configuration->getConfigTree($this->extensionManager->getExtensions());
 

@@ -641,7 +641,7 @@ EOL;
         $dom->schemaValidate(__DIR__ . '/schema/' . $schemaPath);
     }
 
-    private function getExitCode()
+    private function getExitCode(): ?int
     {
         return $this->process->getExitCode();
     }

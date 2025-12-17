@@ -26,10 +26,8 @@ final class ConfigurationTree
      * Generates the configuration tree.
      *
      * @param Extension[] $extensions
-     *
-     * @return NodeInterface
      */
-    public function getConfigTree(array $extensions)
+    public function getConfigTree(array $extensions): NodeInterface
     {
         $treeBuilder = new TreeBuilder('testwork');
         /** @var ArrayNodeDefinition $rootNode */

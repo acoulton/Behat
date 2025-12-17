@@ -58,20 +58,16 @@ final class PhaseStatistics implements Statistics
 
     /**
      * Returns timer object.
-     *
-     * @return Timer
      */
-    public function getTimer()
+    public function getTimer(): Timer
     {
         return $this->statistics->getTimer();
     }
 
     /**
      * Returns memory usage object.
-     *
-     * @return Memory
      */
-    public function getMemory()
+    public function getMemory(): Memory
     {
         return $this->statistics->getMemory();
     }

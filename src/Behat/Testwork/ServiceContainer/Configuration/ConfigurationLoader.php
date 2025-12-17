@@ -176,13 +176,11 @@ final class ConfigurationLoader
      * @param string $configPath Config file path
      * @param string $profile    Profile name
      *
-     * @return array
-     *
      * @throws ConfigurationLoadingException If config file is not found
      *
      * @phpstan-impure
      */
-    protected function loadFileConfiguration($configPath, $profile)
+    protected function loadFileConfiguration($configPath, $profile): array
     {
         if (!is_file($configPath) || !is_readable($configPath)) {
             throw new ConfigurationLoadingException(sprintf('Configuration file `%s` not found.', $configPath));
@@ -294,11 +292,9 @@ final class ConfigurationLoader
      * @param string $path
      * @param string $profile
      *
-     * @return array
-     *
      * @throws ConfigurationLoadingException If import file not found
      */
-    private function parseImport($basePath, $path, $profile)
+    private function parseImport($basePath, $path, $profile): array
     {
         if (!file_exists($path) && file_exists($basePath . DIRECTORY_SEPARATOR . $path)) {
             $path = $basePath . DIRECTORY_SEPARATOR . $path;

@@ -46,7 +46,7 @@ final class ServicesResolverFactory implements SuiteScopedResolverFactory, Argum
      * @throws WrongServicesConfigurationException
      * @throws WrongContainerClassException
      */
-    public function generateArgumentResolvers(Suite $suite)
+    public function generateArgumentResolvers(Suite $suite): array
     {
         @trigger_error(
             'SuiteScopedResolverFactory::generateArgumentResolvers() was deprecated and will be removed in 4.0',
@@ -66,7 +66,7 @@ final class ServicesResolverFactory implements SuiteScopedResolverFactory, Argum
      * @throws WrongServicesConfigurationException
      * @throws WrongContainerClassException
      */
-    public function createArgumentResolvers(Environment $environment)
+    public function createArgumentResolvers(Environment $environment): array
     {
         $suite = $environment->getSuite();
 

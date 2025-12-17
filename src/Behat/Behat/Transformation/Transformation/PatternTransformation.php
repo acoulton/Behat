@@ -42,14 +42,12 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
 
     /**
      * Checks if transformer supports argument.
-     *
-     * @return bool
      */
     public function supportsDefinitionAndArgument(
         RegexGenerator $regexGenerator,
         DefinitionCall $definitionCall,
         $argumentValue,
-    ) {
+    ): bool {
         $regex = $regexGenerator->generateRegex(
             $definitionCall->getEnvironment()->getSuite()->getName(),
             $this->pattern,

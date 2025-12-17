@@ -158,10 +158,8 @@ final class Application extends BaseApplication
 
     /**
      * Configures container based on provided config file and profile.
-     *
-     * @return array
      */
-    private function loadConfiguration(InputInterface $input)
+    private function loadConfiguration(InputInterface $input): array
     {
         $profile = $input->getParameterOption(['--profile', '-p']) ?: 'default';
 

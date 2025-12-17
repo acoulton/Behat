@@ -102,11 +102,9 @@ final class ServicesResolver implements CallFilter
     /**
      * Repackages old calls with new arguments.
      *
-     * @return DefinitionCall|TransformationCall
-     *
      * @throws UnsupportedCallException
      */
-    private function repackageCallWithNewArguments(Call $call, array $newArguments)
+    private function repackageCallWithNewArguments(Call $call, array $newArguments): DefinitionCall|TransformationCall
     {
         if ($call instanceof DefinitionCall) {
             return $this->repackageDefinitionCall($call, $newArguments);

@@ -66,7 +66,7 @@ final class InteractiveContextIdentifier implements TargetContextIdentifier
      *
      * @return string
      */
-    private function askQuestion($message, $choices, $default)
+    private function askQuestion($message, $choices, $default): mixed
     {
         $this->output->writeln('');
         $helper = new QuestionHelper();

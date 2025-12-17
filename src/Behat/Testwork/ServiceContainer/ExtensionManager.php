@@ -97,10 +97,12 @@ final class ExtensionManager
 
     /**
      * Returns activated extension names.
+     *
+     * @return list<class-string<Extension>>
      */
     public function getExtensionClasses(): array
     {
-        return array_map('get_class', array_values($this->extensions));
+        return array_map(get_class(...), array_values($this->extensions));
     }
 
     /**

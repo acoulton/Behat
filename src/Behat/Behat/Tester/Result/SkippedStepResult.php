@@ -10,6 +10,7 @@
 
 namespace Behat\Behat\Tester\Result;
 
+use Behat\Behat\Definition\Definition;
 use Behat\Behat\Definition\SearchResult;
 
 /**
@@ -35,7 +36,7 @@ final class SkippedStepResult implements StepResult, DefinedStepResult
         return $this->searchResult;
     }
 
-    public function getStepDefinition()
+    public function getStepDefinition(): ?Definition
     {
         return $this->searchResult->getMatchedDefinition();
     }

@@ -132,10 +132,8 @@ final class TranslatorExtension implements Extension
 
     /**
      * Tries to guess default user cli language.
-     *
-     * @return string|null
      */
-    private function getDefaultLanguage()
+    private function getDefaultLanguage(): ?string
     {
         $defaultLanguage = null;
         if (($locale = getenv('LANG')) && preg_match('/^([a-z]{2})/', $locale, $matches)) {

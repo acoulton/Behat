@@ -50,10 +50,8 @@ abstract class ClassNotFoundHandler implements ExceptionHandler
 
     /**
      * Extracts missing class name from the exception.
-     *
-     * @return string|null
      */
-    private function extractNonExistentClass(Error $exception)
+    private function extractNonExistentClass(Error $exception): ?string
     {
         if (1 === preg_match(self::PATTERN, $exception->getMessage(), $matches)) {
             return $matches[1];

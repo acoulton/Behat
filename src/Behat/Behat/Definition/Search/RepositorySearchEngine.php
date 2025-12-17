@@ -50,7 +50,7 @@ final class RepositorySearchEngine implements SearchEngine
         Environment $environment,
         FeatureNode $feature,
         StepNode $step,
-    ) {
+    ): ?SearchResult {
         $suite = $environment->getSuite();
         $language = $feature->getLanguage();
         $stepText = $step->getText();

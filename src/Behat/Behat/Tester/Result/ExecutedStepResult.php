@@ -10,10 +10,12 @@
 
 namespace Behat\Behat\Tester\Result;
 
+use Behat\Behat\Definition\Definition;
 use Behat\Behat\Definition\SearchResult;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Testwork\Call\CallResult;
 use Behat\Testwork\Tester\Result\ExceptionResult;
+use Exception;
 
 /**
  * Represents an executed (successfully or not) step result.
@@ -47,17 +49,17 @@ final class ExecutedStepResult implements StepResult, DefinedStepResult, Excepti
         return $this->callResult;
     }
 
-    public function getStepDefinition()
+    public function getStepDefinition(): ?Definition
     {
         return $this->searchResult->getMatchedDefinition();
     }
 
     public function hasException(): bool
     {
-        return null !== $this->getException();
+        return $this->getException() instanceof Exception;
     }
 
-    public function getException()
+    public function getException(): ?Exception
     {
         return $this->callResult->getException();
     }

@@ -135,7 +135,7 @@ final class ServicesResolverFactory implements SuiteScopedResolverFactory, Argum
      *
      * @throws WrongServicesConfigurationException
      */
-    private function loadContainerFromContainer($name)
+    private function loadContainerFromContainer($name): object
     {
         $services = $this->container->findTaggedServiceIds(HelperContainerExtension::HELPER_CONTAINER_TAG);
 

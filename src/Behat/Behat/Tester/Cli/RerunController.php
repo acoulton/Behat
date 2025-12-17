@@ -75,7 +75,7 @@ final class RerunController implements Controller
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): ?int
     {
         $this->eventDispatcher->addListener(ScenarioTested::AFTER, $this->collectFailedScenario(...), -50);
         $this->eventDispatcher->addListener(ExampleTested::AFTER, $this->collectFailedScenario(...), -50);
@@ -160,10 +160,8 @@ final class RerunController implements Controller
 
     /**
      * Returns cache filename (if exists).
-     *
-     * @return string|null
      */
-    private function getFileName()
+    private function getFileName(): ?string
     {
         if (null === $this->cachePath || null === $this->key) {
             return null;

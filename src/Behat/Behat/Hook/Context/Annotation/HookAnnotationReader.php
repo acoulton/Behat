@@ -53,10 +53,8 @@ final class HookAnnotationReader implements AnnotationReader
      * @param string           $contextClass
      * @param string           $docLine
      * @param string           $description
-     *
-     * @return RuntimeHook|null
      */
-    public function readCallee($contextClass, ReflectionMethod $method, $docLine, $description)
+    public function readCallee($contextClass, ReflectionMethod $method, $docLine, $description): ?RuntimeHook
     {
         if (!preg_match(self::$regex, $docLine, $match)) {
             return null;

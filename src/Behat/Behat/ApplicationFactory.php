@@ -103,7 +103,7 @@ final class ApplicationFactory extends BaseFactory
         return 'BEHAT_PARAMS';
     }
 
-    protected function getConfigPath()
+    protected function getConfigPath(): ?string
     {
         $cwd = rtrim(getcwd(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
         $configDir = $cwd . 'config' . DIRECTORY_SEPARATOR;

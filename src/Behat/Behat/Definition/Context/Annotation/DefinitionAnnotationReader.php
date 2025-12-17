@@ -12,6 +12,7 @@ namespace Behat\Behat\Definition\Context\Annotation;
 
 use Behat\Behat\Context\Annotation\AnnotationReader;
 use Behat\Behat\Definition\Call\Given;
+use Behat\Behat\Definition\Call\RuntimeDefinition;
 use Behat\Behat\Definition\Call\Then;
 use Behat\Behat\Definition\Call\When;
 use ReflectionMethod;
@@ -36,7 +37,7 @@ final class DefinitionAnnotationReader implements AnnotationReader
         'then' => Then::class,
     ];
 
-    public function readCallee($contextClass, ReflectionMethod $method, $docLine, $description)
+    public function readCallee($contextClass, ReflectionMethod $method, $docLine, $description): ?RuntimeDefinition
     {
         if (!preg_match(self::$regex, $docLine, $match)) {
             return null;

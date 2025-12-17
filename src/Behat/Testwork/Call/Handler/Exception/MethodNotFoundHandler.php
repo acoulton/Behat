@@ -48,10 +48,8 @@ abstract class MethodNotFoundHandler implements ExceptionHandler
 
     /**
      * Extract callable from exception.
-     *
-     * @return array|null
      */
-    private function extractNonExistentCallable(Error $exception)
+    private function extractNonExistentCallable(Error $exception): ?array
     {
         if (1 === preg_match(self::PATTERN, $exception->getMessage(), $matches)) {
             return [$matches[1], $matches[2]];

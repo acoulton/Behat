@@ -52,7 +52,7 @@ final class AvailableDefinitionsController implements Controller
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): ?int
     {
         if (null === $argument = $input->getOption('definitions')) {
             return null;

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNullableTypeRector;
 use Rector\Config\RectorConfig;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
@@ -21,7 +22,7 @@ return RectorConfig::configure()
     ->withRootFiles()
     ->withPreparedSets(codeQuality: true)
     ->withPhpSets(php81: true)
-    ->withTypeCoverageLevel(21)
+    ->withTypeCoverageLevel(22)
     ->withSkip([
         StringableForToStringRector::class,
         ReturnTypeFromStrictConstantReturnRector::class => [
@@ -101,6 +102,10 @@ return RectorConfig::configure()
             __DIR__.'/src/Behat/Behat/EventDispatcher/Event/BeforeScenarioTeardown.php',
             __DIR__.'/src/Behat/Behat/EventDispatcher/Event/BeforeScenarioTested.php',
         ],
+        ReturnNullableTypeRector::class => [
+            __DIR__.'/src/Behat/Behat/Output/Statistics/StepStat.php',
+            __DIR__.'/src/Behat/Testwork/Call/RuntimeCallee.php',
+        ]
     ])
     ->withImportNames(
         removeUnusedImports: true,

@@ -170,10 +170,8 @@ final class Application extends BaseApplication
 
     /**
      * Creates main command for application.
-     *
-     * @return SymfonyCommand
      */
-    private function createCommand(InputInterface $input, OutputInterface $output)
+    private function createCommand(InputInterface $input, OutputInterface $output): SymfonyCommand
     {
         return $this->createContainer($input, $output)->get('cli.command');
     }

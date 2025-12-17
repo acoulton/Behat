@@ -44,7 +44,7 @@ final class InitializationController implements Controller
         );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): ?int
     {
         if (!$input->getOption('init')) {
             return null;

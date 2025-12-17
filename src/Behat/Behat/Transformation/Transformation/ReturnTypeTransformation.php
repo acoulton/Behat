@@ -102,10 +102,8 @@ final class ReturnTypeTransformation extends RuntimeCallee implements Stringable
 
     /**
      * Extracts parameters from provided definition call.
-     *
-     * @return string|null
      */
-    private static function getReturnClass(ReflectionFunctionAbstract $reflection)
+    private static function getReturnClass(ReflectionFunctionAbstract $reflection): ?string
     {
         $type = $reflection->getReturnType();
 

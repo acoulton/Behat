@@ -60,10 +60,8 @@ final class SyntaxController implements Controller
 
     /**
      * Executes controller.
-     *
-     * @return int|null
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): ?int
     {
         if (!$input->getOption('story-syntax')) {
             return null;

@@ -35,7 +35,7 @@ final class InteractiveContextIdentifier implements TargetContextIdentifier
     ) {
     }
 
-    public function guessTargetContextClass(ContextEnvironment $environment)
+    public function guessTargetContextClass(ContextEnvironment $environment): ?string
     {
         if (!$this->input->isInteractive()) {
             return null;
@@ -63,15 +63,16 @@ final class InteractiveContextIdentifier implements TargetContextIdentifier
      * @param string   $message
      * @param string[] $choices
      * @param string   $default
-     *
-     * @return string
      */
-    private function askQuestion($message, $choices, $default): mixed
+    private function askQuestion($message, $choices, $default): string
     {
         $this->output->writeln('');
         $helper = new QuestionHelper();
         $question = new ChoiceQuestion(' ' . $message . "\n", $choices, $default);
 
-        return $helper->ask($this->input, $this->output, $question);
+        $result = $helper->ask($this->input, $this->output, $question);
+        assert(is_string($result), 'Answer should be a string - all choices were strings');
+
+        return $result;
     }
 }

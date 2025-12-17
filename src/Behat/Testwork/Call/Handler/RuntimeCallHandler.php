@@ -27,10 +27,7 @@ final class RuntimeCallHandler implements CallHandler
      * @var bool
      */
     private $obStarted = false;
-    /**
-     * @var Validator
-     */
-    private $validator;
+    private readonly Validator $validator;
 
     private ?int $previousErrorReporting = null;
 

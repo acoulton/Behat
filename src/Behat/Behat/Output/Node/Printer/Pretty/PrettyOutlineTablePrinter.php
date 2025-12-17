@@ -34,10 +34,7 @@ final class PrettyOutlineTablePrinter implements OutlineTablePrinter
      * @var string
      */
     private $indentText;
-    /**
-     * @var string
-     */
-    private $subIndentText;
+    private readonly string $subIndentText;
 
     /**
      * Initializes printer.

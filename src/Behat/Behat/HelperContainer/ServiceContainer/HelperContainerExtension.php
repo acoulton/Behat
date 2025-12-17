@@ -37,10 +37,7 @@ final class HelperContainerExtension implements Extension
      */
     public const HELPER_CONTAINER_TAG = 'helper_container.container';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes compiler pass.

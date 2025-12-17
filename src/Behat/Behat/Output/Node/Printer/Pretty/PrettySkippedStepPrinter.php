@@ -36,10 +36,7 @@ final class PrettySkippedStepPrinter implements StepPrinter
      * @var string
      */
     private $indentText;
-    /**
-     * @var string
-     */
-    private $subIndentText;
+    private readonly string $subIndentText;
 
     /**
      * Initializes printer.

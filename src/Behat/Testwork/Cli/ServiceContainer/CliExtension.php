@@ -37,10 +37,7 @@ final class CliExtension implements Extension
      */
     public const CONTROLLER_TAG = 'cli.controller';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

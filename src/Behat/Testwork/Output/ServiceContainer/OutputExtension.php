@@ -39,10 +39,7 @@ final class OutputExtension implements Extension
      * Available extension points
      */
     public const FORMATTER_TAG = 'output.formatter';
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

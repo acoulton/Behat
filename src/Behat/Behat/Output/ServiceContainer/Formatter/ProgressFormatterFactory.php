@@ -43,10 +43,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class ProgressFormatterFactory implements FormatterFactory
 {
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /*
      * Available services

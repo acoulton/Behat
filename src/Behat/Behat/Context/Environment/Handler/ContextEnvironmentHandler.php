@@ -34,10 +34,7 @@ use Behat\Testwork\Suite\Suite;
  */
 final class ContextEnvironmentHandler implements EnvironmentHandler
 {
-    /**
-     * @var ArgumentResolverFactory
-     */
-    private $resolverFactory;
+    private readonly ArgumentResolverFactory $resolverFactory;
     /**
      * @var ClassResolver[]
      */

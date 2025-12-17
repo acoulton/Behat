@@ -26,14 +26,8 @@ class RuntimeCallee implements Callee
      * @var callable|array{class-string, string}
      */
     private $callable;
-    /**
-     * @var ReflectionFunctionAbstract
-     */
-    private $reflection;
-    /**
-     * @var string
-     */
-    private $path;
+    private ReflectionMethod|ReflectionFunction $reflection;
+    private string $path;
 
     /**
      * Initializes callee.

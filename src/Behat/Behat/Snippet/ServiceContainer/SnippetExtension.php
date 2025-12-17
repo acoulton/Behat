@@ -44,10 +44,7 @@ class SnippetExtension implements Extension
     public const GENERATOR_TAG = 'snippet.generator';
     public const APPENDER_TAG = 'snippet.appender';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

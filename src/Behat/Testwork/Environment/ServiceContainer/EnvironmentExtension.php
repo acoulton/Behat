@@ -39,10 +39,7 @@ final class EnvironmentExtension implements Extension
     public const HANDLER_TAG = 'environment.handler';
     public const READER_TAG = 'environment.reader';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

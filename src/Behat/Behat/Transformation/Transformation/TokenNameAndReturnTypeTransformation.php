@@ -25,14 +25,8 @@ use Stringable;
  */
 final class TokenNameAndReturnTypeTransformation extends RuntimeCallee implements Stringable, SimpleArgumentTransformation
 {
-    /**
-     * @var TokenNameTransformation
-     */
-    private $tokenTransformation;
-    /**
-     * @var ReturnTypeTransformation
-     */
-    private $returnTransformation;
+    private readonly TokenNameTransformation $tokenTransformation;
+    private readonly ReturnTypeTransformation $returnTransformation;
 
     public static function supportsPatternAndMethod($pattern, ReflectionMethod $method): bool
     {

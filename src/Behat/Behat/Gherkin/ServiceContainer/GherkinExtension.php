@@ -61,10 +61,7 @@ final class GherkinExtension implements Extension
      */
     public const LOADER_TAG = 'gherkin.loader';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

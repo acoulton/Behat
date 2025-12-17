@@ -29,10 +29,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
  */
 final class RerunController implements Controller
 {
-    /**
-     * @var string|null
-     */
-    private $cachePath;
+    private readonly ?string $cachePath;
     /**
      * @var string
      */

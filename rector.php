@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNullableTypeRector;
 use Rector\Config\RectorConfig;
 use Rector\Php80\Rector\Class_\StringableForToStringRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\BoolReturnTypeFromBooleanStrictReturnsRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\NumericReturnTypeFromStrictReturnsRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnNullableTypeRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromReturnNewRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictConstantReturnRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictTypedPropertyRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\StringReturnTypeFromStrictScalarReturnsRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\StringReturnTypeFromStrictStringReturnsRector;
+use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -22,7 +23,7 @@ return RectorConfig::configure()
     ->withRootFiles()
     ->withPreparedSets(codeQuality: true)
     ->withPhpSets(php81: true)
-    ->withTypeCoverageLevel(22)
+    ->withTypeCoverageLevel(24)
     ->withSkip([
         StringableForToStringRector::class,
         ReturnTypeFromStrictConstantReturnRector::class => [
@@ -46,6 +47,7 @@ return RectorConfig::configure()
             __DIR__.'/src/Behat/Behat/Output/Statistics/StepStat.php',
             __DIR__.'/src/Behat/Behat/Tester/Exception/Stringer/PendingExceptionStringer.php',
             __DIR__.'/src/Behat/Behat/Transformation/ServiceContainer/TransformationExtension.php',
+            __DIR__.'/src/Behat/Testwork/Call/RuntimeCallee.php',
         ],
         NumericReturnTypeFromStrictReturnsRector::class => [
             // Would be a BC break
@@ -105,7 +107,10 @@ return RectorConfig::configure()
         ReturnNullableTypeRector::class => [
             __DIR__.'/src/Behat/Behat/Output/Statistics/StepStat.php',
             __DIR__.'/src/Behat/Testwork/Call/RuntimeCallee.php',
-        ]
+        ],
+        TypedPropertyFromStrictConstructorRector::class => [
+            __DIR__.'/src/Behat/Testwork/EventDispatcher/ServiceContainer/EventDispatcherExtension.php',
+        ],
     ])
     ->withImportNames(
         removeUnusedImports: true,

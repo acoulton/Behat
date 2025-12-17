@@ -23,14 +23,8 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
  */
 final class ContainerLoader
 {
-    /**
-     * @var ConfigurationTree
-     */
-    private $configuration;
-    /**
-     * @var Processor
-     */
-    private $processor;
+    private readonly ConfigurationTree $configuration;
+    private readonly Processor $processor;
 
     /**
      * Initialize extension.

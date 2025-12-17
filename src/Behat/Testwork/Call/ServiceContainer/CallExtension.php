@@ -39,10 +39,7 @@ final class CallExtension implements Extension
     public const RESULT_FILTER_TAG = 'call.result_filter';
     public const EXCEPTION_HANDLER_TAG = 'call.exception_handler';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

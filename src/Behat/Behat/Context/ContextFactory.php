@@ -31,10 +31,7 @@ final class ContextFactory
      * @var ContextInitializer[]
      */
     private $contextInitializers = [];
-    /**
-     * @var Validator
-     */
-    private $validator;
+    private readonly Validator $validator;
 
     /**
      * Initialises factory.

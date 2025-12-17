@@ -47,10 +47,7 @@ class TransformationExtension implements Extension
 
     protected const DEFINITION_ARGUMENT_TRANSFORMER_ID = CallExtension::CALL_FILTER_TAG . '.definition_argument_transformer';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

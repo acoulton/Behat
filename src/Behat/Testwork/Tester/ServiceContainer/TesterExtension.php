@@ -54,10 +54,7 @@ abstract class TesterExtension implements Extension
     public const SPECIFICATION_TESTER_WRAPPER_TAG = 'tester.specification.wrapper';
     public const RESULT_INTERPRETATION_TAG = 'test.result.interpretation';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

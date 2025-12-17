@@ -42,10 +42,7 @@ final class ExceptionExtension implements Extension
      */
     public const STRINGER_TAG = 'exception.stringer';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

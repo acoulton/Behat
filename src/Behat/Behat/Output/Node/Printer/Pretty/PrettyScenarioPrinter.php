@@ -29,10 +29,7 @@ final class PrettyScenarioPrinter implements ScenarioPrinter
      * @var string
      */
     private $indentText;
-    /**
-     * @var string
-     */
-    private $subIndentText;
+    private readonly string $subIndentText;
 
     /**
      * Initializes printer.

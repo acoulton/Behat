@@ -23,14 +23,8 @@ use Behat\Testwork\Tester\Result\TestResults;
  */
 final class TotalStatistics implements Statistics
 {
-    /**
-     * @var Timer
-     */
-    private $timer;
-    /**
-     * @var Memory
-     */
-    private $memory;
+    private readonly Timer $timer;
+    private readonly Memory $memory;
     /**
      * @var array<TestResult::*, int>
      */
@@ -100,20 +94,16 @@ final class TotalStatistics implements Statistics
 
     /**
      * Returns timer object.
-     *
-     * @return Timer
      */
-    public function getTimer()
+    public function getTimer(): Timer
     {
         return $this->timer;
     }
 
     /**
      * Returns memory usage object.
-     *
-     * @return Memory
      */
-    public function getMemory()
+    public function getMemory(): Memory
     {
         return $this->memory;
     }

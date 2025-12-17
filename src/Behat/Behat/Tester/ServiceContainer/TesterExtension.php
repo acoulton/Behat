@@ -57,10 +57,7 @@ class TesterExtension extends BaseExtension
     public const BACKGROUND_TESTER_WRAPPER_TAG = 'tester.background.wrapper';
     public const STEP_TESTER_WRAPPER_TAG = 'tester.step.wrapper';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

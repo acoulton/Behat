@@ -25,10 +25,7 @@ use Behat\Testwork\Tester\Result\TestResult;
  */
 final class PhaseStatistics implements Statistics
 {
-    /**
-     * @var TotalStatistics
-     */
-    private $statistics;
+    private TotalStatistics $statistics;
 
     public function __construct()
     {

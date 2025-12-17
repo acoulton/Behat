@@ -24,10 +24,7 @@ use ReflectionClass;
  */
 final class AutowiringResolver implements ArgumentResolver
 {
-    /**
-     * @var ArgumentAutowirer
-     */
-    private $autowirer;
+    private readonly ArgumentAutowirer $autowirer;
 
     /**
      * Initialises resolver.

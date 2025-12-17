@@ -21,10 +21,7 @@ use Behat\Testwork\Hook\Scope\HookScope;
  */
 final class HookCall extends EnvironmentCall
 {
-    /**
-     * @var HookScope
-     */
-    private $scope;
+    private readonly HookScope $scope;
 
     /**
      * Initializes hook call.
@@ -40,10 +37,8 @@ final class HookCall extends EnvironmentCall
 
     /**
      * Returns hook scope.
-     *
-     * @return HookScope
      */
-    public function getScope()
+    public function getScope(): HookScope
     {
         return $this->scope;
     }

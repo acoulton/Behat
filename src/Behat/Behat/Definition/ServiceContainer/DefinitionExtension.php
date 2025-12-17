@@ -66,10 +66,7 @@ final class DefinitionExtension implements Extension
     public const PATTERN_POLICY_TAG = 'definition.pattern_policy';
     public const DOC_BLOCK_HELPER_ID = 'definition.doc_block_helper';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes compiler pass.

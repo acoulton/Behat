@@ -43,10 +43,7 @@ final class SuiteExtension implements Extension
     public const GENERATOR_TAG = 'suite.generator';
     public const SETUP_TAG = 'suite.setup';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

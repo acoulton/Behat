@@ -35,10 +35,7 @@ final class SpecificationExtension implements Extension
      */
     public const LOCATOR_TAG = 'specifications.locator';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes extension.

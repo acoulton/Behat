@@ -27,10 +27,7 @@ final class PrettyFeaturePrinter implements FeaturePrinter
      * @var string
      */
     private $indentText;
-    /**
-     * @var string
-     */
-    private $subIndentText;
+    private readonly string $subIndentText;
 
     /**
      * Initializes printer.

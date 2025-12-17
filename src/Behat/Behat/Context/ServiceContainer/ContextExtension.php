@@ -76,10 +76,7 @@ final class ContextExtension implements Extension
     public const SUITE_SCOPED_RESOLVER_FACTORY_TAG = 'context.argument.suite_resolver_factory';
     public const DOC_BLOCK_HELPER_ID = 'context.docblock_helper';
 
-    /**
-     * @var ServiceProcessor
-     */
-    private $processor;
+    private readonly ServiceProcessor $processor;
 
     /**
      * Initializes compiler pass.

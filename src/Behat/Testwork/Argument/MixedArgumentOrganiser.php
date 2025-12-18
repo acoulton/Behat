@@ -223,7 +223,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
             $parameters,
             $candidates,
             $arguments,
-            [$this, 'classMatchingPredicateForTypehintedArguments']
+            $this->classMatchingPredicateForTypehintedArguments(...)
         );
 
         // This iteration maps up everything else, providing the argument is an instanceof the parameter.
@@ -231,7 +231,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
             $parameters,
             $candidates,
             $arguments,
-            [$this, 'isInstancePredicateForTypehintedArguments']
+            $this->isInstancePredicateForTypehintedArguments(...)
         );
 
         return $arguments;

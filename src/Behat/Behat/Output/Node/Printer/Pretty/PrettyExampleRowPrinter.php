@@ -134,7 +134,7 @@ final class PrettyExampleRowPrinter implements ExampleRowPrinter
         }
 
         $text = $this->exceptionPresenter->presentException($result->getException());
-        $indentedText = implode("\n", array_map([$this, 'subIndent'], explode("\n", $text)));
+        $indentedText = implode("\n", array_map($this->subIndent(...), explode("\n", $text)));
         $printer->writeln(sprintf('{+%s}%s{-%s}', $style, $indentedText, $style));
     }
 

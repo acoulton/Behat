@@ -37,7 +37,7 @@ final class ServicesResolver implements ArgumentResolver
      */
     public function resolveArguments(ReflectionClass $classReflection, array $arguments)
     {
-        return array_map([$this, 'resolveArgument'], $arguments);
+        return array_map($this->resolveArgument(...), $arguments);
     }
 
     /**

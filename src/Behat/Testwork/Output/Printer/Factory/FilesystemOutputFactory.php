@@ -21,7 +21,7 @@ use Symfony\Component\Console\Output\StreamOutput;
  *
  * @author Wouter J <wouter@wouterj.nl>
  */
-class FilesystemOutputFactory extends OutputFactory
+final class FilesystemOutputFactory extends OutputFactory
 {
     private $fileName;
 
@@ -33,7 +33,7 @@ class FilesystemOutputFactory extends OutputFactory
     /**
      * Configure output stream parameters.
      */
-    protected function configureOutputStream(OutputInterface $output)
+    private function configureOutputStream(OutputInterface $output)
     {
         $verbosity = $this->getOutputVerbosity() ? OutputInterface::VERBOSITY_VERBOSE : OutputInterface::VERBOSITY_NORMAL;
         $output->setVerbosity($verbosity);

@@ -99,7 +99,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Splits arguments into three separate arrays - named, numbered and typehinted.
      *
-     * @param ReflectionParameter[] $parameters
+     * @param list<ReflectionParameter> $parameters
      * @param mixed[]               $arguments
      *
      * @return array{array<string, mixed>, list<mixed>, list<mixed>}
@@ -140,7 +140,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Check if a given value is typehinted in the argument list.
      *
-     * @param  ReflectionParameter[] $parameters
+     * @param  list<ReflectionParameter> $parameters
      */
     private function isParameterTypehintedInArgumentList(array $parameters, $value): bool
     {
@@ -174,8 +174,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Captures argument values based on their respective names.
      *
-     * @param ReflectionParameter[] $parameters
-     * @param mixed[]               $namedArguments
+     * @param list<ReflectionParameter> $parameters
+     * @param mixed[]                   $namedArguments
      *
      * @return mixed[]
      */
@@ -209,8 +209,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
      *
      * As such, this requires two passes of the $parameters array to ensure it is mapped as accurately as possible.
      *
-     * @param ReflectionParameter[] $parameters          Reflection Parameters (constructor argument requirements)
-     * @param mixed[]               $typehintedArguments Resolved arguments
+     * @param list<ReflectionParameter> $parameters          Reflection Parameters (constructor argument requirements)
+     * @param mixed[]                   $typehintedArguments Resolved arguments
      *
      * @return mixed[] Ordered list of arguments, index is the constructor argument position, value is what will be injected
      */
@@ -249,7 +249,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     {
         return array_filter(
             $parameters,
-            fn ($parameter, $num): bool => !$this->isArgumentDefined($num)
+            fn ($parameter, int $num): bool => !$this->isArgumentDefined($num)
             && $this->getReflectionClassesFromParameter($parameter),
             ARRAY_FILTER_USE_BOTH
         );
@@ -305,10 +305,10 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
      * This passes through to another loop of the candidates in @matchParameterToCandidateUsingPredicate,
      * because this method is "too complex" with two loops...
      *
-     * @param  ReflectionParameter[] $parameters Reflection Parameters (constructor argument requirements)
-     * @param  mixed[]               &$candidates Resolved arguments
-     * @param  mixed[]               &$arguments  Argument mapping
-     * @param  Closure               $predicate   Callable predicate to apply to each candidate
+     * @param  list<ReflectionParameter> $parameters Reflection Parameters (constructor argument requirements)
+     * @param  mixed[]                   &$candidates Resolved arguments
+     * @param  mixed[]                   &$arguments  Argument mapping
+     * @param  Closure                   $predicate   Callable predicate to apply to each candidate
      */
     private function applyPredicateToTypehintedArguments(
         array $parameters,
@@ -384,8 +384,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Captures argument values for undefined arguments based on their respective numbers.
      *
-     * @param ReflectionParameter[] $parameters
-     * @param mixed[]               $numberedArguments
+     * @param list<ReflectionParameter> $parameters
+     * @param mixed[]                   $numberedArguments
      *
      * @return mixed[]
      */
@@ -411,7 +411,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Captures argument values for undefined arguments based on parameters defaults.
      *
-     * @param ReflectionParameter[] $parameters
+     * @param list<ReflectionParameter> $parameters
      *
      * @return mixed[]
      */
@@ -469,10 +469,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
 
     /**
      * Marks an argument at provided position as defined.
-     *
-     * @param int $position
      */
-    private function markArgumentDefined($position): void
+    private function markArgumentDefined(int $position): void
     {
         $this->definedArguments[$position] = true;
     }

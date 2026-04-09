@@ -29,11 +29,11 @@ final class SnippetRegistry implements SnippetRepository
     /**
      * @var list<UndefinedStep>
      */
-    private $undefinedSteps = [];
+    private array $undefinedSteps = [];
     /**
      * @var list<AggregateSnippet>
      */
-    private $snippets = [];
+    private array $snippets = [];
     private bool $snippetsGenerated = false;
 
     /**

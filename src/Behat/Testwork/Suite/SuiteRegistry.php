@@ -68,7 +68,7 @@ final class SuiteRegistry implements SuiteRepository
      *
      * @return list<Suite>
      */
-    public function getSuites()
+    public function getSuites(): array
     {
         if ($this->suitesGenerated) {
             return $this->suites;

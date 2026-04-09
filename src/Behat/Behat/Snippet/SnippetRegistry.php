@@ -64,7 +64,7 @@ final class SnippetRegistry implements SnippetRepository
      *
      * @return list<AggregateSnippet>
      */
-    public function getSnippets()
+    public function getSnippets(): array
     {
         $this->generateSnippets();
 
@@ -76,7 +76,7 @@ final class SnippetRegistry implements SnippetRepository
      *
      * @return list<UndefinedStep>
      */
-    public function getUndefinedSteps()
+    public function getUndefinedSteps(): array
     {
         $this->generateSnippets();
 

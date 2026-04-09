@@ -104,7 +104,7 @@ final class SnippetsController implements Controller
     public function appendAllSnippets(): void
     {
         $snippets = $this->registry->getSnippets();
-        if ($snippets) {
+        if ($snippets !== []) {
             $this->output->writeln('');
         }
 
@@ -117,7 +117,7 @@ final class SnippetsController implements Controller
     public function printAllSnippets(): void
     {
         $snippets = $this->registry->getSnippets();
-        if ($snippets) {
+        if ($snippets !== []) {
             $this->output->writeln('');
         }
 
@@ -140,7 +140,7 @@ final class SnippetsController implements Controller
     public function printUndefinedSteps(): void
     {
         $undefined = $this->registry->getUndefinedSteps();
-        if ($undefined) {
+        if ($undefined !== []) {
             $this->output->writeln('');
         }
 

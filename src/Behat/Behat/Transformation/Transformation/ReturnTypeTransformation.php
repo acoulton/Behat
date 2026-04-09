@@ -129,7 +129,7 @@ final class ReturnTypeTransformation extends RuntimeCallee implements Stringable
             $this->getClassReflection()
         );
 
-        if (count($parameters) == 0) {
+        if (count($parameters) === 0) {
             return null;
         }
 
@@ -141,7 +141,7 @@ final class ReturnTypeTransformation extends RuntimeCallee implements Stringable
      *
      * @return list<ReflectionParameter>
      */
-    private function getCallParameters(DefinitionCall $definitionCall)
+    private function getCallParameters(DefinitionCall $definitionCall): array
     {
         return $definitionCall->getCallee()->getReflection()->getParameters();
     }

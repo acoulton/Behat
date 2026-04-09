@@ -33,7 +33,7 @@ final class LazyFeatureIterator implements SpecificationIterator
     /**
      * @var list<string>
      */
-    private $paths = [];
+    private array $paths;
     /**
      * @var list<FeatureFilterInterface>
      */

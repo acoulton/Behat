@@ -65,7 +65,7 @@ final class UninitializedContextEnvironment extends StaticEnvironment implements
         return count($this->contextClasses) > 0;
     }
 
-    public function getContextClasses()
+    public function getContextClasses(): array
     {
         return array_keys($this->contextClasses);
     }

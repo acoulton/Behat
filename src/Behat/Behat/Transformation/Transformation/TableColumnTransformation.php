@@ -16,6 +16,7 @@ use Behat\Behat\Transformation\SimpleArgumentTransformation;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Testwork\Call\CallCenter;
 use Behat\Testwork\Call\RuntimeCallee;
+use InvalidArgumentException;
 use ReflectionMethod;
 use Stringable;
 
@@ -44,7 +45,7 @@ final class TableColumnTransformation extends RuntimeCallee implements Stringabl
         // The argument passed initially will be a TableNode but if a column transformation
         // has already been applied then this will have been transformed into an array already,
         // so we need to accept both possibilities
-        if (!$argumentArgumentValue instanceof TableNode && !is_array($argumentArgumentValue)) {
+        if (!$this->isSupportedArgumentValueType($argumentArgumentValue)) {
             return false;
         }
 
@@ -73,15 +74,24 @@ final class TableColumnTransformation extends RuntimeCallee implements Stringabl
         return true;
     }
 
-    /**
-     * @param TableNode|array $argumentValue
-     */
+    private function isSupportedArgumentValueType(mixed $argumentArgumentValue): bool
+    {
+        return $argumentArgumentValue instanceof TableNode || is_array($argumentArgumentValue);
+    }
+
     public function transformArgument(
         CallCenter $callCenter,
         DefinitionCall $definitionCall,
         $argumentIndex,
         $argumentValue,
     ): array {
+        if (!$this->isSupportedArgumentValueType($argumentValue)) {
+            throw new InvalidArgumentException(sprintf(
+                __METHOD__ . ' called with an unsupported argument type. Expected an array or a TableNode, got "%s".',
+                get_debug_type($argumentValue)
+            ));
+        }
+
         $columnNames = explode(',', substr($this->pattern, 7));
         $rows = [];
         foreach ($argumentValue as $row) {

@@ -43,7 +43,7 @@ final class FilesystemOutputFactory extends OutputFactory
         );
     }
 
-    public function createOutput($stream = null): StreamOutput
+    public function createOutput(): StreamOutput
     {
         if ($this->getOutputPath() === null) {
             throw new MissingOutputPathException(

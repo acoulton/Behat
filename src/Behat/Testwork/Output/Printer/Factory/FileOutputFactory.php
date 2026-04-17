@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\StreamOutput;
 
 final class FileOutputFactory extends OutputFactory
 {
-    public function createOutput($stream = null): OutputInterface
+    public function createOutput(): OutputInterface
     {
         if ($this->getOutputPath() === null) {
             throw new MissingOutputPathException(

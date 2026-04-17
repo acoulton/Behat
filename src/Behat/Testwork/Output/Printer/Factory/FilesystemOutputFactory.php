@@ -23,9 +23,9 @@ use Symfony\Component\Console\Output\StreamOutput;
  */
 final class FilesystemOutputFactory extends OutputFactory
 {
-    private $fileName;
+    private ?string $fileName = null;
 
-    public function setFileName($fileName): void
+    public function setFileName(?string $fileName): void
     {
         $this->fileName = $fileName;
     }

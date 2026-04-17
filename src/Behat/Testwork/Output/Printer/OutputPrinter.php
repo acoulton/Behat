@@ -21,46 +21,40 @@ interface OutputPrinter
 {
     /**
      * Sets output path.
-     *
-     * @param string $path
      */
-    public function setOutputPath($path);
+    public function setOutputPath(string $path): void;
 
     /**
      * Sets output styles.
      */
-    public function setOutputStyles(array $styles);
+    public function setOutputStyles(array $styles): void;
 
     /**
      * Forces output to be decorated.
-     *
-     * @param bool $decorated
      */
-    public function setOutputDecorated($decorated);
+    public function setOutputDecorated(bool $decorated): void;
 
     /**
      * Sets output verbosity level.
-     *
-     * @param int $level
      */
-    public function setOutputVerbosity($level);
+    public function setOutputVerbosity(int $level): void;
 
     /**
      * Writes message(s) to output stream.
      *
      * @param string|array $messages message or array of messages
      */
-    public function write($messages);
+    public function write(string|array $messages): void;
 
     /**
      * Writes newlined message(s) to output stream.
      *
      * @param string|array $messages message or array of messages
      */
-    public function writeln($messages = '');
+    public function writeln(string|array $messages = ''): void;
 
     /**
      * Clear output stream, so on next write formatter will need to init (create) it again.
      */
-    public function flush();
+    public function flush(): void;
 }

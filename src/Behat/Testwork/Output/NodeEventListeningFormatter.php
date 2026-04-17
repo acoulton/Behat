@@ -62,12 +62,12 @@ final class NodeEventListeningFormatter implements Formatter
         $this->listener->listenEvent($this, $event, $eventName);
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -77,12 +77,12 @@ final class NodeEventListeningFormatter implements Formatter
         return $this->printer;
     }
 
-    public function setParameter($name, $value): void
+    public function setParameter(string $name, $value): void
     {
         $this->parameters[$name] = $value;
     }
 
-    public function getParameter($name)
+    public function getParameter(string $name): mixed
     {
         $value = $this->parameters[$name] ?? null;
         if ($value !== null && $name === ShowOutputOption::OPTION_NAME) {

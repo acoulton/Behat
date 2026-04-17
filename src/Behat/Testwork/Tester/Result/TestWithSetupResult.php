@@ -34,10 +34,10 @@ final class TestWithSetupResult implements TestResult
 
     public function isPassed(): bool
     {
-        return self::PASSED == $this->getResultCode();
+        return self::PASSED === $this->getResultCode();
     }
 
-    public function getResultCode()
+    public function getResultCode(): int
     {
         if (!$this->setup->isSuccessful()) {
             return self::FAILED;

@@ -39,13 +39,13 @@ final class TestResults implements TestResult, Countable, IteratorAggregate
 
     public function isPassed(): bool
     {
-        return self::PASSED == $this->getResultCode();
+        return self::PASSED === $this->getResultCode();
     }
 
     /**
      * @return TestResult::*|TestResults::NO_TESTS
      */
-    public function getResultCode()
+    public function getResultCode(): int
     {
         $resultCode = self::NO_TESTS;
         foreach ($this->results as $result) {

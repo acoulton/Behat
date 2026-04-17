@@ -27,88 +27,84 @@ interface Statistics
     /**
      * Starts timer.
      */
-    public function startTimer();
+    public function startTimer(): void;
 
     /**
      * Stops timer.
      */
-    public function stopTimer();
+    public function stopTimer(): void;
 
     /**
      * Returns timer object.
-     *
-     * @return Timer
      */
-    public function getTimer();
+    public function getTimer(): Timer;
 
     /**
      * Returns memory usage object.
-     *
-     * @return Memory
      */
-    public function getMemory();
+    public function getMemory(): Memory;
 
     /**
      * Registers scenario stat.
      */
-    public function registerScenarioStat(ScenarioStat $stat);
+    public function registerScenarioStat(ScenarioStat $stat): void;
 
     /**
      * Registers step stat.
      */
-    public function registerStepStat(StepStatV2 $stat);
+    public function registerStepStat(StepStatV2 $stat): void;
 
     /**
      * Registers hook stat.
      */
-    public function registerHookStat(HookStat $stat);
+    public function registerHookStat(HookStat $stat): void;
 
     /**
      * Returns counters for different scenario result codes.
      *
      * @return array<TestResult::*, int>
      */
-    public function getScenarioStatCounts();
+    public function getScenarioStatCounts(): array;
 
     /**
      * Returns skipped scenario stats.
      *
      * @return ScenarioStat[]
      */
-    public function getSkippedScenarios();
+    public function getSkippedScenarios(): array;
 
     /**
      * Returns failed scenario stats.
      *
      * @return ScenarioStat[]
      */
-    public function getFailedScenarios();
+    public function getFailedScenarios(): array;
 
     /**
      * Returns counters for different step result codes.
      *
      * @return array<StepResult::*, int>
      */
-    public function getStepStatCounts();
+    public function getStepStatCounts(): array;
 
     /**
      * Returns failed step stats.
      *
      * @return StepStatV2[]
      */
-    public function getFailedSteps();
+    public function getFailedSteps(): array;
 
     /**
      * Returns pending step stats.
      *
      * @return StepStatV2[]
      */
-    public function getPendingSteps();
+    public function getPendingSteps(): array;
 
     /**
      * Returns failed hook stats.
      *
      * @return HookStat[]
      */
-    public function getFailedHookStats();
+    public function getFailedHookStats(): array;
 }

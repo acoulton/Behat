@@ -32,10 +32,8 @@ final class GenericSuite implements Suite
 
     /**
      * Returns unique suite name.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -50,10 +48,8 @@ final class GenericSuite implements Suite
 
     /**
      * Checks if a setting with provided name exists.
-     *
-     * @param string $key
      */
-    public function hasSetting($key): bool
+    public function hasSetting(string $key): bool
     {
         return array_key_exists($key, $this->settings);
     }
@@ -61,11 +57,9 @@ final class GenericSuite implements Suite
     /**
      * Returns setting value by its key.
      *
-     * @param string $key
-     *
      * @throws ParameterNotFoundException If setting is not set
      */
-    public function getSetting($key)
+    public function getSetting(string $key): mixed
     {
         if (!$this->hasSetting($key)) {
             throw new ParameterNotFoundException(sprintf(

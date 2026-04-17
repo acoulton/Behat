@@ -29,13 +29,13 @@ final class IntegerTestResult implements TestResult
 
     public function isPassed(): bool
     {
-        return self::PASSED == $this->getResultCode();
+        return self::PASSED === $this->getResultCode();
     }
 
     /**
      * @return TestResult::*
      */
-    public function getResultCode()
+    public function getResultCode(): int
     {
         return $this->resultCode;
     }

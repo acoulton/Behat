@@ -35,7 +35,7 @@ class ConsoleOutputFactory extends OutputFactory
     /**
      * Configure output stream parameters.
      */
-    protected function configureOutputStream(OutputInterface $output)
+    protected function configureOutputStream(OutputInterface $output): void
     {
         $output->setVerbosity(
             match ($this->getOutputVerbosity()) {

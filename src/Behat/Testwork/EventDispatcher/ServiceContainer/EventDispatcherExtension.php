@@ -80,7 +80,7 @@ class EventDispatcherExtension implements Extension
     /**
      * Loads sigint controller.
      */
-    protected function loadSigintController(ContainerBuilder $container)
+    protected function loadSigintController(ContainerBuilder $container): void
     {
         $definition = new Definition(SigintController::class, [
             new Reference(EventDispatcherExtension::DISPATCHER_ID),
@@ -92,7 +92,7 @@ class EventDispatcherExtension implements Extension
     /**
      * Loads event dispatcher.
      */
-    protected function loadEventDispatcher(ContainerBuilder $container)
+    protected function loadEventDispatcher(ContainerBuilder $container): void
     {
         $definition = new Definition(TestworkEventDispatcher::class);
         $container->setDefinition(self::DISPATCHER_ID, $definition);
@@ -101,7 +101,7 @@ class EventDispatcherExtension implements Extension
     /**
      * Loads event-dispatching exercise.
      */
-    protected function loadEventDispatchingExercise(ContainerBuilder $container)
+    protected function loadEventDispatchingExercise(ContainerBuilder $container): void
     {
         $definition = new Definition(EventDispatchingExercise::class, [
             new Reference(TesterExtension::EXERCISE_ID),
@@ -114,7 +114,7 @@ class EventDispatcherExtension implements Extension
     /**
      * Loads event-dispatching suite tester.
      */
-    protected function loadEventDispatchingSuiteTester(ContainerBuilder $container)
+    protected function loadEventDispatchingSuiteTester(ContainerBuilder $container): void
     {
         $definition = new Definition(EventDispatchingSuiteTester::class, [
             new Reference(TesterExtension::SUITE_TESTER_ID),
@@ -127,7 +127,7 @@ class EventDispatcherExtension implements Extension
     /**
      * Registers all available event subscribers.
      */
-    protected function processSubscribers(ContainerBuilder $container)
+    protected function processSubscribers(ContainerBuilder $container): void
     {
         $references = $this->processor->findAndSortTaggedServices($container, self::SUBSCRIBER_TAG);
         $definition = $container->getDefinition(self::DISPATCHER_ID);

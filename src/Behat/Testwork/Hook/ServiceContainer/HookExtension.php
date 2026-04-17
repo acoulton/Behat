@@ -63,7 +63,7 @@ class HookExtension implements Extension
     /**
      * Loads hook dispatcher.
      */
-    protected function loadDispatcher(ContainerBuilder $container)
+    protected function loadDispatcher(ContainerBuilder $container): void
     {
         $definition = new Definition(HookDispatcher::class, [
             new Reference(self::REPOSITORY_ID),
@@ -75,7 +75,7 @@ class HookExtension implements Extension
     /**
      * Loads hook repository.
      */
-    protected function loadRepository(ContainerBuilder $container)
+    protected function loadRepository(ContainerBuilder $container): void
     {
         $definition = new Definition(HookRepository::class, [
             new Reference(EnvironmentExtension::MANAGER_ID),
@@ -86,7 +86,7 @@ class HookExtension implements Extension
     /**
      * Loads hookable testers.
      */
-    protected function loadHookableTesters(ContainerBuilder $container)
+    protected function loadHookableTesters(ContainerBuilder $container): void
     {
         $definition = new Definition(HookableSuiteTester::class, [
             new Reference(TesterExtension::SUITE_TESTER_ID),

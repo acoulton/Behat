@@ -119,7 +119,7 @@ abstract class TesterExtension implements Extension
     /**
      * Loads exercise cli controllers.
      */
-    protected function loadExerciseController(ContainerBuilder $container, bool $skip = false)
+    protected function loadExerciseController(ContainerBuilder $container, bool $skip = false): void
     {
         $definition = new Definition(ExerciseController::class, [
             new Reference(SuiteExtension::REGISTRY_ID),
@@ -162,7 +162,7 @@ abstract class TesterExtension implements Extension
     /**
      * Loads exercise cli controllers.
      */
-    protected function loadStrictController(ContainerBuilder $container, bool $strict = false)
+    protected function loadStrictController(ContainerBuilder $container, bool $strict = false): void
     {
         $definition = new Definition(StrictController::class, [
             new Reference(self::RESULT_INTERPRETER_ID),
@@ -175,7 +175,7 @@ abstract class TesterExtension implements Extension
     /**
      * Loads result interpreter controller.
      */
-    protected function loadResultInterpreter(ContainerBuilder $container)
+    protected function loadResultInterpreter(ContainerBuilder $container): void
     {
         $definition = new Definition(ResultInterpreter::class);
         $container->setDefinition(self::RESULT_INTERPRETER_ID, $definition);
@@ -188,7 +188,7 @@ abstract class TesterExtension implements Extension
     /**
      * Loads exercise tester.
      */
-    protected function loadExercise(ContainerBuilder $container)
+    protected function loadExercise(ContainerBuilder $container): void
     {
         $definition = new Definition(RuntimeExercise::class, [
             new Reference(EnvironmentExtension::MANAGER_ID),
@@ -200,7 +200,7 @@ abstract class TesterExtension implements Extension
     /**
      * Loads suite tester.
      */
-    protected function loadSuiteTester(ContainerBuilder $container)
+    protected function loadSuiteTester(ContainerBuilder $container): void
     {
         $definition = new Definition(RuntimeSuiteTester::class, [
             new Reference(self::SPECIFICATION_TESTER_ID),
@@ -211,12 +211,12 @@ abstract class TesterExtension implements Extension
     /**
      * Loads specification tester.
      */
-    abstract protected function loadSpecificationTester(ContainerBuilder $container);
+    abstract protected function loadSpecificationTester(ContainerBuilder $container): void;
 
     /**
      * Processes all registered exercise wrappers.
      */
-    protected function processExerciseWrappers(ContainerBuilder $container)
+    protected function processExerciseWrappers(ContainerBuilder $container): void
     {
         $this->processor->processWrapperServices($container, self::EXERCISE_ID, self::EXERCISE_WRAPPER_TAG);
     }
@@ -224,7 +224,7 @@ abstract class TesterExtension implements Extension
     /**
      * Processes all registered suite tester wrappers.
      */
-    protected function processSuiteTesterWrappers(ContainerBuilder $container)
+    protected function processSuiteTesterWrappers(ContainerBuilder $container): void
     {
         $this->processor->processWrapperServices($container, self::SUITE_TESTER_ID, self::SUITE_TESTER_WRAPPER_TAG);
     }
@@ -232,7 +232,7 @@ abstract class TesterExtension implements Extension
     /**
      * Processes all registered specification tester wrappers.
      */
-    protected function processSpecificationTesterWrappers(ContainerBuilder $container)
+    protected function processSpecificationTesterWrappers(ContainerBuilder $container): void
     {
         $this->processor->processWrapperServices($container, self::SPECIFICATION_TESTER_ID, self::SPECIFICATION_TESTER_WRAPPER_TAG);
     }
@@ -240,7 +240,7 @@ abstract class TesterExtension implements Extension
     /**
      * Processes all registered result interpretations.
      */
-    protected function processResultInterpretations(ContainerBuilder $container)
+    protected function processResultInterpretations(ContainerBuilder $container): void
     {
         $references = $this->processor->findAndSortTaggedServices($container, self::RESULT_INTERPRETATION_TAG);
         $definition = $container->getDefinition(self::RESULT_INTERPRETER_ID);

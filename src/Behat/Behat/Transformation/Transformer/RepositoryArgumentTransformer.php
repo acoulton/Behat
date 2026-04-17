@@ -39,12 +39,12 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
     ) {
     }
 
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): bool
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): bool
     {
         return count($this->repository->getEnvironmentTransformations($definitionCall->getEnvironment())) > 0;
     }
 
-    public function transformArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): mixed
+    public function transformArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): mixed
     {
         $environment = $definitionCall->getEnvironment();
         [$simpleTransformations, $normalTransformations] = $this->splitSimpleAndNormalTransformations(

@@ -24,10 +24,10 @@ interface ArgumentTransformer
     /**
      * Checks if transformer supports argument.
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): bool;
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): bool;
 
     /**
      * Transforms argument value using transformation and returns a new one.
      */
-    public function transformArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): mixed;
+    public function transformArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): mixed;
 }

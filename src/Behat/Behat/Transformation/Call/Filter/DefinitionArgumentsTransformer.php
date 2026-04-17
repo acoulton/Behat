@@ -79,7 +79,7 @@ final class DefinitionArgumentsTransformer implements CallFilter
     /**
      * Transforms call argument using registered transformers.
      */
-    private function transformArgument(DefinitionCall $definitionCall, int|string $index, $value)
+    private function transformArgument(DefinitionCall $definitionCall, int|string $index, mixed $value): mixed
     {
         foreach ($this->argumentTransformers as $transformer) {
             if (!$transformer->supportsDefinitionAndArgument($definitionCall, $index, $value)) {

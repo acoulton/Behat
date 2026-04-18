@@ -44,13 +44,10 @@ final class PatternTransformer
      * Generates pattern.
      *
      * @param string $type
-     * @param string $stepText
-     *
-     * @return Pattern
      *
      * @throws UnsupportedPatternTypeException
      */
-    public function generatePattern($type, $stepText)
+    public function generatePattern($type, string $stepText): Pattern
     {
         foreach ($this->policies as $policy) {
             if ($policy->supportsPatternType($type)) {
@@ -66,11 +63,9 @@ final class PatternTransformer
      *
      * @param string $pattern
      *
-     * @return string
-     *
      * @throws UnknownPatternException
      */
-    public function transformPatternToRegex($pattern)
+    public function transformPatternToRegex($pattern): string
     {
         if (!isset($this->patternToRegexpCache[$pattern])) {
             $this->patternToRegexpCache[$pattern] = $this->transformPatternToRegexWithSupportedPolicy($pattern);
@@ -100,11 +95,9 @@ final class PatternTransformer
     /**
      * @param string $pattern
      *
-     * @return string
-     *
      * @throws UnknownPatternException
      */
-    private function transformPatternToRegexWithSupportedPolicy($pattern)
+    private function transformPatternToRegexWithSupportedPolicy($pattern): string
     {
         foreach ($this->policies as $policy) {
             if ($policy->supportsPattern($pattern)) {

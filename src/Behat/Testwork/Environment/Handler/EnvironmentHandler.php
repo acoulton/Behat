@@ -36,10 +36,10 @@ interface EnvironmentHandler
     /**
      * Checks if handler supports provided environment.
      */
-    public function supportsEnvironmentAndSubject(Environment $environment, $testSubject = null): bool;
+    public function supportsEnvironmentAndSubject(Environment $environment, mixed $testSubject = null): bool;
 
     /**
      * Isolates provided environment.
      */
-    public function isolateEnvironment(Environment $environment, $testSubject = null): Environment;
+    public function isolateEnvironment(Environment $environment, mixed $testSubject = null): Environment;
 }

@@ -71,12 +71,12 @@ final class ContextEnvironmentHandler implements EnvironmentHandler
         return $environment;
     }
 
-    public function supportsEnvironmentAndSubject(Environment $environment, $testSubject = null): bool
+    public function supportsEnvironmentAndSubject(Environment $environment, mixed $testSubject = null): bool
     {
         return $environment instanceof UninitializedContextEnvironment;
     }
 
-    public function isolateEnvironment(Environment $environment, $testSubject = null): InitializedContextEnvironment
+    public function isolateEnvironment(Environment $environment, mixed $testSubject = null): InitializedContextEnvironment
     {
         if (!$environment instanceof UninitializedContextEnvironment) {
             throw new EnvironmentIsolationException(sprintf(

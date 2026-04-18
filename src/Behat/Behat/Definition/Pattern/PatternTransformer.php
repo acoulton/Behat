@@ -43,7 +43,7 @@ final class PatternTransformer
     /**
      * Generates pattern.
      *
-     * @param string $type
+     * @param string|null $type
      * @param string $stepText
      *
      * @return Pattern

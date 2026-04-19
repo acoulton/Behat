@@ -58,7 +58,7 @@ class ConsoleOutputFactory extends OutputFactory
      *
      * @throws BadOutputPathException
      */
-    protected function createOutputStream()
+    protected function createOutputStream(): mixed
     {
         if (null === $this->getOutputPath()) {
             $stream = fopen('php://stdout', 'w');
@@ -74,7 +74,10 @@ class ConsoleOutputFactory extends OutputFactory
         return $stream;
     }
 
-    public function createOutput($stream = null): StreamOutput
+    /**
+     * @param resource|null $stream
+     */
+    public function createOutput(mixed $stream = null): StreamOutput
     {
         $stream = $stream ?: $this->createOutputStream();
         $format = $this->createOutputFormatter();

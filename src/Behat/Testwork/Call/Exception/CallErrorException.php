@@ -19,7 +19,7 @@ use ErrorException;
  */
 final class CallErrorException extends ErrorException
 {
-    private $levels = [
+    private const LEVELS = [
         E_WARNING => 'Warning',
         E_NOTICE => 'Notice',
         E_DEPRECATED => 'Deprecated',
@@ -42,13 +42,15 @@ final class CallErrorException extends ErrorException
     {
         // E_STRICT is deprecated since PHP 8.4.
         if (defined('E_STRICT') && $level === @E_STRICT) {
-            $this->levels[@E_STRICT] = 'Runtime Notice';
+            $levelName = 'Runtime Notice';
+        } else {
+            $levelName = self::LEVELS[$level] ?? $level;
         }
 
         parent::__construct(
             sprintf(
                 '%s: %s in %s line %d',
-                $this->levels[$level] ?? $level,
+                $levelName,
                 $message,
                 $file,
                 $line

@@ -72,7 +72,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      *
      * @param SimpleArgumentTransformation[] $transformations
      */
-    private function applySimpleTransformations(array $transformations, DefinitionCall $definitionCall, int|string $index, $value)
+    private function applySimpleTransformations(array $transformations, DefinitionCall $definitionCall, int|string $index, mixed $value): mixed
     {
         usort($transformations, fn (SimpleArgumentTransformation $t1, SimpleArgumentTransformation $t2): int => $t2->getPriority() <=> $t1->getPriority());
 
@@ -89,7 +89,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
      *
      * @param Transformation[] $transformations
      */
-    private function applyNormalTransformations(array $transformations, DefinitionCall $definitionCall, int|string $index, $value)
+    private function applyNormalTransformations(array $transformations, DefinitionCall $definitionCall, int|string $index, mixed $value): mixed
     {
         $newValue = $value;
         foreach ($transformations as $transformation) {
@@ -102,7 +102,7 @@ final class RepositoryArgumentTransformer implements ArgumentTransformer, RegexG
     /**
      * Transforms argument value using registered transformers.
      */
-    private function transform(DefinitionCall $definitionCall, Transformation $transformation, int|string $index, $value)
+    private function transform(DefinitionCall $definitionCall, Transformation $transformation, int|string $index, mixed $value): mixed
     {
         if (is_object($value) && !$value instanceof ArgumentInterface) {
             return $value;

@@ -47,12 +47,12 @@ final class TokenNameTransformation extends RuntimeCallee implements Stringable,
         parent::__construct($callable, $description);
     }
 
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentArgumentValue): bool
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentArgumentValue): bool
     {
         return ':' . $argumentIndex === $this->pattern;
     }
 
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): mixed
+    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): mixed
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),

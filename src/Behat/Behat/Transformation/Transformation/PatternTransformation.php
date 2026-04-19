@@ -47,7 +47,7 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
     public function supportsDefinitionAndArgument(
         RegexGenerator $regexGenerator,
         DefinitionCall $definitionCall,
-        $argumentValue,
+        mixed $argumentValue,
     ): bool {
         $regex = $regexGenerator->generateRegex(
             $definitionCall->getEnvironment()->getSuite()->getName(),
@@ -67,8 +67,8 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
         RegexGenerator $regexGenerator,
         CallCenter $callCenter,
         DefinitionCall $definitionCall,
-        $argumentValue,
-    ) {
+        mixed $argumentValue,
+    ): mixed {
         $regex = $regexGenerator->generateRegex(
             $definitionCall->getEnvironment()->getSuite()->getName(),
             $this->pattern,
@@ -98,7 +98,7 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
         return 'PatternTransform ' . $this->pattern;
     }
 
-    private function match(string $regexPattern, $argumentValue, &$match): bool
+    private function match(string $regexPattern, mixed $argumentValue, &$match): bool
     {
         if (is_string($argumentValue) && preg_match($regexPattern, $argumentValue, $match)) {
             // take arguments from capture groups if there are some

@@ -36,10 +36,10 @@ interface SimpleArgumentTransformation extends Transformation
     /**
      * Checks if transformation supports argument.
      */
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentArgumentValue): bool;
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentArgumentValue): bool;
 
     /**
      * Transforms argument value using transformation and returns a new one.
      */
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): mixed;
+    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): mixed;
 }

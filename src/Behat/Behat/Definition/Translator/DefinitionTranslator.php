@@ -50,7 +50,7 @@ final class DefinitionTranslator
         }
 
         if ($pattern != $translatedPattern) {
-            return new TranslatedDefinition($definition, $translatedPattern, $language);
+            return new TranslatedDefinition($definition, $translatedPattern, $language ?? $this->getLocale());
         }
 
         return $definition;

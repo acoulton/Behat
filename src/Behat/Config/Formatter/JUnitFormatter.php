@@ -20,7 +20,7 @@ final class JUnitFormatter extends Formatter
      */
     public function __construct(
         bool $timer = true,
-        ...$baseOptions,
+        mixed ...$baseOptions,
     ) {
         $settings = [
             self::TIMER_SETTING => $timer,

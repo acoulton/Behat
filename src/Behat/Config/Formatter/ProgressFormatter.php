@@ -27,7 +27,7 @@ final class ProgressFormatter extends Formatter
         bool $timer = true,
         ShowOutputOption $showOutput = ShowOutputOption::InSummary,
         bool $shortSummary = false,
-        ...$baseOptions,
+        mixed ...$baseOptions,
     ) {
         $settings = [
             self::TIMER_SETTING => $timer,

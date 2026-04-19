@@ -18,6 +18,7 @@ use Behat\Testwork\Call\CallCenter;
 use Behat\Testwork\Call\RuntimeCallee;
 use Exception;
 use Stringable;
+use UnexpectedValueException;
 
 /**
  * Pattern-based transformation.
@@ -55,7 +56,7 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
             $definitionCall->getFeature()->getLanguage()
         );
 
-        return $this->match($regex, $argumentValue, $match);
+        return $this->match($regex, $argumentValue) !== false;
     }
 
     /**
@@ -75,7 +76,15 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
             $definitionCall->getFeature()->getLanguage()
         );
 
-        $this->match($regex, $argumentValue, $arguments);
+        $arguments = $this->match($regex, $argumentValue);
+
+        if ($arguments === false) {
+            // This should never happen, as supportsDefinitionAndArgument() should have been called first and would have
+            // returned false if the argument does not match the regex.
+            throw new UnexpectedValueException(
+                __METHOD__.' was called with an unsupported argument - was supportsDefinitionAndArgument() called first?'
+            );
+        }
 
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),
@@ -98,7 +107,10 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
         return 'PatternTransform ' . $this->pattern;
     }
 
-    private function match(string $regexPattern, mixed $argumentValue, &$match): bool
+    /**
+     * @return list<string>|false
+     */
+    private function match(string $regexPattern, mixed $argumentValue): array|false
     {
         if (is_string($argumentValue) && preg_match($regexPattern, $argumentValue, $match)) {
             // take arguments from capture groups if there are some
@@ -106,7 +118,7 @@ final class PatternTransformation extends RuntimeCallee implements Stringable, T
                 $match = array_slice($match, 1);
             }
 
-            return true;
+            return $match;
         }
 
         return false;

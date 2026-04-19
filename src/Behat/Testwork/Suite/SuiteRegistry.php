@@ -46,7 +46,7 @@ final class SuiteRegistry implements SuiteRepository
      * Registers suite using provided name, type & parameters.
      *
      * @param string $name
-     * @param string $type
+     * @param string|null $type
      *
      * @throws SuiteConfigurationException
      */

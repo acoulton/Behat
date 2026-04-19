@@ -73,7 +73,7 @@ final class EnvironmentManager
      *
      * @throws EnvironmentIsolationException If appropriate environment handler is not found
      */
-    public function isolateEnvironment(Environment $environment, $testSubject = null): Environment
+    public function isolateEnvironment(Environment $environment, mixed $testSubject = null): Environment
     {
         foreach ($this->handlers as $handler) {
             if ($handler->supportsEnvironmentAndSubject($environment, $testSubject)) {

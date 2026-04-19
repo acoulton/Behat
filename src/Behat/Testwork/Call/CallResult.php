@@ -24,7 +24,7 @@ final class CallResult
      */
     public function __construct(
         private readonly Call $call,
-        private $return,
+        private readonly mixed $return,
         private readonly ?Exception $exception = null,
         private readonly ?string $stdOut = null,
     ) {
@@ -41,7 +41,7 @@ final class CallResult
     /**
      * Returns call return value.
      */
-    public function getReturn()
+    public function getReturn(): mixed
     {
         return $this->return;
     }

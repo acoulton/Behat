@@ -23,6 +23,9 @@ use ReflectionMethod;
  */
 final class BuiltInServiceContainer implements PsrContainerInterface
 {
+    /**
+     * @var array<string, object>
+     */
     private array $instances;
 
     /**
@@ -38,7 +41,7 @@ final class BuiltInServiceContainer implements PsrContainerInterface
         return array_key_exists($id, $this->schema);
     }
 
-    public function get(string $id)
+    public function get(string $id): object
     {
         if (!$this->has($id)) {
             throw new ServiceNotFoundException(
@@ -53,7 +56,7 @@ final class BuiltInServiceContainer implements PsrContainerInterface
     /**
      * Creates an instance of given service.
      */
-    private function createInstance(string $id)
+    private function createInstance(string $id): object
     {
         $schema = $this->getAndValidateServiceSchema($id);
 
@@ -73,7 +76,7 @@ final class BuiltInServiceContainer implements PsrContainerInterface
      *
      * @throws WrongServicesConfigurationException
      */
-    private function getAndValidateServiceSchema(string $id): array|string
+    private function getAndValidateServiceSchema(string $id): array
     {
         $schema = $this->schema[$id];
 

@@ -14,12 +14,10 @@ use Behat\Behat\EventDispatcher\Event\AfterStepSetup;
 use Behat\Behat\EventDispatcher\Event\AfterStepTested;
 use Behat\Behat\EventDispatcher\Event\BackgroundTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
-use Behat\Behat\EventDispatcher\Event\ScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Behat\Output\Node\Printer\StepPrinter;
 use Behat\Gherkin\Node\ScenarioLikeInterface;
-use Behat\Testwork\Deprecation\DeprecationCollector;
 use Behat\Testwork\Event\Event;
 use Behat\Testwork\Output\Formatter;
 use Behat\Testwork\Output\Node\EventListener\EventListener;
@@ -52,15 +50,8 @@ final class StepListener implements EventListener
      */
     private function captureScenarioOnScenarioEvent(Event $event): void
     {
-        if (!$event instanceof ScenarioLikeTested) {
-            return;
-        }
-
         if (!$event instanceof BackgroundTested && !$event instanceof ScenarioTested) {
-            DeprecationCollector::trigger(sprintf(
-                '%s implements the ScenarioLikeTested interface which is deprecated and will be removed in 4.0.',
-                $event::class
-            ));
+            return;
         }
 
         $this->scenarioOrBackground = $event instanceof BackgroundTested ? $event->getBackground() : $event->getScenario();

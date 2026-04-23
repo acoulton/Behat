@@ -34,12 +34,10 @@ final class FilesystemFeatureLocator implements SpecificationLocator
 {
     /**
      * Initializes loader.
-     *
-     * @param string  $basePath
      */
     public function __construct(
         private readonly Gherkin $gherkin,
-        private $basePath,
+        private readonly string $basePath,
     ) {
     }
 
@@ -140,10 +138,6 @@ final class FilesystemFeatureLocator implements SpecificationLocator
     {
         if (is_file($path) || is_dir($path)) {
             return realpath($path);
-        }
-
-        if (null === $this->basePath) {
-            return false;
         }
 
         if (is_file($this->basePath . DIRECTORY_SEPARATOR . $path)

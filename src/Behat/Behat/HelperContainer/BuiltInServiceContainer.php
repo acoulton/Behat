@@ -23,10 +23,7 @@ use ReflectionMethod;
  */
 final class BuiltInServiceContainer implements PsrContainerInterface
 {
-    /**
-     * @var array
-     */
-    private $instances;
+    private array $instances;
 
     /**
      * Initialises container using provided service configuration.
@@ -63,7 +60,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
         $reflection = new ReflectionClass($schema['class']);
         $arguments = $schema['arguments'];
 
-        if ($factoryMethod = $this->getAndValidateFactoryMethod($reflection, $schema)) {
+        $factoryMethod = $this->getAndValidateFactoryMethod($reflection, $schema);
+        if ($factoryMethod instanceof ReflectionMethod) {
             return $factoryMethod->invokeArgs(null, $arguments);
         }
 
@@ -73,11 +71,9 @@ final class BuiltInServiceContainer implements PsrContainerInterface
     /**
      * Gets and validates a service configuration for a service with given ID.
      *
-     * @return array|string
-     *
      * @throws WrongServicesConfigurationException
      */
-    private function getAndValidateServiceSchema(string $id)
+    private function getAndValidateServiceSchema(string $id): array|string
     {
         $schema = $this->schema[$id];
 
@@ -117,10 +113,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
 
     /**
      * Gets and validates a factory method.
-     *
-     * @return ReflectionMethod|null
      */
-    private function getAndValidateFactoryMethod(ReflectionClass $reflection, array $schema)
+    private function getAndValidateFactoryMethod(ReflectionClass $reflection, array $schema): ?ReflectionMethod
     {
         if (!isset($schema['factory_method'])) {
             return null;
@@ -137,11 +131,9 @@ final class BuiltInServiceContainer implements PsrContainerInterface
     /**
      * Checks if factory method exists.
      *
-     * @param string          $methodName
-     *
      * @throws WrongServicesConfigurationException
      */
-    private function assertFactoryMethodExists(ReflectionClass $class, $methodName): void
+    private function assertFactoryMethodExists(ReflectionClass $class, string $methodName): void
     {
         if (!$class->hasMethod($methodName)) {
             throw new WrongServicesConfigurationException(sprintf(

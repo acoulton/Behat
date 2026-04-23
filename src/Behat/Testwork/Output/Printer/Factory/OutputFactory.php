@@ -23,10 +23,7 @@ abstract class OutputFactory
     public const VERBOSITY_VERY_VERBOSE = 3;
     public const VERBOSITY_DEBUG = 4;
 
-    /**
-     * @var string|null
-     */
-    private $outputPath;
+    private ?string $outputPath = null;
     private array $outputStyles = [];
 
     private ?bool $outputDecorated = null;
@@ -34,20 +31,16 @@ abstract class OutputFactory
 
     /**
      * Sets output path.
-     *
-     * @param string $path
      */
-    public function setOutputPath($path): void
+    public function setOutputPath(string $path): void
     {
         $this->outputPath = $path;
     }
 
     /**
      * Returns output path.
-     *
-     * @return string|null
      */
-    public function getOutputPath()
+    public function getOutputPath(): ?string
     {
         return $this->outputPath;
     }
@@ -62,10 +55,8 @@ abstract class OutputFactory
 
     /**
      * Returns output styles.
-     *
-     * @return array
      */
-    public function getOutputStyles()
+    public function getOutputStyles(): array
     {
         return $this->outputStyles;
     }
@@ -80,38 +71,30 @@ abstract class OutputFactory
 
     /**
      * Returns output decoration status.
-     *
-     * @return bool|null
      */
-    public function isOutputDecorated()
+    public function isOutputDecorated(): ?bool
     {
         return $this->outputDecorated;
     }
 
     /**
      * Sets output verbosity level.
-     *
-     * @param int $level
      */
-    public function setOutputVerbosity($level): void
+    public function setOutputVerbosity(int $level): void
     {
         $this->verbosityLevel = intval($level);
     }
 
     /**
      * Returns output verbosity level.
-     *
-     * @return int
      */
-    public function getOutputVerbosity()
+    public function getOutputVerbosity(): int
     {
         return $this->verbosityLevel;
     }
 
     /**
      * Returns a new output stream.
-     *
-     * @return OutputInterface
      */
-    abstract public function createOutput();
+    abstract public function createOutput(): OutputInterface;
 }

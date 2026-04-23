@@ -112,7 +112,7 @@ final class SnippetRegistry implements SnippetRepository
                 continue;
             }
 
-            if (!$snippet) {
+            if (!$snippet instanceof Snippet) {
                 continue;
             }
 
@@ -134,10 +134,7 @@ final class SnippetRegistry implements SnippetRepository
         $this->snippetsGenerated = true;
     }
 
-    /**
-     * @return Snippet|null
-     */
-    private function generateSnippet(Environment $environment, StepNode $step)
+    private function generateSnippet(Environment $environment, StepNode $step): ?Snippet
     {
         foreach ($this->generators as $generator) {
             if ($generator->supportsEnvironmentAndStep($environment, $step)) {

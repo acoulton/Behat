@@ -44,11 +44,10 @@ final class OutputExtension implements Extension
     /**
      * Initializes extension.
      *
-     * @param string                $defaultFormatter
      * @param FormatterFactory[] $factories
      */
     public function __construct(
-        private $defaultFormatter,
+        private readonly string $defaultFormatter,
         private array $factories,
         ?ServiceProcessor $processor = null,
     ) {

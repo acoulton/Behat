@@ -43,7 +43,8 @@ final class ServicesResolver implements CallFilter
      */
     public function filterCall(Call $call): Call
     {
-        if ($container = $this->getContainer($call)) {
+        $container = $this->getContainer($call);
+        if ($container instanceof ContainerInterface) {
             $autowirer = new ArgumentAutowirer($container);
             $newArguments = $autowirer->autowireArguments($call->getCallee()->getReflection(), $call->getArguments());
 
@@ -56,11 +57,9 @@ final class ServicesResolver implements CallFilter
     /**
      * Gets container from the call.
      *
-     * @return ContainerInterface|null
-     *
      * @throws UnsupportedCallException if given call is not EnvironmentCall or environment is not ServiceContainerEnvironment
      */
-    private function getContainer(Call $call)
+    private function getContainer(Call $call): ?ContainerInterface
     {
         if (!$call instanceof EnvironmentCall) {
             throw new UnsupportedCallException(sprintf(

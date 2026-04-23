@@ -32,24 +32,18 @@ use Behat\Testwork\Tester\Result\TestResults;
  */
 final class PrettyExampleRowPrinter implements ExampleRowPrinter
 {
-    /**
-     * @var string
-     */
-    private $indentText;
+    private readonly string $indentText;
     private readonly string $subIndentText;
 
     /**
      * Initializes printer.
-     *
-     * @param int $indentation
-     * @param int $subIndentation
      */
     public function __construct(
         private readonly ResultToStringConverter $resultConverter,
         private readonly ExceptionPresenter $exceptionPresenter,
         private readonly TranslatorInterface $translator,
-        $indentation = 6,
-        $subIndentation = 2,
+        int $indentation = 6,
+        int $subIndentation = 2,
     ) {
         $this->indentText = str_repeat(' ', intval($indentation));
         $this->subIndentText = $this->indentText . str_repeat(' ', intval($subIndentation));

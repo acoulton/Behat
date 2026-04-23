@@ -50,12 +50,10 @@ final class ListPrinter
     /**
      * Prints scenarios list.
      *
-     * @param string         $intro
-     * @param int            $resultCode
      * @param ScenarioStat[] $scenarioStats
      * @param StepStatV2[]     $stepStats
      */
-    public function printScenariosList(OutputPrinter $printer, $intro, $resultCode, array $scenarioStats, ?array $stepStats = null): void
+    public function printScenariosList(OutputPrinter $printer, string $intro, int $resultCode, array $scenarioStats, ?array $stepStats = null): void
     {
         if (!count($scenarioStats)) {
             return;
@@ -79,14 +77,12 @@ final class ListPrinter
     /**
      * Prints step list.
      *
-     * @param string     $intro
-     * @param int        $resultCode
      * @param StepStatV2[] $stepStats
      */
     public function printStepList(
         OutputPrinter $printer,
-        $intro,
-        $resultCode,
+        string $intro,
+        int $resultCode,
         array $stepStats,
         ?ShowOutputOption $showOutput = ShowOutputOption::InSummary,
     ): void {
@@ -159,7 +155,7 @@ final class ListPrinter
             $printer->writeln(implode("\n", $stdOutString));
         }
 
-        if ($hookStat->getError()) {
+        if ($hookStat->getError() !== '') {
             $exceptionString = implode("\n", array_map($pad, explode("\n", $hookStat->getError())));
             $printer->writeln(sprintf('{+%s}%s{-%s}', $style, $exceptionString, $style));
         }

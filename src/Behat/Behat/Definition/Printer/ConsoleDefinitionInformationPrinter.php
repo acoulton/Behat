@@ -20,17 +20,12 @@ use Behat\Testwork\Suite\Suite;
  */
 final class ConsoleDefinitionInformationPrinter extends ConsoleDefinitionPrinter implements UnusedDefinitionPrinter
 {
-    /**
-     * @var string|null
-     */
-    private $searchCriterion;
+    private ?string $searchCriterion = null;
 
     /**
      * Sets search criterion.
-     *
-     * @param string $criterion
      */
-    public function setSearchCriterion($criterion): void
+    public function setSearchCriterion(string $criterion): void
     {
         $this->searchCriterion = $criterion;
     }

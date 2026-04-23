@@ -194,16 +194,14 @@ final class GherkinExtension implements Extension
 
     /**
      * Loads gherkin loaders.
-     *
-     * @param string           $cachePath
      */
-    private function loadDefaultLoaders(ContainerBuilder $container, $cachePath): void
+    private function loadDefaultLoaders(ContainerBuilder $container, string $cachePath): void
     {
         $definition = new Definition(GherkinFileLoader::class, [
             new Reference('gherkin.parser'),
         ]);
 
-        if ($cachePath) {
+        if ($cachePath !== '') {
             $cacheDefinition = new Definition(FileCache::class, [$cachePath]);
         } else {
             $cacheDefinition = new Definition(MemoryCache::class);
@@ -318,11 +316,9 @@ final class GherkinExtension implements Extension
     /**
      * Creates filter definition of provided type.
      *
-     * @param string $filterString
-     *
      * @throws ExtensionException If filter type is not recognised
      */
-    private function createFilterDefinition(string $type, $filterString): Definition
+    private function createFilterDefinition(string $type, string $filterString): Definition
     {
         if ('role' === $type) {
             return new Definition(RoleFilter::class, [$filterString]);

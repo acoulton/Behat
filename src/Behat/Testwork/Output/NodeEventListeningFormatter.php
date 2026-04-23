@@ -25,13 +25,10 @@ final class NodeEventListeningFormatter implements Formatter
 {
     /**
      * Initializes formatter.
-     *
-     * @param string        $name
-     * @param string        $description
      */
     public function __construct(
-        private $name,
-        private $description,
+        private readonly string $name,
+        private readonly string $description,
         private array $parameters,
         private readonly OutputPrinter $printer,
         private readonly EventListener $listener,
@@ -50,10 +47,8 @@ final class NodeEventListeningFormatter implements Formatter
 
     /**
      * Proxies event to the listener.
-     *
-     * @param string|null $eventName
      */
-    public function listenEvent(Event $event, $eventName = null): void
+    public function listenEvent(Event $event, ?string $eventName = null): void
     {
         if (null === $eventName) {
             $eventName = method_exists($event, 'getName') ? $event->getName() : $event::class;

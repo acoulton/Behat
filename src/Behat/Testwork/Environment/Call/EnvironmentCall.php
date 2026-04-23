@@ -23,14 +23,12 @@ class EnvironmentCall implements Call
 {
     /**
      * Initializes call.
-     *
-     * @param int|null $errorReportingLevel
      */
     public function __construct(
         private readonly Environment $environment,
         private readonly Callee $callee,
         private readonly array $arguments,
-        private $errorReportingLevel = null,
+        private readonly ?int $errorReportingLevel = null,
     ) {
     }
 
@@ -57,7 +55,7 @@ class EnvironmentCall implements Call
         return $this->arguments;
     }
 
-    final public function getErrorReportingLevel()
+    final public function getErrorReportingLevel(): ?int
     {
         return $this->errorReportingLevel;
     }

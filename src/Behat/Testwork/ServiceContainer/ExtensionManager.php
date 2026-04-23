@@ -39,7 +39,7 @@ final class ExtensionManager
      */
     public function __construct(
         array $extensions,
-        private $extensionsPath = null,
+        private ?string $extensionsPath = null,
     ) {
         foreach ($extensions as $extension) {
             $this->extensions[$extension->getConfigKey()] = $extension;
@@ -48,10 +48,8 @@ final class ExtensionManager
 
     /**
      * Sets path to directory in which manager will try to find extension files.
-     *
-     * @param string|null $path
      */
-    public function setExtensionsPath($path): void
+    public function setExtensionsPath(?string $path): void
     {
         $this->extensionsPath = $path;
     }
@@ -60,10 +58,8 @@ final class ExtensionManager
      * Activate extension by its locator.
      *
      * @param string $locator phar file name, php file name, class name
-     *
-     * @return Extension
      */
-    public function activateExtension(string $locator)
+    public function activateExtension(string $locator): Extension
     {
         $extension = $this->initialize($locator);
 
@@ -74,10 +70,8 @@ final class ExtensionManager
 
     /**
      * Returns specific extension by its name.
-     *
-     * @return Extension|null
      */
-    public function getExtension(string $key)
+    public function getExtension(string $key): ?Extension
     {
         return $this->extensions[$key] ?? null;
     }

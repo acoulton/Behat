@@ -30,24 +30,17 @@ use Behat\Testwork\Tester\Setup\Teardown;
  */
 final class PrettySetupPrinter implements SetupPrinter
 {
-    /**
-     * @var string
-     */
-    private $indentText;
+    private readonly string $indentText;
 
     /**
      * Initializes printer.
-     *
-     * @param int  $indentation
-     * @param bool $newlineBefore
-     * @param bool $newlineAfter
      */
     public function __construct(
         private readonly ResultToStringConverter $resultConverter,
         private readonly ExceptionPresenter $exceptionPresenter,
-        $indentation = 0,
-        private $newlineBefore = false,
-        private $newlineAfter = false,
+        int $indentation = 0,
+        private readonly bool $newlineBefore = false,
+        private readonly bool $newlineAfter = false,
     ) {
         $this->indentText = str_repeat(' ', intval($indentation));
     }
@@ -134,10 +127,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints hook call output (if has some).
-     *
-     * @param string        $indentText
      */
-    private function printHookCallStdOut(OutputPrinter $printer, CallResult $callResult, $indentText): void
+    private function printHookCallStdOut(OutputPrinter $printer, CallResult $callResult, string $indentText): void
     {
         if (!$callResult->hasStdOut()) {
             return;
@@ -155,10 +146,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints hook call exception (if has some).
-     *
-     * @param string        $indentText
      */
-    private function printHookCallException(OutputPrinter $printer, CallResult $callResult, $indentText): void
+    private function printHookCallException(OutputPrinter $printer, CallResult $callResult, string $indentText): void
     {
         if (!$callResult->hasException()) {
             return;

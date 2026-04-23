@@ -25,22 +25,16 @@ use Behat\Testwork\Tester\Result\TestResult;
  */
 final class PrettyScenarioPrinter implements ScenarioPrinter
 {
-    /**
-     * @var string
-     */
-    private $indentText;
+    private readonly string $indentText;
     private readonly string $subIndentText;
 
     /**
      * Initializes printer.
-     *
-     * @param int $indentation
-     * @param int $subIndentation
      */
     public function __construct(
         private readonly PrettyPathPrinter $pathPrinter,
-        $indentation = 2,
-        $subIndentation = 2,
+        int $indentation = 2,
+        int $subIndentation = 2,
     ) {
         $this->indentText = str_repeat(' ', intval($indentation));
         $this->subIndentText = $this->indentText . str_repeat(' ', intval($subIndentation));
@@ -80,20 +74,16 @@ final class PrettyScenarioPrinter implements ScenarioPrinter
 
     /**
      * Prints scenario keyword.
-     *
-     * @param string        $keyword
      */
-    private function printKeyword(OutputPrinter $printer, $keyword): void
+    private function printKeyword(OutputPrinter $printer, string $keyword): void
     {
         $printer->write(sprintf('%s{+keyword}%s:{-keyword}', $this->indentText, $keyword));
     }
 
     /**
      * Prints scenario title (first line of long title).
-     *
-     * @param string|null   $longTitle
      */
-    private function printTitle(OutputPrinter $printer, $longTitle): void
+    private function printTitle(OutputPrinter $printer, ?string $longTitle): void
     {
         $description = explode("\n", $longTitle ?? '');
         $title = array_shift($description);
@@ -105,10 +95,8 @@ final class PrettyScenarioPrinter implements ScenarioPrinter
 
     /**
      * Prints scenario description (other lines of long title).
-     *
-     * @param string|null   $longTitle
      */
-    private function printDescription(OutputPrinter $printer, $longTitle): void
+    private function printDescription(OutputPrinter $printer, ?string $longTitle): void
     {
         $lines = explode("\n", $longTitle ?? '');
         array_shift($lines);

@@ -12,7 +12,10 @@ return RectorConfig::configure()
         __DIR__ . '/src',
     ])
     ->withRootFiles()
-    ->withPreparedSets(codeQuality: true)
+    ->withPreparedSets(
+        codeQuality: true,
+        typeDeclarations: true,
+    )
     ->withPhpSets(php82: true)
     ->withSkip([
         StringableForToStringRector::class,

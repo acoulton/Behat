@@ -25,17 +25,12 @@ final class HookStat
 
     /**
      * Initializes hook stat.
-     *
-     * @param string      $name
-     * @param string      $path
-     * @param string|null $error
-     * @param string|null $stdOut
      */
     public function __construct(
-        private $name,
-        private $path,
-        private $error = null,
-        private $stdOut = null,
+        private readonly string $name,
+        private readonly string $path,
+        private readonly ?string $error = null,
+        private readonly ?string $stdOut = null,
     ) {
     }
 
@@ -44,7 +39,7 @@ final class HookStat
         $this->scope = $scope;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -56,30 +51,24 @@ final class HookStat
 
     /**
      * Returns hook standard output (if has some).
-     *
-     * @return string|null
      */
-    public function getStdOut()
+    public function getStdOut(): ?string
     {
         return $this->stdOut;
     }
 
     /**
      * Returns hook exception.
-     *
-     * @return string
      */
-    public function getError()
+    public function getError(): string
     {
         return $this->error;
     }
 
     /**
      * Returns hook path.
-     *
-     * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }

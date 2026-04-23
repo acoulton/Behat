@@ -24,19 +24,14 @@ use Behat\Testwork\Tester\Result\TestResult;
  */
 final class PrettyExamplePrinter implements ExamplePrinter
 {
-    /**
-     * @var string
-     */
-    private $indentText;
+    private readonly string $indentText;
 
     /**
      * Initializes printer.
-     *
-     * @param int $indentation
      */
     public function __construct(
         private readonly PrettyPathPrinter $pathPrinter,
-        $indentation = 6,
+        int $indentation = 6,
     ) {
         $this->indentText = str_repeat(' ', intval($indentation));
     }

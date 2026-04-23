@@ -26,14 +26,11 @@ abstract class RuntimeFilterableHook extends RuntimeHook implements Stringable, 
     /**
      * Initializes hook.
      *
-     * @param string      $scopeName
-     * @param string|null $filterString
-     *
      * @phpstan-param TBehatCallable $callable
      */
     public function __construct(
-        $scopeName,
-        private $filterString,
+        string $scopeName,
+        private readonly ?string $filterString,
         callable|array $callable,
         ?string $description = null,
     ) {
@@ -42,10 +39,8 @@ abstract class RuntimeFilterableHook extends RuntimeHook implements Stringable, 
 
     /**
      * Returns hook filter string (if has one).
-     *
-     * @return string|null
      */
-    public function getFilterString()
+    public function getFilterString(): ?string
     {
         return $this->filterString;
     }

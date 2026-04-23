@@ -33,7 +33,7 @@ abstract class RuntimeStepHook extends RuntimeFilterableHook
             return true;
         }
 
-        if (!empty($filterString)) {
+        if ($filterString !== '') {
             $filter = new NameFilter($filterString);
 
             if ($filter->isFeatureMatch($scope->getFeature())) {
@@ -48,10 +48,8 @@ abstract class RuntimeStepHook extends RuntimeFilterableHook
 
     /**
      * Checks if Feature matches specified filter.
-     *
-     * @param string   $filterString
      */
-    private function isStepMatch(StepNode $step, $filterString): bool
+    private function isStepMatch(StepNode $step, string $filterString): bool
     {
         if ('/' === $filterString[0]) {
             return 1 === preg_match($filterString, $step->getText());

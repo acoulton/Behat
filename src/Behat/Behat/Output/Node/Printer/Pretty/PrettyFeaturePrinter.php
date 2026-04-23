@@ -23,19 +23,13 @@ use Behat\Testwork\Tester\Result\TestResult;
  */
 final class PrettyFeaturePrinter implements FeaturePrinter
 {
-    /**
-     * @var string
-     */
-    private $indentText;
+    private readonly string $indentText;
     private readonly string $subIndentText;
 
     /**
      * Initializes printer.
-     *
-     * @param int $indentation
-     * @param int $subIndentation
      */
-    public function __construct($indentation = 0, $subIndentation = 2)
+    public function __construct(int $indentation = 0, int $subIndentation = 2)
     {
         $this->indentText = str_repeat(' ', intval($indentation));
         $this->subIndentText = $this->indentText . str_repeat(' ', intval($subIndentation));

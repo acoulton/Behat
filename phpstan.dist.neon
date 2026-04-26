@@ -13,5 +13,3 @@ parameters:
                 - src/Behat/Behat/Transformation/Transformation/ReturnTypeTransformation.php
         -
             identifier: missingType.iterableValue
-        -
-            identifier: missingType.generics

@@ -33,9 +33,6 @@ final class BeforeExerciseTeardown extends ExerciseCompleted implements BeforeTe
     ) {
     }
 
-    /**
-     * @return SpecificationIterator[]
-     */
     public function getSpecificationIterators(): array
     {
         return $this->specificationIterators;

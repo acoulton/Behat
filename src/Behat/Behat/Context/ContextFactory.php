@@ -79,7 +79,8 @@ final class ContextFactory
     /**
      * Resolves arguments for a specific class using registered argument resolvers.
      *
-     * @param mixed[]             $arguments
+     * @param ReflectionClass<*> $reflection
+     * @param mixed[]            $arguments
      * @param ArgumentResolver[] $resolvers
      *
      * @return mixed[]
@@ -106,7 +107,12 @@ final class ContextFactory
     /**
      * Creates context instance.
      *
-     * @param mixed[] $arguments
+     * @template T of Context
+     *
+     * @param ReflectionClass<T> $reflection
+     * @param mixed[]            $arguments
+     *
+     * @return T
      */
     private function createInstance(ReflectionClass $reflection, array $arguments): Context
     {

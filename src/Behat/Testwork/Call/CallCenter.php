@@ -77,6 +77,12 @@ final class CallCenter
 
     /**
      * Handles call and its result using registered filters and handlers.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return CallResult<T>
      */
     public function makeCall(Call $call): CallResult
     {
@@ -89,6 +95,12 @@ final class CallCenter
 
     /**
      * Filters call using registered filters and returns a filtered one.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return T
      */
     private function filterCall(Call $call): Call
     {
@@ -105,6 +117,12 @@ final class CallCenter
 
     /**
      * Handles call using registered call handlers.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return CallResult<T>
      *
      * @throws CallHandlingException If call handlers didn't produce call result
      */
@@ -126,6 +144,12 @@ final class CallCenter
 
     /**
      * Filters call result using registered filters and returns a filtered one.
+     *
+     * @template T of Call
+     *
+     * @param CallResult<T> $result
+     *
+     * @return CallResult<T>
      */
     private function filterResult(CallResult $result): CallResult
     {

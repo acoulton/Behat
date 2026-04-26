@@ -29,6 +29,12 @@ interface CallFilter
 
     /**
      * Filters a call and returns a new one.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return T
      */
     public function filterCall(Call $call): Call;
 }

@@ -14,6 +14,7 @@ use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Testwork\Call\CallResult;
 use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Hook\Call\HookCall;
 use Behat\Testwork\Hook\Call\RuntimeHook;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
@@ -69,6 +70,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints setup hook call result.
+     *
+     * @param CallResult<HookCall> $callResult
      */
     private function printSetupHookCallResult(OutputPrinter $printer, CallResult $callResult): void
     {
@@ -98,6 +101,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints teardown hook call result.
+     *
+     * @param CallResult<HookCall> $callResult
      */
     private function printTeardownHookCallResult(OutputPrinter $printer, CallResult $callResult): void
     {
@@ -127,6 +132,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints hook call output (if has some).
+     *
+     * @param CallResult<HookCall> $callResult
      */
     private function printHookCallStdOut(OutputPrinter $printer, CallResult $callResult, string $indentText): void
     {
@@ -146,6 +153,8 @@ final class PrettySetupPrinter implements SetupPrinter
 
     /**
      * Prints hook call exception (if has some).
+     *
+     * @param CallResult<HookCall> $callResult
      */
     private function printHookCallException(OutputPrinter $printer, CallResult $callResult, string $indentText): void
     {

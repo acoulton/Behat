@@ -69,6 +69,12 @@ final class RuntimeCallHandler implements CallHandler
 
     /**
      * Executes single call.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return CallResult<T>
      */
     private function executeCall(Call $call): CallResult
     {

@@ -30,6 +30,12 @@ interface CallHandler
 
     /**
      * Handles call and returns call result.
+     *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return CallResult<T>
      */
     public function handleCall(Call $call): CallResult;
 }

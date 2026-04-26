@@ -65,7 +65,7 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
      *
      * @throws WrongServicesConfigurationException
      */
-    private function createContainer($settings)
+    private function createContainer(mixed $settings): ContainerInterface
     {
         if (is_string($settings)) {
             return $this->createContainerFromString($settings);
@@ -85,7 +85,7 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
      *
      * @throws WrongServicesConfigurationException
      */
-    private function createContainerFromString(string $settings)
+    private function createContainerFromString(string $settings): ContainerInterface
     {
         if (0 === mb_strpos($settings, '@')) {
             return $this->loadContainerFromContainer(mb_substr($settings, 1));
@@ -107,7 +107,7 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
      *
      * @throws WrongServicesConfigurationException
      */
-    private function loadContainerFromContainer(string $name): object
+    private function loadContainerFromContainer(string $name): ContainerInterface
     {
         $services = $this->container->findTaggedServiceIds(HelperContainerExtension::HELPER_CONTAINER_TAG);
 
@@ -117,21 +117,30 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
             );
         }
 
-        return $this->container->get($name);
+        return $this->ensureValidContainer(
+            $this->container->get($name),
+            sprintf('service `%s`', $name)
+        );
     }
 
     /**
      * Creates container from string-based class spec.
      */
-    private function createContainerFromClassSpec(string $classSpec)
+    private function createContainerFromClassSpec(string $classSpec): ContainerInterface
     {
         $constructor = explode('::', $classSpec);
 
         if (2 === count($constructor)) {
-            return call_user_func($constructor);
+            return $this->ensureValidContainer(
+                call_user_func($constructor),
+                $classSpec
+            );
         }
 
-        return new $constructor[0]();
+        return $this->ensureValidContainer(
+            new $constructor[0](),
+            $classSpec
+        );
     }
 
     /**
@@ -141,22 +150,27 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
      *
      * @throws WrongContainerClassException
      */
-    private function createResolvers($container, bool $autowire): array
+    private function createResolvers(ContainerInterface $container, bool $autowire): array
     {
-        if (!$container instanceof ContainerInterface) {
-            throw new WrongContainerClassException(
-                sprintf(
-                    'Service container is expected to implement `Psr\Container\ContainerInterface`, but `%s` does not.',
-                    $container::class
-                ),
-                $container::class
-            );
-        }
-
         if ($autowire) {
             return [new ServicesResolver($container), new AutowiringResolver($container)];
         }
 
         return [new ServicesResolver($container)];
+    }
+
+    private function ensureValidContainer(mixed $container, string $source): ContainerInterface
+    {
+        if ($container instanceof ContainerInterface) {
+            return $container;
+        }
+
+        throw new WrongContainerClassException(
+            sprintf(
+                'Expected `%s` to provide an implementation of %s, but it does not (got %s)',
+                $source, ContainerInterface::class, get_debug_type($container)
+            ),
+            is_object($container) ? $container::class : null
+        );
     }
 }

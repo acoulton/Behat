@@ -1,5 +1,5 @@
 parameters:
-    level: 5
+    level: 6
     paths:
         - src
     ignoreErrors:
@@ -11,3 +11,7 @@ parameters:
             identifier: constructor.unusedParameter
             paths:
                 - src/Behat/Behat/Transformation/Transformation/ReturnTypeTransformation.php
+        -
+            identifier: missingType.iterableValue
+        -
+            identifier: missingType.generics

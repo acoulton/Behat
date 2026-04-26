@@ -111,7 +111,10 @@ final class TurnipPatternPolicy implements PatternPolicy
         );
     }
 
-    private function replaceTokenWithRegexCaptureGroup($tokenMatch): string
+    /**
+     * @param list<string> $tokenMatch
+     */
+    private function replaceTokenWithRegexCaptureGroup(array $tokenMatch): string
     {
         if (strlen((string) $tokenMatch[1]) > 32) {
             throw new InvalidPatternException(

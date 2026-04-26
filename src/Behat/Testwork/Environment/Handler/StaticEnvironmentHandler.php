@@ -31,12 +31,12 @@ final class StaticEnvironmentHandler implements EnvironmentHandler
         return new StaticEnvironment($suite);
     }
 
-    public function supportsEnvironmentAndSubject(Environment $environment, $testSubject = null): bool
+    public function supportsEnvironmentAndSubject(Environment $environment, mixed $testSubject = null): bool
     {
         return $environment instanceof StaticEnvironment;
     }
 
-    public function isolateEnvironment(Environment $environment, $testSubject = null): Environment
+    public function isolateEnvironment(Environment $environment, mixed $testSubject = null): Environment
     {
         return $environment;
     }

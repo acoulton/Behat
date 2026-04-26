@@ -26,7 +26,7 @@ final class EnvironmentIsolationException extends RuntimeException implements En
     public function __construct(
         string $message,
         private readonly Environment $environment,
-        private $subject = null,
+        private readonly mixed $subject = null,
     ) {
         parent::__construct($message);
     }
@@ -42,7 +42,7 @@ final class EnvironmentIsolationException extends RuntimeException implements En
     /**
      * Returns test subject that caused exception.
      */
-    public function getSubject()
+    public function getSubject(): mixed
     {
         return $this->subject;
     }

@@ -17,6 +17,7 @@ use Behat\Behat\HelperContainer\Environment\ServiceContainerEnvironment;
 use Behat\Testwork\Call\Callee;
 use Behat\Testwork\Suite\Suite;
 use Psr\Container\ContainerInterface;
+use UnexpectedValueException;
 
 /**
  * Context environment based on a list of instantiated context objects.
@@ -119,8 +120,18 @@ final class InitializedContextEnvironment implements ContextEnvironment, Service
     {
         $callable = $callee->getCallable();
 
-        if ($callee->isAnInstanceMethod() && is_array($callable)) {
-            return [$this->getContext($callable[0]), $callable[1]];
+        if ($callee->isAnInstanceMethod() && is_array($callable) && count($callable) === 2 && is_string($callable[0])) {
+            $contextClass = $callable[0];
+            if (!is_a($contextClass, Context::class, true)) {
+                throw new UnexpectedValueException(
+                    sprintf(
+                        'Expected a native callable or a reference to a `Context` method (got reference to `%s`).',
+                        $contextClass
+                    )
+                );
+            }
+
+            return [$this->getContext($contextClass), $callable[1]];
         }
 
         return $callable;

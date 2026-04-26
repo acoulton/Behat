@@ -48,7 +48,7 @@ final class ServicesResolver implements ArgumentResolver
      *
      * @throws ContainerExceptionInterface
      */
-    private function resolveArgument($value)
+    private function resolveArgument(mixed $value): mixed
     {
         if (is_string($value) && 0 === mb_strpos($value, '@')) {
             return $this->container->get(mb_substr($value, 1));

@@ -40,7 +40,7 @@ final class PrettyFormatter extends Formatter
         ShowOutputOption $showOutput = ShowOutputOption::Yes,
         bool $shortSummary = true,
         bool $printSkippedSteps = true,
-        ...$baseOptions,
+        mixed ...$baseOptions,
     ) {
         $settings = [
             self::TIMER_SETTING => $timer,

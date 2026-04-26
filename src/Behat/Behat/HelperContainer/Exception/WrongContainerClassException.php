@@ -13,7 +13,7 @@ namespace Behat\Behat\HelperContainer\Exception;
 use InvalidArgumentException;
 
 /**
- * Represents an exception when provided class exists, but is not an acceptable as a container.
+ * Represents an exception when the configured container is not acceptable as a container.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
@@ -21,15 +21,15 @@ final class WrongContainerClassException extends InvalidArgumentException implem
 {
     public function __construct(
         string $message,
-        private readonly string $class,
+        private readonly ?string $class,
     ) {
         parent::__construct($message);
     }
 
     /**
-     * Returns not found classname.
+     * Returns class name of the object that was created, if any.
      */
-    public function getClass(): string
+    public function getClass(): ?string
     {
         return $this->class;
     }

@@ -72,7 +72,7 @@ final class NodeEventListeningFormatter implements Formatter
         return $this->printer;
     }
 
-    public function setParameter(string $name, $value): void
+    public function setParameter(string $name, mixed $value): void
     {
         $this->parameters[$name] = $value;
     }

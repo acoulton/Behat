@@ -40,7 +40,7 @@ final class TableColumnTransformation extends RuntimeCallee implements Stringabl
     public function supportsDefinitionAndArgument(
         DefinitionCall $definitionCall,
         int|string $argumentIndex,
-        $argumentArgumentValue,
+        mixed $argumentArgumentValue,
     ): bool {
         // The argument passed initially will be a TableNode but if a column transformation
         // has already been applied then this will have been transformed into an array already,
@@ -83,7 +83,7 @@ final class TableColumnTransformation extends RuntimeCallee implements Stringabl
         CallCenter $callCenter,
         DefinitionCall $definitionCall,
         int|string $argumentIndex,
-        $argumentValue,
+        mixed $argumentValue,
     ): array {
         if (!$this->isSupportedArgumentValueType($argumentValue)) {
             throw new InvalidArgumentException(sprintf(

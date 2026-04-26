@@ -235,5 +235,8 @@
         <ignored-regex>#REMOVED: Method Behat\\Testwork\\EventDispatcher\\ServiceContainer\\EventDispatcherExtension\#loadEventDispatchingSuiteTester\(\) was removed#</ignored-regex>
         <ignored-regex>#REMOVED: Method Behat\\Testwork\\EventDispatcher\\ServiceContainer\\EventDispatcherExtension\#processSubscribers\(\) was removed#</ignored-regex>
 
+        <!-- WrongContainerClassException might not now return a class name (this is not a public API class) -->
+        <ignored-regex>#CHANGED: The return type of Behat\\Behat\\HelperContainer\\Exception\\WrongContainerClassException\#getClass\(\) changed from string to the non-covariant string\|null#</ignored-regex>
+
     </baseline>
 </roave-bc-check>

@@ -23,9 +23,9 @@ use Symfony\Component\Console\Output\StreamOutput;
  */
 final class FilesystemOutputFactory extends OutputFactory
 {
-    private $fileName;
+    private ?string $fileName = null;
 
-    public function setFileName($fileName): void
+    public function setFileName(?string $fileName): void
     {
         $this->fileName = $fileName;
     }
@@ -43,7 +43,7 @@ final class FilesystemOutputFactory extends OutputFactory
         );
     }
 
-    public function createOutput($stream = null): StreamOutput
+    public function createOutput(): StreamOutput
     {
         if ($this->getOutputPath() === null) {
             throw new MissingOutputPathException(

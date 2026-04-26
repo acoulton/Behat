@@ -43,7 +43,7 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
     /**
      * Writes text to the console.
      */
-    final protected function write(string|iterable $text, bool $lineBreakBefore = false)
+    final protected function write(string|iterable $text, bool $lineBreakBefore = false): void
     {
         if ($lineBreakBefore) {
             $this->output->writeln('');
@@ -52,7 +52,7 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
         $this->output->writeln('');
     }
 
-    final protected function getDefinitionType(Definition $definition, $onlyOne = false)
+    final protected function getDefinitionType(Definition $definition, bool $onlyOne = false): string
     {
         $this->keywords->setLanguage($this->translator->getLocale());
 

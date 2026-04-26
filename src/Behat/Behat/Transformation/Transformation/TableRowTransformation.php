@@ -48,7 +48,7 @@ final class TableRowTransformation extends RuntimeCallee implements Stringable, 
         parent::__construct($callable, $description);
     }
 
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentArgumentValue): bool
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentArgumentValue): bool
     {
         if (!$argumentArgumentValue instanceof TableNode) {
             return false;
@@ -60,7 +60,7 @@ final class TableRowTransformation extends RuntimeCallee implements Stringable, 
     /**
      * @return list<mixed>
      */
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): array
+    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): array
     {
         $rows = [];
         foreach ($argumentValue as $row) {

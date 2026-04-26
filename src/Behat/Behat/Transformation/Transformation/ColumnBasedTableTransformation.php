@@ -48,7 +48,7 @@ final class ColumnBasedTableTransformation extends RuntimeCallee implements Stri
         parent::__construct($callable, $description);
     }
 
-    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, $argumentArgumentValue): bool
+    public function supportsDefinitionAndArgument(DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentArgumentValue): bool
     {
         if (!$argumentArgumentValue instanceof TableNode) {
             return false;
@@ -58,7 +58,7 @@ final class ColumnBasedTableTransformation extends RuntimeCallee implements Stri
             || $this->pattern === 'table:*';
     }
 
-    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, $argumentValue): mixed
+    public function transformArgument(CallCenter $callCenter, DefinitionCall $definitionCall, int|string $argumentIndex, mixed $argumentValue): mixed
     {
         $call = new TransformationCall(
             $definitionCall->getEnvironment(),

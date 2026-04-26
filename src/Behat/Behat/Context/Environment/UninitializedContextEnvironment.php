@@ -27,7 +27,7 @@ use ReflectionClass;
 final class UninitializedContextEnvironment extends StaticEnvironment implements ContextEnvironment
 {
     /**
-     * @var array<class-string<Context>, array>
+     * @var array<class-string<Context>, mixed[]>
      */
     private array $contextClasses = [];
 
@@ -35,6 +35,7 @@ final class UninitializedContextEnvironment extends StaticEnvironment implements
      * Registers context class.
      *
      * @param class-string<Context> $contextClass
+     * @param mixed[]|null          $arguments
      *
      * @throws ContextNotFoundException   If class does not exist
      * @throws WrongContextClassException if class does not implement Context interface
@@ -78,7 +79,7 @@ final class UninitializedContextEnvironment extends StaticEnvironment implements
     /**
      * Returns context classes with their arguments.
      *
-     * @return array<class-string<Context>, array>
+     * @return array<class-string<Context>, mixed[]>
      */
     public function getContextClassesWithArguments(): array
     {

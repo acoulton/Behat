@@ -27,6 +27,8 @@ final class DefinitionCall extends EnvironmentCall
 {
     /**
      * Initializes definition call.
+     *
+     * @param mixed[] $arguments
      */
     public function __construct(
         Environment $environment,

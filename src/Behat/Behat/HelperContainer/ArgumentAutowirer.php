@@ -36,6 +36,10 @@ final class ArgumentAutowirer
     /**
      * Autowires given arguments using provided container.
      *
+     * @param mixed[] $arguments
+     *
+     * @return mixed[]
+     *
      * @throws ContainerExceptionInterface if unset argument typehint can not be resolved from container
      */
     public function autowireArguments(ReflectionFunctionAbstract $reflection, array $arguments): array
@@ -54,6 +58,8 @@ final class ArgumentAutowirer
      * Checks if given argument is wireable.
      *
      * Argument is wireable if it was not previously set and it has a class type-hint.
+     *
+     * @param mixed[] $arguments
      */
     private function isArgumentWireable(array $arguments, int $index, ReflectionParameter $parameter): bool
     {

@@ -85,7 +85,8 @@ final class ServicesResolver implements CallFilter
      *
      * @template T of Call
      *
-     * @param T $call
+     * @param T       $call
+     * @param mixed[] $arguments
      *
      * @return T
      *
@@ -105,7 +106,8 @@ final class ServicesResolver implements CallFilter
      *
      * @template T of Call
      *
-     * @param T $call
+     * @param T       $call
+     * @param mixed[] $newArguments
      *
      * @return T
      *
@@ -133,6 +135,8 @@ final class ServicesResolver implements CallFilter
     /**
      * Repackages definition call with new arguments.
      *
+     * @param mixed[] $newArguments
+     *
      * @throws UnsupportedCallException
      */
     private function repackageDefinitionCall(DefinitionCall $call, array $newArguments): DefinitionCall
@@ -151,6 +155,8 @@ final class ServicesResolver implements CallFilter
 
     /**
      * Repackages transformation call with new arguments.
+     *
+     * @param mixed[] $newArguments
      *
      * @throws UnsupportedCallException
      */

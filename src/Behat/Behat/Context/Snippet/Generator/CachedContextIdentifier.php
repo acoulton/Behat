@@ -19,6 +19,9 @@ use Behat\Behat\Context\Environment\ContextEnvironment;
  */
 final class CachedContextIdentifier implements TargetContextIdentifier
 {
+    /**
+     * @var array<string, string|null>
+     */
     private array $contextClasses = [];
 
     /**

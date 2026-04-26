@@ -96,6 +96,8 @@ final class ServicesResolverFactory implements ArgumentResolverFactory
 
     /**
      * Creates built-in service container with provided settings.
+     *
+     * @param array<string, array{class?: string, arguments?: mixed[], factory_method?: string|null}|string|null> $settings
      */
     private function createContainerFromArray(array $settings): BuiltInServiceContainer
     {

@@ -26,6 +26,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 final class OrderController implements Controller
 {
+    /**
+     * @var array<string, Orderer>
+     */
     private array $orderers = [];
 
     public function __construct(

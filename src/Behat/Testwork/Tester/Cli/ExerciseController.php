@@ -159,6 +159,8 @@ final class ExerciseController implements Controller
 
     /**
      * Extracts unique paths from input argument. Returns null if no paths were supplied.
+     *
+     * @return list<string>|null
      */
     private function extractUniquePaths(InputInterface $input): ?array
     {

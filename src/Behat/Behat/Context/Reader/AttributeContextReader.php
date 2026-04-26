@@ -73,6 +73,8 @@ final class AttributeContextReader implements ContextReader
     }
 
     /**
+     * @param list<RuntimeCallee> $callees
+     *
      * @return list<RuntimeCallee>
      */
     private function readParentCallees(

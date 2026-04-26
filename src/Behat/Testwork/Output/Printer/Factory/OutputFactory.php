@@ -24,6 +24,9 @@ abstract class OutputFactory
     public const VERBOSITY_DEBUG = 4;
 
     private ?string $outputPath = null;
+    /**
+     * @var array<string, array{string|null, string|null, list<string>|null}>
+     */
     private array $outputStyles = [];
 
     private ?bool $outputDecorated = null;
@@ -47,6 +50,8 @@ abstract class OutputFactory
 
     /**
      * Sets output styles.
+     *
+     * @param array<string, array{string|null, string|null, list<string>|null}> $styles
      */
     public function setOutputStyles(array $styles): void
     {
@@ -55,6 +60,8 @@ abstract class OutputFactory
 
     /**
      * Returns output styles.
+     *
+     * @return array<string, array{string|null, string|null, list<string>|null}>
      */
     public function getOutputStyles(): array
     {

@@ -27,6 +27,9 @@ final class ExtensionManager
      * @var array<string,Extension> Map of extensions by locator (phar file name, php file name, class name)
      */
     private array $locatedExtensions = [];
+    /**
+     * @var array{extensions_list: list<string>}
+     */
     private array $debugInformation = [
         'extensions_list' => [],
     ];
@@ -108,6 +111,8 @@ final class ExtensionManager
 
     /**
      * Returns array with extensions debug information.
+     *
+     * @return array{extensions_list: list<string>}
      */
     public function debugInformation(): array
     {

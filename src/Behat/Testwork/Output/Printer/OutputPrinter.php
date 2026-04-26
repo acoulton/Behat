@@ -26,6 +26,8 @@ interface OutputPrinter
 
     /**
      * Sets output styles.
+     *
+     * @param array<string, array{string|null, string|null, list<string>|null}> $styles
      */
     public function setOutputStyles(array $styles): void;
 
@@ -42,14 +44,14 @@ interface OutputPrinter
     /**
      * Writes message(s) to output stream.
      *
-     * @param string|array $messages message or array of messages
+     * @param string|string[] $messages message or array of messages
      */
     public function write(string|array $messages): void;
 
     /**
      * Writes newlined message(s) to output stream.
      *
-     * @param string|array $messages message or array of messages
+     * @param string|string[] $messages message or array of messages
      */
     public function writeln(string|array $messages = ''): void;
 

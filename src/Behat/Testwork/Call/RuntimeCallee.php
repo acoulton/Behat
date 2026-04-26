@@ -34,6 +34,8 @@ class RuntimeCallee implements Callee
 
     /**
      * Initializes callee.
+     *
+     * @phpstan-param TBehatCallable $callable
      */
     public function __construct(
         callable|array $callable,

@@ -42,6 +42,8 @@ final class PregMatchArgumentOrganiser implements ArgumentOrganiser
      * duplication and also drops the first full match element from the
      * array.
      *
+     * @param mixed[] $match
+     *
      * @return list<mixed>
      */
     private function cleanupMatchDuplicates(array $match): array
@@ -67,7 +69,7 @@ final class PregMatchArgumentOrganiser implements ArgumentOrganiser
     /**
      * Checks if key at provided index is a string and next key in the array is an integer.
      *
-     * @param mixed[] $keys
+     * @param list<int|string> $keys
      */
     private function isKeyAStringAndNextOneIsAnInteger(int $keyIndex, array $keys): bool
     {

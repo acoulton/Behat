@@ -62,6 +62,7 @@ final class ContextFactory
      * Creates and initializes context class.
      *
      * @param class-string<Context> $class
+     * @param mixed[]               $arguments
      * @param ArgumentResolver[] $singleUseResolvers
      */
     public function createContext(string $class, array $arguments = [], array $singleUseResolvers = []): Context
@@ -78,6 +79,7 @@ final class ContextFactory
     /**
      * Resolves arguments for a specific class using registered argument resolvers.
      *
+     * @param mixed[]             $arguments
      * @param ArgumentResolver[] $resolvers
      *
      * @return mixed[]
@@ -103,6 +105,8 @@ final class ContextFactory
 
     /**
      * Creates context instance.
+     *
+     * @param mixed[] $arguments
      */
     private function createInstance(ReflectionClass $reflection, array $arguments): Context
     {

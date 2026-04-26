@@ -146,6 +146,8 @@ final class OutputManager
 
     /**
      * Sets provided formatter parameters.
+     *
+     * @param array<string, mixed> $parameters
      */
     public function setFormatterParameters(string $formatter, array $parameters): void
     {
@@ -166,6 +168,8 @@ final class OutputManager
 
     /**
      * Sets provided parameters to all registered formatters.
+     *
+     * @param array<string, mixed> $parameters
      */
     public function setFormattersParameters(array $parameters): void
     {

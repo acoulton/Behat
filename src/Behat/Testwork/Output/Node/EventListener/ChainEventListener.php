@@ -15,6 +15,7 @@ use Behat\Testwork\Event\Event;
 use Behat\Testwork\Output\Formatter;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Used to compose formatter event listeners.
@@ -47,7 +48,7 @@ final class ChainEventListener implements EventListener, Countable, IteratorAggr
         return count($this->listeners);
     }
 
-    public function getIterator(): ArrayIterator
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->listeners);
     }

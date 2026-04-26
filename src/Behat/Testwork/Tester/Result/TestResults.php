@@ -13,6 +13,7 @@ namespace Behat\Testwork\Tester\Result;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Aggregates multiple test results into a collection and provides informational API on top of that.
@@ -60,7 +61,7 @@ final class TestResults implements TestResult, Countable, IteratorAggregate
         return count($this->results);
     }
 
-    public function getIterator(): ArrayIterator
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->results);
     }

@@ -13,6 +13,7 @@ namespace Behat\Testwork\Call;
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Aggregates multiple call results into a collection and provides an informational API on top of that.
@@ -89,7 +90,7 @@ final class CallResults implements Countable, IteratorAggregate
     /**
      * Returns collection iterator.
      */
-    public function getIterator(): ArrayIterator
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->results);
     }

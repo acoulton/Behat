@@ -12,7 +12,6 @@ namespace Behat\Behat\EventDispatcher\Event;
 
 use Behat\Gherkin\Node\BackgroundNode;
 use Behat\Gherkin\Node\FeatureNode;
-use Behat\Testwork\Deprecation\DeprecationCollector;
 use Behat\Testwork\Environment\Environment;
 use Behat\Testwork\EventDispatcher\Event\BeforeTested;
 
@@ -42,18 +41,6 @@ final class BeforeBackgroundTested extends BackgroundTested implements BeforeTes
     public function getFeature(): FeatureNode
     {
         return $this->feature;
-    }
-
-    /**
-     * Returns scenario node.
-     *
-     * @deprecated Use getBackground() instead
-     */
-    public function getScenario(): BackgroundNode
-    {
-        DeprecationCollector::trigger(__METHOD__.' is deprecated - use getBackground() instead. This method and the ScenarioLikeInterface will be removed in 4.0');
-
-        return $this->background;
     }
 
     /**

@@ -11,6 +11,7 @@
 namespace Behat\Behat\EventDispatcher\Event;
 
 use Behat\Gherkin\Node\BackgroundNode;
+use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\NodeInterface;
 use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
 
@@ -21,12 +22,17 @@ use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
  *
  * @api
  */
-abstract class BackgroundTested extends LifecycleEvent implements ScenarioLikeTested
+abstract class BackgroundTested extends LifecycleEvent implements GherkinNodeTested
 {
     public const BEFORE = 'tester.background_tested.before';
     public const AFTER_SETUP = 'tester.background_tested.after_setup';
     public const BEFORE_TEARDOWN = 'tester.background_tested.before_teardown';
     public const AFTER = 'tester.background_tested.after';
+
+    /**
+     * Returns feature node.
+     */
+    abstract public function getFeature(): FeatureNode;
 
     /**
      * Returns background node.

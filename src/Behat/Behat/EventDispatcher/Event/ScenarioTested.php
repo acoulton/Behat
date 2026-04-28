@@ -10,7 +10,9 @@
 
 namespace Behat\Behat\EventDispatcher\Event;
 
+use Behat\Gherkin\Node\FeatureNode;
 use Behat\Gherkin\Node\NodeInterface;
+use Behat\Gherkin\Node\ScenarioLikeInterface;
 use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
 
 /**
@@ -20,12 +22,22 @@ use Behat\Testwork\EventDispatcher\Event\LifecycleEvent;
  *
  * @api
  */
-abstract class ScenarioTested extends LifecycleEvent implements ScenarioLikeTested
+abstract class ScenarioTested extends LifecycleEvent implements GherkinNodeTested
 {
     public const BEFORE = 'tester.scenario_tested.before';
     public const AFTER_SETUP = 'tester.scenario_tested.after_setup';
     public const BEFORE_TEARDOWN = 'tester.scenario_tested.before_teardown';
     public const AFTER = 'tester.scenario_tested.after';
+
+    /**
+     * Returns feature node.
+     */
+    abstract public function getFeature(): FeatureNode;
+
+    /**
+     * Returns scenario node.
+     */
+    abstract public function getScenario(): ScenarioLikeInterface;
 
     final public function getNode(): NodeInterface
     {

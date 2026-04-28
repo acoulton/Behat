@@ -11,11 +11,9 @@
 namespace Behat\Behat\Output\Node\EventListener\AST;
 
 use Behat\Behat\EventDispatcher\Event\BackgroundTested;
-use Behat\Behat\EventDispatcher\Event\ScenarioLikeTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Behat\Output\Node\Printer\ScenarioPrinter;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
-use Behat\Testwork\Deprecation\DeprecationCollector;
 use Behat\Testwork\Event\Event;
 use Behat\Testwork\EventDispatcher\Event\AfterSetup;
 use Behat\Testwork\EventDispatcher\Event\AfterTested;
@@ -39,15 +37,8 @@ final class ScenarioNodeListener implements EventListener
 
     public function listenEvent(Formatter $formatter, Event $event, string $eventName): void
     {
-        if (!$event instanceof ScenarioLikeTested) {
-            return;
-        }
-
         if (!$event instanceof BackgroundTested && !$event instanceof ScenarioTested) {
-            DeprecationCollector::trigger(sprintf(
-                '%s implements the ScenarioLikeTested interface which is deprecated and will be removed in 4.0.',
-                $event::class
-            ));
+            return;
         }
 
         $this->printHeaderOnBeforeEvent($formatter, $event, $eventName);
@@ -57,7 +48,7 @@ final class ScenarioNodeListener implements EventListener
     /**
      * Prints scenario/background header on BEFORE event.
      */
-    private function printHeaderOnBeforeEvent(Formatter $formatter, ScenarioLikeTested $event, string $eventName): void
+    private function printHeaderOnBeforeEvent(Formatter $formatter, BackgroundTested|ScenarioTested $event, string $eventName): void
     {
         if ($this->beforeEventName !== $eventName || !$event instanceof AfterSetup) {
             return;
@@ -77,7 +68,7 @@ final class ScenarioNodeListener implements EventListener
     /**
      * Prints scenario/background footer on AFTER event.
      */
-    private function printFooterOnAfterEvent(Formatter $formatter, ScenarioLikeTested $event, string $eventName): void
+    private function printFooterOnAfterEvent(Formatter $formatter, BackgroundTested|ScenarioTested $event, string $eventName): void
     {
         if ($this->afterEventName !== $eventName || !$event instanceof AfterTested) {
             return;

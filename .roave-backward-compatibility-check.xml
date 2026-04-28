@@ -243,5 +243,11 @@
         <ignored-regex>#CHANGED: The return type of Behat\\Testwork\\Tester\\Result\\TestResults\#getIterator\(\) changed from ArrayIterator to the non-covariant Traversable#</ignored-regex>
         <ignored-regex>#CHANGED: The return type of Behat\\Testwork\\Output\\Node\\EventListener\\ChainEventListener\#getIterator\(\) changed from ArrayIterator to the non-covariant Traversable#</ignored-regex>
         <ignored-regex>#CHANGED: The return type of Behat\\Testwork\\Output\\Node\\EventListener\\ChainEventListener\#getIterator\(\) changed from ArrayIterator to Traversable#</ignored-regex>
+
+        <!-- ScenarioLikeTested interface removed in favour of separate BackgroundTested and ScenarioTested event families -->
+        <ignored-regex>#REMOVED: Method Behat\\Behat\\EventDispatcher\\Event\\ScenarioLikeTested\#getScenario\(\)#</ignored-regex>
+        <ignored-regex>#REMOVED: These ancestors of .+ have been removed: \["Behat\\\\Behat\\\\EventDispatcher\\\\Event\\\\ScenarioLikeTested"\]#</ignored-regex>
+        <ignored-regex>#REMOVED: Class Behat\\Behat\\EventDispatcher\\Event\\ScenarioLikeTested has been deleted#</ignored-regex>
+        <ignored-regex>#REMOVED: Method Behat\\Behat\\EventDispatcher\\Event\\(Before|After)Background.+?\#getScenario\(\) was removed#</ignored-regex>
     </baseline>
 </roave-bc-check>

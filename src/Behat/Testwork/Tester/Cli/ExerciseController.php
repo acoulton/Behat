@@ -31,12 +31,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Executes exercise.
  *
+ * @template TSpec
+ *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  */
 final class ExerciseController implements Controller
 {
     /**
      * Initializes controller.
+     *
+     * @param SpecificationFinder<TSpec> $specificationFinder
+     * @param Exercise<TSpec>            $exercise
      */
     public function __construct(
         private readonly SuiteRepository $suiteRepository,
@@ -98,7 +103,7 @@ final class ExerciseController implements Controller
      *
      * @param list<string>|null $paths
      *
-     * @return SpecificationIterator[]
+     * @return list<SpecificationIterator<TSpec>>
      */
     private function findSpecifications(?array $paths): array
     {
@@ -119,7 +124,7 @@ final class ExerciseController implements Controller
     /**
      * Tests exercise specifications.
      *
-     * @param SpecificationIterator[] $specifications
+     * @param SpecificationIterator<TSpec>[] $specifications
      */
     private function testSpecifications(InputInterface $input, array $specifications): TestResult
     {
@@ -150,7 +155,7 @@ final class ExerciseController implements Controller
      *
      * @param Suite[]     $suites
      *
-     * @return SpecificationIterator[]
+     * @return list<SpecificationIterator<TSpec>>
      */
     private function findSuitesSpecifications(array $suites, ?string $locator): array
     {

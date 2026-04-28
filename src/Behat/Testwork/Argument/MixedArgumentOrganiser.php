@@ -259,7 +259,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     }
 
     /**
-     * @return ReflectionClass[]
+     * @return ReflectionClass<*>[]
      */
     private function getReflectionClassesFromParameter(ReflectionParameter $parameter): array
     {
@@ -365,8 +365,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Typehinted argument predicate to check if the argument and parameter classes match equally.
      *
-     * @param  ReflectionClass $reflectionClass Typehinted argument
-     * @param  mixed           $candidate       Resolved argument
+     * @param ReflectionClass<*> $reflectionClass Typehinted argument
+     * @param mixed              $candidate       Resolved argument
      */
     private function classMatchingPredicateForTypehintedArguments(ReflectionClass $reflectionClass, $candidate): bool
     {
@@ -376,8 +376,8 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
     /**
      * Typehinted argument predicate to check if the argument is an instance of the parameter.
      *
-     * @param  ReflectionClass $reflectionClass Typehinted argument
-     * @param  mixed           $candidate       Resolved argument
+     * @param ReflectionClass<*> $reflectionClass Typehinted argument
+     * @param mixed              $candidate       Resolved argument
      */
     private function isInstancePredicateForTypehintedArguments(ReflectionClass $reflectionClass, $candidate): bool
     {

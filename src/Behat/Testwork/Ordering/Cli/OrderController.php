@@ -31,6 +31,9 @@ final class OrderController implements Controller
      */
     private array $orderers = [];
 
+    /**
+     * @param OrderedExercise<*> $exercise
+     */
     public function __construct(
         private readonly OrderedExercise $exercise,
     ) {

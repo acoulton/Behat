@@ -33,9 +33,6 @@ final class AfterExerciseSetup extends ExerciseCompleted implements AfterSetup
     ) {
     }
 
-    /**
-     * @return SpecificationIterator[]
-     */
     public function getSpecificationIterators(): array
     {
         return $this->specificationIterators;

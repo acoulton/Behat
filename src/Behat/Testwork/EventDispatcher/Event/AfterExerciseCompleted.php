@@ -35,9 +35,6 @@ final class AfterExerciseCompleted extends ExerciseCompleted implements AfterTes
     ) {
     }
 
-    /**
-     * @return SpecificationIterator[]
-     */
     public function getSpecificationIterators(): array
     {
         return $this->specificationIterators;

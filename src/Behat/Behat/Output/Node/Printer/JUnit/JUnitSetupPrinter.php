@@ -6,6 +6,8 @@ use Behat\Behat\Hook\Scope\StepScope;
 use Behat\Behat\Output\Node\Printer\SetupPrinter;
 use Behat\Testwork\Call\CallResults;
 use Behat\Testwork\Exception\ExceptionPresenter;
+use Behat\Testwork\Hook\Call\HookCall;
+use Behat\Testwork\Hook\Call\RuntimeHook;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Output\Formatter;
@@ -37,6 +39,9 @@ final class JUnitSetupPrinter implements SetupPrinter
         }
     }
 
+    /**
+     * @param CallResults<HookCall> $results
+     */
     private function handleHookCalls(Formatter $formatter, CallResults $results, string $messageType): void
     {
         foreach ($results as $hookCallResult) {
@@ -47,6 +52,7 @@ final class JUnitSetupPrinter implements SetupPrinter
                 assert($outputPrinter instanceof JUnitOutputPrinter);
 
                 $callee = $call->getCallee();
+                \assert($callee instanceof RuntimeHook);
                 $message = $callee->getName();
                 if ($scope instanceof StepScope) {
                     $message .= ': ' . $scope->getStep()->getKeyword() . ' ' . $scope->getStep()->getText();

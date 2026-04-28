@@ -18,6 +18,8 @@ use Behat\Testwork\Call\CallResults;
 use Behat\Testwork\Exception\ExceptionPresenter;
 use Behat\Testwork\Hook\Call\AfterSuite;
 use Behat\Testwork\Hook\Call\BeforeSuite;
+use Behat\Testwork\Hook\Call\HookCall;
+use Behat\Testwork\Hook\Call\RuntimeHook;
 use Behat\Testwork\Hook\Tester\Setup\HookedSetup;
 use Behat\Testwork\Hook\Tester\Setup\HookedTeardown;
 use Behat\Testwork\Output\Formatter;
@@ -46,6 +48,9 @@ final class JSONSetupPrinter implements SetupPrinter
         }
     }
 
+    /**
+     * @param CallResults<HookCall> $results
+     */
     private function handleHookCalls(Formatter $formatter, CallResults $results, string $messageType): void
     {
         foreach ($results as $hookCallResult) {
@@ -56,6 +61,7 @@ final class JSONSetupPrinter implements SetupPrinter
                 assert($outputPrinter instanceof JSONOutputPrinter);
 
                 $callee = $call->getCallee();
+                \assert($callee instanceof RuntimeHook);
                 $message = $callee->getName();
                 if ($scope instanceof StepScope) {
                     $message .= ': ' . $scope->getStep()->getKeyword() . ' ' . $scope->getStep()->getText();

@@ -83,6 +83,12 @@ final class ServicesResolver implements CallFilter
     /**
      * Repackages old calls with new arguments, but only if two differ.
      *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return T
+     *
      * @throws UnsupportedCallException if given call is not DefinitionCall or TransformationCall
      */
     private function repackageCallIfNewArguments(Call $call, array $arguments): Call
@@ -97,9 +103,15 @@ final class ServicesResolver implements CallFilter
     /**
      * Repackages old calls with new arguments.
      *
+     * @template T of Call
+     *
+     * @param T $call
+     *
+     * @return T
+     *
      * @throws UnsupportedCallException
      */
-    private function repackageCallWithNewArguments(Call $call, array $newArguments): DefinitionCall|TransformationCall
+    private function repackageCallWithNewArguments(Call $call, array $newArguments): Call
     {
         if ($call instanceof DefinitionCall) {
             return $this->repackageDefinitionCall($call, $newArguments);

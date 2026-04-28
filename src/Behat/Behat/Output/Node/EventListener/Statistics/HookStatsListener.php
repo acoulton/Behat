@@ -86,11 +86,12 @@ final class HookStatsListener implements EventListener
 
     /**
      * Captures hook call result.
+     *
+     * @param CallResult<HookCall> $hookCallResult
      */
     private function captureHookStat(CallResult $hookCallResult): void
     {
         $call = $hookCallResult->getCall();
-        assert($call instanceof HookCall);
         $callee = $call->getCallee();
         $scope = $call->getScope();
         $path = $callee->getPath();

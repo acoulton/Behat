@@ -16,11 +16,15 @@ use Exception;
  * Represents result of the call.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
+ *
+ * @template-covariant T of Call
  */
 final class CallResult
 {
     /**
      * Initializes call result.
+     *
+     * @param T $call
      */
     public function __construct(
         private readonly Call $call,
@@ -32,6 +36,8 @@ final class CallResult
 
     /**
      * Returns call.
+     *
+     * @return T
      */
     public function getCall(): Call
     {

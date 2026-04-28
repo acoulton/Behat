@@ -34,6 +34,8 @@ final class HookDispatcher
 
     /**
      * Dispatches hooks for a specified event.
+     *
+     * @return CallResults<HookCall>
      */
     public function dispatchScopeHooks(HookScope $scope): CallResults
     {
@@ -47,6 +49,8 @@ final class HookDispatcher
 
     /**
      * Dispatches single event hook.
+     *
+     * @return CallResult<HookCall>
      */
     private function dispatchHook(HookScope $scope, Hook $hook): CallResult
     {

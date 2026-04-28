@@ -19,14 +19,16 @@ use IteratorAggregate;
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
  *
- * @implements IteratorAggregate<int, CallResult>
+ * @template T of Call
+ *
+ * @implements IteratorAggregate<int, CallResult<T>>
  */
 final class CallResults implements Countable, IteratorAggregate
 {
     /**
      * Initializes call results collection.
      *
-     * @param CallResult[] $results
+     * @param CallResult<T>[] $results
      */
     public function __construct(
         private readonly array $results = [],
@@ -35,6 +37,13 @@ final class CallResults implements Countable, IteratorAggregate
 
     /**
      * Merges results from provided collection into the current one.
+     *
+     * @template U of Call
+     *
+     * @param CallResults<U> $first
+     * @param CallResults<U> $second
+     *
+     * @return CallResults<U>
      */
     public static function merge(CallResults $first, CallResults $second): self
     {
@@ -88,7 +97,7 @@ final class CallResults implements Countable, IteratorAggregate
     /**
      * Returns call results array.
      *
-     * @return CallResult[]
+     * @return CallResult<T>[]
      */
     public function toArray(): array
     {

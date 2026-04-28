@@ -38,6 +38,8 @@ final class Validator
 
     /**
      * Validates given argument.
+     *
+     * @param mixed[] $givenArguments
      */
     private function validateArgument(ReflectionParameter $parameter, int $parameterIndex, array $givenArguments): void
     {

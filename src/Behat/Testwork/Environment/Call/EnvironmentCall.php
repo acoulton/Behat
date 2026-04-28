@@ -23,6 +23,8 @@ class EnvironmentCall implements Call
 {
     /**
      * Initializes call.
+     *
+     * @param mixed[] $arguments
      */
     public function __construct(
         private readonly Environment $environment,

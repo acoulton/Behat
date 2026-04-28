@@ -24,6 +24,8 @@ final class TransformationCall extends EnvironmentCall
 {
     /**
      * Initializes call.
+     *
+     * @param mixed[] $arguments
      */
     public function __construct(
         Environment $environment,

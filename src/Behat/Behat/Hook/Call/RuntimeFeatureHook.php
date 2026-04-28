@@ -15,6 +15,7 @@ use Behat\Gherkin\Filter\NameFilter;
 use Behat\Gherkin\Filter\TagFilter;
 use Behat\Gherkin\Node\FeatureNode;
 use Behat\Testwork\Call\Exception\BadCallbackException;
+use Behat\Testwork\Call\RuntimeCallee;
 use Behat\Testwork\Hook\Call\RuntimeFilterableHook;
 use Behat\Testwork\Hook\Scope\HookScope;
 
@@ -22,13 +23,15 @@ use Behat\Testwork\Hook\Scope\HookScope;
  * Represents a feature hook.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
+ *
+ * @phpstan-import-type TBehatCallable from RuntimeCallee
  */
 abstract class RuntimeFeatureHook extends RuntimeFilterableHook
 {
     /**
      * Initializes hook.
      *
-     * @param callable|array{class-string, string} $callable
+     * @phpstan-param TBehatCallable $callable
      *
      * @throws BadCallbackException If callback is method, but not a static one
      */

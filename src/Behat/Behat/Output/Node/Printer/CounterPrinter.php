@@ -13,6 +13,7 @@ namespace Behat\Behat\Output\Node\Printer;
 use Behat\Behat\Definition\Translator\TranslatorInterface;
 use Behat\Behat\Output\Node\Printer\Helper\ResultToStringConverter;
 use Behat\Testwork\Output\Printer\OutputPrinter;
+use Behat\Testwork\Tester\Result\TestResult;
 
 /**
  * Behat counter printer.
@@ -32,10 +33,12 @@ final class CounterPrinter
 
     /**
      * Prints scenario and step counters.
+     *
+     * @param array<TestResult::*, int> $stats
      */
     public function printCounters(OutputPrinter $printer, string $intro, array $stats): void
     {
-        $stats = array_filter($stats, fn ($count): bool => 0 !== $count);
+        $stats = array_filter($stats, fn (int $count): bool => 0 !== $count);
 
         $totalCount = 0 === count($stats) ? 0 : array_sum($stats);
 

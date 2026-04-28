@@ -74,6 +74,8 @@ final class OutputController implements Controller
 
     /**
      * Configures formatters based on container, input and output configurations.
+     *
+     * @param list<string> $formats
      */
     private function configureFormatters(array $formats, InputInterface $input, OutputInterface $output): void
     {
@@ -83,6 +85,8 @@ final class OutputController implements Controller
 
     /**
      * Enables formatters.
+     *
+     * @param list<string> $formats
      */
     private function enableFormatters(array $formats): void
     {
@@ -132,6 +136,9 @@ final class OutputController implements Controller
 
     /**
      * Initializes multiple formatters with different outputs.
+     *
+     * @param list<string> $formats
+     * @param list<string> $outputs
      */
     private function configureOutputs(array $formats, array $outputs, bool $decorated = false): void
     {

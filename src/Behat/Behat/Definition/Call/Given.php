@@ -10,10 +10,14 @@
 
 namespace Behat\Behat\Definition\Call;
 
+use Behat\Testwork\Call\RuntimeCallee;
+
 /**
  * Given steps definition.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
+ *
+ * @phpstan-import-type TBehatCallable from RuntimeCallee
  */
 final class Given extends RuntimeDefinition
 {
@@ -22,7 +26,7 @@ final class Given extends RuntimeDefinition
     /**
      * Initializes definition.
      *
-     * @param array<object|string, string>|callable $callable
+     * @phpstan-param TBehatCallable $callable
      */
     public function __construct(string $pattern, callable|array $callable, ?string $description = null)
     {

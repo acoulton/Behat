@@ -31,6 +31,8 @@ interface Call
 
     /**
      * Returns call arguments.
+     *
+     * @return mixed[]
      */
     public function getArguments(): array;
 

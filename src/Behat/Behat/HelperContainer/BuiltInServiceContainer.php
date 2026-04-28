@@ -30,6 +30,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
 
     /**
      * Initialises container using provided service configuration.
+     *
+     * @param array<string, array{class?: string, arguments?: mixed[], factory_method?: string|null}|string|null> $schema
      */
     public function __construct(
         private array $schema,
@@ -74,6 +76,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
     /**
      * Gets and validates a service configuration for a service with given ID.
      *
+     * @return array{class: string, arguments: mixed[], factory_method?: string|null}
+     *
      * @throws WrongServicesConfigurationException
      */
     private function getAndValidateServiceSchema(string $id): array
@@ -96,6 +100,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
 
     /**
      * Gets and validates a class from schema.
+     *
+     * @param array{class?: string, arguments?: mixed[], factory_method?: string|null} $schema
      */
     private function getAndValidateClass(string $id, array $schema): string
     {
@@ -108,6 +114,10 @@ final class BuiltInServiceContainer implements PsrContainerInterface
 
     /**
      * Gets and validates arguments from schema.
+     *
+     * @param array{class?: string, arguments?: mixed[], factory_method?: string|null} $schema
+     *
+     * @return mixed[]
      */
     private function getAndValidateArguments(array $schema): array
     {
@@ -116,6 +126,8 @@ final class BuiltInServiceContainer implements PsrContainerInterface
 
     /**
      * Gets and validates a factory method.
+     *
+     * @param array{class?: string, arguments?: mixed[], factory_method?: string|null} $schema
      */
     private function getAndValidateFactoryMethod(ReflectionClass $reflection, array $schema): ?ReflectionMethod
     {

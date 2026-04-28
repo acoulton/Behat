@@ -25,6 +25,8 @@ final class NodeEventListeningFormatter implements Formatter
 {
     /**
      * Initializes formatter.
+     *
+     * @param array<string, mixed> $parameters
      */
     public function __construct(
         private readonly string $name,
@@ -35,11 +37,6 @@ final class NodeEventListeningFormatter implements Formatter
     ) {
     }
 
-    /**
-     * Returns an array of event names this subscriber wants to listen to.
-     *
-     * @return array The event names to listen to
-     */
     public static function getSubscribedEvents(): array
     {
         return [TestworkEventDispatcher::BEFORE_ALL_EVENTS => 'listenEvent'];

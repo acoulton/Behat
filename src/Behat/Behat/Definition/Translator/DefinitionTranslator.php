@@ -56,6 +56,9 @@ final class DefinitionTranslator
         return $definition;
     }
 
+    /**
+     * @param array<string, scalar|null> $parameters
+     */
     public function translateInfoText(string $infoText, array $parameters): string
     {
         return $this->translator->trans($infoText, $parameters, 'output');

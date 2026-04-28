@@ -42,6 +42,8 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
 
     /**
      * Writes text to the console.
+     *
+     * @param string|iterable<string> $text
      */
     final protected function write(string|iterable $text, bool $lineBreakBefore = false): void
     {
@@ -75,6 +77,9 @@ abstract class ConsoleDefinitionPrinter implements DefinitionPrinter
         return $this->translator->translateDefinition($suite, $definition);
     }
 
+    /**
+     * @param array<string, scalar|null> $parameters
+     */
     final protected function translateInfoText(string $infoText, array $parameters): string
     {
         return $this->translator->translateInfoText($infoText, $parameters);

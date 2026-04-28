@@ -78,7 +78,7 @@ final class SyntaxController implements Controller
     /**
      * Keywords dumper.
      *
-     * @param array $keywords keywords list
+     * @param list<string> $keywords keywords list
      */
     public function dumpKeywords(array $keywords): string
     {

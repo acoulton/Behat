@@ -44,11 +44,15 @@ abstract class MethodNotFoundHandler implements ExceptionHandler
 
     /**
      * Override to handle non-existent method.
+     *
+     * @param array{string, string} $callable
      */
     abstract public function handleNonExistentMethod(array $callable): void;
 
     /**
      * Extract callable from exception.
+     *
+     * @return array{string, string}|null
      */
     private function extractNonExistentCallable(Error $exception): ?array
     {

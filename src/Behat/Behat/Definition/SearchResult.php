@@ -19,6 +19,8 @@ final class SearchResult
 {
     /**
      * Registers search match.
+     *
+     * @param mixed[]|null $arguments
      */
     public function __construct(
         private readonly ?Definition $definition = null,
@@ -53,6 +55,8 @@ final class SearchResult
 
     /**
      * Returns matched definition arguments.
+     *
+     * @return mixed[]|null
      */
     public function getMatchedArguments(): ?array
     {

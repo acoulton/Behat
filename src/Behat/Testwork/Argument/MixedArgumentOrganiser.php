@@ -29,6 +29,9 @@ use ReflectionUnionType;
  */
 final class MixedArgumentOrganiser implements ArgumentOrganiser
 {
+    /**
+     * @var array<int, true>
+     */
     private array $definedArguments = [];
 
     /**
@@ -437,6 +440,7 @@ final class MixedArgumentOrganiser implements ArgumentOrganiser
      * Reorders arguments based on their respective parameters order.
      *
      * @param ReflectionParameter[] $parameters
+     * @param mixed[]               $arguments
      *
      * @return mixed[]
      */

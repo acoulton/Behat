@@ -28,6 +28,7 @@ final class PrettyFeaturePrinter implements FeaturePrinter
      */
     private $indentText;
     private readonly string $subIndentText;
+    private readonly PrettyDescriptionPrinter $descriptionPrinter;
 
     /**
      * Initializes printer.
@@ -39,6 +40,7 @@ final class PrettyFeaturePrinter implements FeaturePrinter
     {
         $this->indentText = str_repeat(' ', intval($indentation));
         $this->subIndentText = $this->indentText . str_repeat(' ', intval($subIndentation));
+        $this->descriptionPrinter = new PrettyDescriptionPrinter();
     }
 
     public function printHeader(Formatter $formatter, FeatureNode $feature): void
@@ -46,7 +48,8 @@ final class PrettyFeaturePrinter implements FeaturePrinter
         $this->printTags($formatter->getOutputPrinter(), $feature->getTags());
 
         $this->printTitle($formatter->getOutputPrinter(), $feature);
-        $this->printDescription($formatter->getOutputPrinter(), $feature);
+        $this->descriptionPrinter->printDescription($formatter->getOutputPrinter(), $feature->getDescription() ?? '', $this->subIndentText);
+        $formatter->getOutputPrinter()->writeln();
     }
 
     public function printFooter(Formatter $formatter, TestResult $result): void
@@ -77,24 +80,6 @@ final class PrettyFeaturePrinter implements FeaturePrinter
 
         if ($title = $feature->getTitle()) {
             $printer->write(sprintf(' %s', $title));
-        }
-
-        $printer->writeln();
-    }
-
-    /**
-     * Prints feature description using provided printer.
-     */
-    private function printDescription(OutputPrinter $printer, FeatureNode $feature): void
-    {
-        if (!$feature->getDescription()) {
-            $printer->writeln();
-
-            return;
-        }
-
-        foreach (explode("\n", $feature->getDescription()) as $descriptionLine) {
-            $printer->writeln(sprintf('%s%s', $this->subIndentText, $descriptionLine));
         }
 
         $printer->writeln();

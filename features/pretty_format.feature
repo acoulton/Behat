@@ -79,14 +79,14 @@ Feature: Pretty Formatter
           Given I have entered 10 # FeatureContextMultiline::iHaveEntered()
 
         Scenario: Adding some interesting # features/WorldMultiline.feature:9
-                  value
+            value
           Then I must have 10             # FeatureContextMultiline::iMustHave()
           And I add the value 6           # FeatureContextMultiline::iAddOrSubtract()
           Then I must have 16             # FeatureContextMultiline::iMustHave()
 
         Scenario: Subtracting        # features/WorldMultiline.feature:15
-                  some
-                  value
+            some
+            value
           Then I must have 10        # FeatureContextMultiline::iMustHave()
           And I subtract the value 6 # FeatureContextMultiline::iAddOrSubtract()
           Then I must have 4         # FeatureContextMultiline::iMustHave()
@@ -144,21 +144,21 @@ Feature: Pretty Formatter
         I want, that "World" flushes between scenarios
 
         Background: Some background # features/WorldMultilineBackgroundScenario.feature:6
-          title
-            with
-          multiple lines
+            title
+              with
+            multiple lines
           Given I have entered 10
 
         Scenario: Undefined   # features/WorldMultilineBackgroundScenario.feature:13
-                  scenario or
-                  whatever
+            scenario or
+            whatever
           Then I must have 10
           And Something new
           Then I must have 10
 
         Scenario Outline: Passed & Failed # features/WorldMultilineBackgroundScenario.feature:20
-          steps and other interesting stuff
-          he-he-he
+            steps and other interesting stuff
+            he-he-he
           Given I must have 10
           When I add <value>
           Then I must have <result>
@@ -238,3 +238,63 @@ Feature: Pretty Formatter
       4 scenarios (2 passed, 2 failed)
       8 steps (6 passed, 2 failed)
       """
+
+  Scenario Outline: Consistent output between Gherkin parser compatibility modes
+      When I run behat with the following additional options:
+        | option       | value |
+        | --profile       | gherkin-parity-<compatibility_mode> |
+        | --no-snippets |                                     |
+
+      Then it should fail with:
+        """
+        @gherkin-parity
+        Feature: Parity with basic feature file
+          In order to see that the pretty formatter can handle different gherkin modes
+            As a developer
+          I need to see an example with basic Gherkin syntax
+
+          Background: That sets up the calculator # features/gherkin-parity.feature:7
+              to have a starting number
+              for every scenario
+            Given I have entered 25               # FeatureContext::iHaveEntered()
+
+          Scenario: Simple passing scenario # features/gherkin-parity.feature:14
+              describing what happens when
+               numbers are correctly added.
+            When I add 2                    # FeatureContext::iAdd()
+            Then I must have 27             # FeatureContext::iMustHave()
+
+          Scenario: Simple failing scenario # features/gherkin-parity.feature:20
+            When I add 3                    # FeatureContext::iAdd()
+            Then I must have 30             # FeatureContext::iMustHave()
+              Failed asserting that 28 matches expected '30'.
+
+          @wip @new
+          Scenario: With unknown step # features/gherkin-parity.feature:25
+            When I subtract 15
+            Then I must have 10       # FeatureContext::iMustHave()
+
+          @with-examples
+          Scenario Outline: Cases that dynamically check the calculator # features/gherkin-parity.feature:30
+              using inputs from the sets of tables
+            When I add <input>                                          # FeatureContext::iAdd()
+            Then I must have <expect>                                   # FeatureContext::iMustHave()
+
+            Examples:
+              | input | expect |
+              | 3     | 28     |
+              | 4     | 29     |
+              | 180   | 205    |
+
+        --- Failed scenarios:
+
+            features/gherkin-parity.feature:20 (on line 22)
+
+        6 scenarios (4 passed, 1 failed, 1 undefined)
+        18 steps (15 passed, 1 failed, 1 undefined, 1 skipped)
+        """
+
+    Examples:
+      | compatibility_mode |
+      | legacy             |
+      | gherkin-32         |

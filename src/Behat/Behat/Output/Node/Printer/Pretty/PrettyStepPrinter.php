@@ -29,6 +29,8 @@ use Behat\Testwork\Output\Printer\OutputPrinter;
 use Behat\Testwork\Tester\Result\ExceptionResult;
 use Behat\Testwork\Tester\Result\TestResult;
 
+use function strlen;
+
 /**
  * Prints step.
  *
@@ -70,7 +72,7 @@ final class PrettyStepPrinter implements StepPrinter
             }
         }
 
-        $this->printText($formatter->getOutputPrinter(), $step->getKeyword(), $step->getText(), $result);
+        $this->printText($formatter->getOutputPrinter(), $step, $result);
         $this->pathPrinter->printStepPath($formatter, $scenario, $step, $result, mb_strlen($this->indentText, 'utf8'));
         $this->printArguments($formatter, $step->getArguments(), $result);
         $showOutput = $formatter->getParameter(ShowOutputOption::OPTION_NAME);
@@ -83,19 +85,25 @@ final class PrettyStepPrinter implements StepPrinter
 
     /**
      * Prints step text.
-     *
-     * @param string        $stepType
-     * @param string        $stepText
      */
-    private function printText(OutputPrinter $printer, $stepType, $stepText, StepResult $result): void
+    private function printText(OutputPrinter $printer, StepNode $step, StepResult $result): void
     {
         if ($result instanceof DefinedStepResult && $result->getStepDefinition()) {
             $definition = $result->getStepDefinition();
-            $stepText = $this->textPainter->paintText($stepText, $definition, $result);
+            // We render the full text, but should only paint the step text - the keyword should not be modified.
+            // It's theoretically possible (e.g. in languages with logograms) that the keyword contains the step text
+            // so we can't just str_replace.
+            // Instead, use a substring to extract the prefix by excluding the last {length of step text} chars.
+            // We can then prepend that to the painted step text to get the final value.
+            $stepText = $this->textPainter->paintText($step->getText(), $definition, $result);
+            $prefix = substr($step->getFullText(), 0, -strlen($step->getText()));
+            $fullStepText = $prefix . $stepText;
+        } else {
+            $fullStepText = $step->getFullText();
         }
 
         $style = $this->resultConverter->convertResultToString($result);
-        $printer->write(sprintf('%s{+%s}%s %s{-%s}', $this->indentText, $style, $stepType, $stepText, $style));
+        $printer->write(sprintf('%s{+%s}%s{-%s}', $this->indentText, $style, $fullStepText, $style));
     }
 
     /**

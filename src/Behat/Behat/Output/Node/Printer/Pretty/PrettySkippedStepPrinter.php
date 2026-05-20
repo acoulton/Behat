@@ -25,6 +25,8 @@ use Behat\Testwork\Output\Printer\OutputPrinter;
 use Behat\Testwork\Tester\Result\IntegerTestResult;
 use Behat\Testwork\Tester\Result\TestResult;
 
+use function strlen;
+
 /**
  * Prints steps as skipped.
  *
@@ -57,31 +59,37 @@ final class PrettySkippedStepPrinter implements StepPrinter
 
     public function printStep(Formatter $formatter, Scenario $scenario, StepNode $step, StepResult $result): void
     {
-        $this->printText($formatter->getOutputPrinter(), $step->getKeyword(), $step->getText(), $result);
+        $this->printText($formatter->getOutputPrinter(), $step, $result);
         $this->pathPrinter->printStepPath($formatter, $scenario, $step, $result, mb_strlen($this->indentText, 'utf8'));
         $this->printArguments($formatter, $step->getArguments());
     }
 
     /**
      * Prints step text.
-     *
-     * @param string        $stepType
-     * @param string        $stepText
      */
-    private function printText(OutputPrinter $printer, $stepType, $stepText, StepResult $result): void
+    private function printText(OutputPrinter $printer, StepNode $step, StepResult $result): void
     {
         $style = $this->resultConverter->convertResultCodeToString(TestResult::SKIPPED);
 
         if ($result instanceof DefinedStepResult && $result->getStepDefinition()) {
             $definition = $result->getStepDefinition();
+            // We render the full text, but should only paint the step text - the keyword should not be modified.
+            // It's theoretically possible (e.g. in languages with logograms) that the keyword contains the step text
+            // so we can't just str_replace.
+            // Instead, use a substring to extract the prefix by excluding the last {length of step text} chars.
+            // We can then prepend that to the painted step text to get the final value.
             $stepText = $this->textPainter->paintText(
-                $stepText,
+                $step->getText(),
                 $definition,
                 new IntegerTestResult(TestResult::SKIPPED)
             );
+            $prefix = substr($step->getFullText(), 0, -strlen($step->getText()));
+            $fullStepText = $prefix . $stepText;
+        } else {
+            $fullStepText = $step->getFullText();
         }
 
-        $printer->write(sprintf('%s{+%s}%s %s{-%s}', $this->indentText, $style, $stepType, $stepText, $style));
+        $printer->write(sprintf('%s{+%s}%s{-%s}', $this->indentText, $style, $fullStepText, $style));
     }
 
     /**

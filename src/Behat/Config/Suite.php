@@ -114,6 +114,8 @@ final class Suite implements ConfigConverterInterface
         unset($this->settings[self::CONTEXTS_SETTING]);
 
         // Contexts can be configured with or without constructor arguments.
+        // Contexts with no arguments can be represented in different ways, so first normalise them.
+        $contexts = array_map($this->normaliseContextWithNoArgs(...), $contexts);
         $hasAnyWithArguments = (bool) array_filter($contexts, is_array(...));
 
         if (!$hasAnyWithArguments) {
@@ -137,6 +139,27 @@ final class Suite implements ConfigConverterInterface
             }
             $expr = ConfigConverterTools::addMethodCall(self::class, self::ADD_CONTEXT_FUNCTION, $args, $expr);
         }
+    }
+
+    /**
+     * Normalise configuring a context with no constructor arguments as a simple string.
+     *
+     * A context with no constructor arguments will usually be in the YAML as a simple string e.g. `- MyContext`.
+     *
+     * However, the YAML would also be valid with an empty list, or even just a trailing `:` (e.g. `- MyContext:`).
+     * Those will have been parsed as `['MyContext' => null]` or `['MyContext' => []]` depending on the YAML. We can
+     * normalise those to the `MyContext` string before converting to PHP config.
+     */
+    private function normaliseContextWithNoArgs(mixed $context): mixed
+    {
+        if (is_array($context) && count($context) === 1) {
+            $contextClass = array_key_first($context);
+            if (empty($context[$contextClass])) {
+                return $contextClass;
+            }
+        }
+
+        return $context;
     }
 
     private function addPathsToExpr(Expr &$expr): void

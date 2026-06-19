@@ -10,9 +10,7 @@
 
 namespace Behat\Testwork\Call;
 
-use Behat\Behat\Context\Context;
 use Behat\Testwork\Call\Exception\BadCallbackException;
-use Behat\Testwork\Deprecation\DeprecationCollector;
 use ReflectionFunction;
 use ReflectionFunctionAbstract;
 use ReflectionMethod;
@@ -21,13 +19,11 @@ use ReflectionMethod;
  * Represents callee created and executed in the runtime.
  *
  * @author Konstantin Kudryashov <ever.zet@gmail.com>
- *
- * @phpstan-type TBehatCallable callable|array{class-string<Context>, string}
  */
 class RuntimeCallee implements Callee
 {
     /**
-     * @var TBehatCallable
+     * @var callable
      */
     private $callable;
     private ReflectionMethod|ReflectionFunction $reflection;
@@ -35,37 +31,24 @@ class RuntimeCallee implements Callee
 
     /**
      * Initializes callee.
-     *
-     * @phpstan-param TBehatCallable $callable
      */
     public function __construct(
-        callable|array $callable,
+        callable $callable,
         private readonly ?string $description = null,
     ) {
-        if (is_array($callable)) {
-            if (!$this->isCallableOrBehatContextCallable($callable)) {
-                DeprecationCollector::trigger('Creating '.static::class.' with a non-callable array other than a Behat context method reference is deprecated');
-            }
+        if ($callable instanceof LateBoundInstanceCallable) {
+            $this->reflection = $callable->getReflection();
+            $this->path = $callable->getPath();
+        } elseif (is_array($callable)) {
+            // An array `callable` will always have 2 elements, [className-or-object, methodName]
             $this->reflection = new ReflectionMethod($callable[0], $callable[1]);
-            $this->path = $callable[0] . '::' . $callable[1] . '()';
+            $this->path = $callable[0].'::'.$callable[1].'()';
         } else {
             $this->reflection = new ReflectionFunction($callable);
             $this->path = $this->reflection->getFileName() . ':' . $this->reflection->getStartLine();
         }
 
         $this->callable = $callable;
-    }
-
-    private function isCallableOrBehatContextCallable(array $callable): bool
-    {
-        if (is_callable($callable)) {
-            return true;
-        }
-
-        return count($callable) === 2
-            && is_string($callable[0])
-            && is_string($callable[1])
-            && is_a($callable[0], Context::class, true);
     }
 
     /**
@@ -86,10 +69,8 @@ class RuntimeCallee implements Callee
 
     /**
      * Returns callable.
-     *
-     * @return TBehatCallable
      */
-    public function getCallable(): callable|array
+    public function getCallable(): callable
     {
         return $this->callable;
     }

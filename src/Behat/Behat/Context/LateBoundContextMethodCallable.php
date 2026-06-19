@@ -21,7 +21,6 @@ final class LateBoundContextMethodCallable implements LateBoundInstanceCallable
 {
     private readonly ReflectionMethod $reflection;
     private readonly string $path;
-    private Context $contextInstance;
 
     /**
      * @param class-string<Context> $contextClass
@@ -47,7 +46,7 @@ final class LateBoundContextMethodCallable implements LateBoundInstanceCallable
     /**
      * Returns a new instance bound to a specific Context class.
      */
-    public function bindTo(Context $context): LateBoundContextMethodCallable
+    public function bindTo(Context $context): callable
     {
         if (!$context instanceof $this->contextClass) {
             throw new InvalidArgumentException(sprintf(
@@ -56,20 +55,13 @@ final class LateBoundContextMethodCallable implements LateBoundInstanceCallable
             ));
         }
 
-        $i = new LateBoundContextMethodCallable($this->contextClass, $this->methodName);
-        $i->contextInstance = $context;
-
-        return $i;
+        return $this->reflection->getClosure($context);
     }
 
     public function __invoke(mixed ...$args): mixed
     {
-        if (!isset($this->contextInstance)) {
-            throw new LogicException(
-                sprintf('Cannot directly invoke %s - it has not been bound to a Context', $this->path)
-            );
-        }
-
-        return $this->reflection->invokeArgs($this->contextInstance, $args);
+        throw new LogicException(
+            sprintf('Cannot directly invoke %s - it has not been bound to a Context', $this->path)
+        );
     }
 }

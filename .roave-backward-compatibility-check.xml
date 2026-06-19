@@ -261,5 +261,8 @@
 
         <!-- Formalised Context class method callback references -->
         <ignored-regex>#CHANGED: The parameter \$callable of .+ changed from callable|array to callable#</ignored-regex>
+
+        <!-- Required consistent constructor for SimpleArgumentTransformation -->
+        <ignored-regex>#ADDED: Method __construct\(\) was added to interface Behat\\Behat\\Transformation\\SimpleArgumentTransformation#</ignored-regex>
     </baseline>
 </roave-bc-check>

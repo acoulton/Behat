@@ -119,23 +119,6 @@ class RuntimeCallee implements Callee
             && !$this->reflection->isStatic();
     }
 
-    /**
-     * @param callable|array{class-string, string} $callable
-     *
-     * @deprecated see throwIfCallableIsInstanceMethod()
-     */
-    protected function throwIfInstanceMethod(callable|array $callable, string $hookType): void
-    {
-        DeprecationCollector::trigger('throwIfInstanceMethod() is deprecated and will be removed in 4.0 - use throwIfCallableIsInstanceMethod');
-        if ($callable !== $this->callable) {
-            // They have passed a different callable to the one we were initialised with.
-            // Wrap it in a new RuntimeCallee so that we can check it.
-            (new RuntimeCallee($callable))->throwIfCallableIsInstanceMethod($hookType);
-        } else {
-            $this->throwIfCallableIsInstanceMethod($hookType);
-        }
-    }
-
     final protected function throwIfCallableIsInstanceMethod(string $hookType): void
     {
         if ($this->isAnInstanceMethod()) {

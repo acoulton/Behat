@@ -255,5 +255,8 @@
         <ignored-regex>#REMOVED: These ancestors of .+ have been removed: \["Behat\\\\Behat\\\\EventDispatcher\\\\Event\\\\ScenarioLikeTested"\]#</ignored-regex>
         <ignored-regex>#REMOVED: Class Behat\\Behat\\EventDispatcher\\Event\\ScenarioLikeTested has been deleted#</ignored-regex>
         <ignored-regex>#REMOVED: Method Behat\\Behat\\EventDispatcher\\Event\\(Before|After)Background.+?\#getScenario\(\) was removed#</ignored-regex>
+
+        <!-- Deprecated RuntimeCallee::throwIfInstanceMethod() removed in favour of RuntimeCallee::throwIfCallableIsInstanceMethod() -->
+        <ignored-regex>#REMOVED: Method Behat\\Testwork\\Call\\RuntimeCallee\#throwIfInstanceMethod\(\) was removed#</ignored-regex>
     </baseline>
 </roave-bc-check>

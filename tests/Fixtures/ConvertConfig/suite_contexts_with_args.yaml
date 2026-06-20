@@ -9,4 +9,4 @@ default:
                 - AContextWithNamedArgs:
                       param1: Something
                       param2: Else
-                - AnotherContext
+                - AnotherContext: []

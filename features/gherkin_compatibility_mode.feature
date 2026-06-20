@@ -10,7 +10,9 @@ Feature: Gherkin compatibility mode
       | --no-colors |          |
       | --format    | progress |
 
+  @gherkin-mode:has-explicit
   Scenario: Legacy parsing by default (ignores invalid language)
+    Given the test runner does not configure a default gherkin compatibility mode
     When I run behat with the following additional options:
       | option    | value   |
       | --profile | default |
@@ -22,6 +24,7 @@ Feature: Gherkin compatibility mode
       3 steps (3 undefined)
       """
 
+  @gherkin-mode:has-explicit
   Scenario: Opt in to cucumber-compatible parsing
     When I run behat with the following additional options:
       | option    | value      |

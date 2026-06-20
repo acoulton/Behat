@@ -4,7 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [3.31.0] - 2025-04-19
+## [3.32.0] - 2026-06-20
+
+### Added
+
+* Support GHERKIN_32 parsing mode in pretty formatter by @acoulton in [#1842](https://github.com/Behat/Behat/pull/1842)
+
+### Fixed
+
+* Only print ` ` between Step keyword & text if correct for language by @acoulton in [#1845](https://github.com/Behat/Behat/pull/1845)
+* JSON formatter should support `GHERKIN_32` mode by @acoulton in [#1847](https://github.com/Behat/Behat/pull/1847)
+* Unexpected uses / creation of `RuntimeCallee` callables by @acoulton in [#1853](https://github.com/Behat/Behat/pull/1853)
+* Handle empty argument lists when converting Context config to PHP by @acoulton in [#1849](https://github.com/Behat/Behat/pull/1849)
+
+### Internal
+
+* Fail on Behat deprecations in CI by @acoulton in [#1833](https://github.com/Behat/Behat/pull/1833)
+* Add runtime deprecations for ScenarioLikeTested interface by @acoulton in [#1832](https://github.com/Behat/Behat/pull/1832)
+* Add a scenario covering the behavior of invalid gherkin files by @stof in [#1840](https://github.com/Behat/Behat/pull/1840)
+* Prove JUnit scenario description handling in gherkin compat modes by @acoulton in [#1843](https://github.com/Behat/Behat/pull/1843)
+* Run features in `gherkin-32` and `legacy` compatibility modes by @acoulton in [#1848](https://github.com/Behat/Behat/pull/1848)
+
+## [3.31.0] - 2026-04-19
 
 ### Fixed
 
@@ -1501,6 +1522,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
   * Initial release
 
+[3.32.0]: https://github.com/Behat/Behat/compare/v3.31.0...v3.32.0
 [3.31.0]: https://github.com/Behat/Behat/compare/v3.30.0...v3.31.0
 [3.30.0]: https://github.com/Behat/Behat/compare/v3.29.0...v3.30.0
 [3.29.0]: https://github.com/Behat/Behat/compare/v3.28.0...v3.29.0

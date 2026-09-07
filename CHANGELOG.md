@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.33.0] - 2026-09-07
+
+### Changed
+
+* Emit deprecation if definition and function number of parameters do not match by @carlos-granados in [#1867](https://github.com/Behat/Behat/pull/1867)
+* Show the suite name in failure summaries when several suites ran by @Amoifr in [#1865](https://github.com/Behat/Behat/pull/1865)
+
+### Added
+
+* Add 'inline_failures' option to progress formatter by @AlexSkrypnyk in [#1861](https://github.com/Behat/Behat/pull/1861)
+* Add support for filtering on Cucumber tag expressions by @Amoifr in [#1863](https://github.com/Behat/Behat/pull/1863)
+* Add `DataTable` and `DocString` step argument types to reduce coupling to the Gherkin `TableNode` / `PyStringNode`
+  by @Amoifr in [#1864](https://github.com/Behat/Behat/pull/1864) and [#1878](https://github.com/Behat/Behat/pull/1878)
+* Add `hasStdOut()` and `getStdOut()` to `ExecutedStepResult` by @carlos-granados in [#1874](https://github.com/Behat/Behat/pull/1874)
+* Mark reachable interfaces and value objects as `@api` by @carlos-granados in [#1868](https://github.com/Behat/Behat/pull/1868)
+
+
+### Fixed
+
+* Rerun should count scenarios as failed if before / after hooks failed.
+  Previously, scenarios that only failed due to a Scenario, Feature, or Suite hook were never re-run, potentially
+  causing incorrect passing builds. By @Amoifr in [#1877](https://github.com/Behat/Behat/pull/1877)
+* Handle aborted suites when printing unused definitions by @Amoifr in [#1882](https://github.com/Behat/Behat/pull/1882)
+
+### Internal
+
+* Don't use PHPUnit assertions in Behat's own test suite by @carlos-granados in [#1872](https://github.com/Behat/Behat/pull/1872)
+* Change how we assert on how PHP renders anonymous class names by @carlos-granados in [#1873](https://github.com/Behat/Behat/pull/1873)
+* Use the new hasStdOut()/getStdOut() functions by @carlos-granados in [#1880](https://github.com/Behat/Behat/pull/1880)
+
 ## [3.32.0] - 2026-06-20
 
 ### Added
@@ -1522,6 +1552,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
   * Initial release
 
+[3.33.0]: https://github.com/Behat/Behat/compare/v3.32.0...v3.33.0
 [3.32.0]: https://github.com/Behat/Behat/compare/v3.31.0...v3.32.0
 [3.31.0]: https://github.com/Behat/Behat/compare/v3.30.0...v3.31.0
 [3.30.0]: https://github.com/Behat/Behat/compare/v3.29.0...v3.30.0

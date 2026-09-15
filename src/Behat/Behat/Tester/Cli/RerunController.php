@@ -10,11 +10,18 @@
 
 namespace Behat\Behat\Tester\Cli;
 
+use Behat\Behat\EventDispatcher\Event\AfterFeatureSetup;
+use Behat\Behat\EventDispatcher\Event\AfterFeatureTested;
+use Behat\Behat\EventDispatcher\Event\AfterScenarioSetup;
 use Behat\Behat\EventDispatcher\Event\AfterScenarioTested;
 use Behat\Behat\EventDispatcher\Event\ExampleTested;
+use Behat\Behat\EventDispatcher\Event\FeatureTested;
 use Behat\Behat\EventDispatcher\Event\ScenarioTested;
 use Behat\Testwork\Cli\Controller;
+use Behat\Testwork\EventDispatcher\Event\AfterSuiteSetup;
+use Behat\Testwork\EventDispatcher\Event\AfterSuiteTested;
 use Behat\Testwork\EventDispatcher\Event\ExerciseCompleted;
+use Behat\Testwork\EventDispatcher\Event\SuiteTested;
 use Behat\Testwork\Tester\Result\ResultInterpreter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,6 +42,20 @@ final class RerunController implements Controller
      * @var array<string, list<string>>
      */
     private array $lines = [];
+    /**
+     * Feature files run by each suite, so that a failing after-feature or after-suite hook can
+     * queue them for the re-run even though no single scenario is to blame.
+     *
+     * @var array<string, list<string>>
+     */
+    private array $features = [];
+    /**
+     * Suites whose before-suite hook failed. Their features are only known once they have all been
+     * dispatched, so the re-run is queued when the suite ends.
+     *
+     * @var array<string, true>
+     */
+    private array $suitesWithFailedSetup = [];
 
     /**
      * Initializes controller.
@@ -71,8 +92,14 @@ final class RerunController implements Controller
 
     public function execute(InputInterface $input, OutputInterface $output): ?int
     {
+        $this->eventDispatcher->addListener(ScenarioTested::AFTER_SETUP, $this->collectFailedScenarioSetup(...), -50);
+        $this->eventDispatcher->addListener(ExampleTested::AFTER_SETUP, $this->collectFailedScenarioSetup(...), -50);
+        $this->eventDispatcher->addListener(FeatureTested::AFTER_SETUP, $this->collectFailedFeatureSetup(...), -50);
+        $this->eventDispatcher->addListener(SuiteTested::AFTER_SETUP, $this->collectFailedSuiteSetup(...), -50);
         $this->eventDispatcher->addListener(ScenarioTested::AFTER, $this->collectFailedScenario(...), -50);
         $this->eventDispatcher->addListener(ExampleTested::AFTER, $this->collectFailedScenario(...), -50);
+        $this->eventDispatcher->addListener(FeatureTested::AFTER, $this->collectFailedFeature(...), -50);
+        $this->eventDispatcher->addListener(SuiteTested::AFTER, $this->collectFailedSuite(...), -50);
         $this->eventDispatcher->addListener(ExerciseCompleted::AFTER, $this->writeCache(...), -50);
 
         $this->key = $this->generateKey($input);
@@ -97,6 +124,53 @@ final class RerunController implements Controller
     }
 
     /**
+     * Records a scenario whose before-scenario hook failed.
+     *
+     * The scenario is then skipped rather than failed, so its result reports nothing wrong and
+     * `collectFailedScenario()` would let it through.
+     */
+    public function collectFailedScenarioSetup(AfterScenarioSetup $event): void
+    {
+        if (!$this->getFileName() || $event->getSetup()->isSuccessful()) {
+            return;
+        }
+
+        $this->addPath(
+            $event->getSuite()->getName(),
+            $event->getFeature()->getFile() . ':' . $event->getScenario()->getLine()
+        );
+    }
+
+    /**
+     * Records the whole feature if its before-feature hook failed.
+     *
+     * Every scenario of the feature is skipped in that case, so the feature is re-run as a whole.
+     */
+    public function collectFailedFeatureSetup(AfterFeatureSetup $event): void
+    {
+        if (!$this->getFileName() || $event->getSetup()->isSuccessful()) {
+            return;
+        }
+
+        $this->addPath($event->getSuite()->getName(), $event->getFeature()->getFile());
+    }
+
+    /**
+     * Remembers that a before-suite hook failed.
+     *
+     * The features of the suite are still dispatched, as skipped, so they are collected as usual
+     * and queued once the suite ends.
+     */
+    public function collectFailedSuiteSetup(AfterSuiteSetup $event): void
+    {
+        if (!$this->getFileName() || $event->getSetup()->isSuccessful()) {
+            return;
+        }
+
+        $this->suitesWithFailedSetup[$event->getSuite()->getName()] = true;
+    }
+
+    /**
      * Records scenario if it is failed.
      */
     public function collectFailedScenario(AfterScenarioTested $event): void
@@ -105,15 +179,102 @@ final class RerunController implements Controller
             return;
         }
 
-        if ($this->resultInterpreter->interpretResult($event->getTestResult()) === ResultInterpreter::PASS) {
+        // A scenario whose steps all passed can still fail through an after-scenario hook: that
+        // failure lives in the teardown, not in the test result, and must be re-run all the same.
+        if ($this->resultInterpreter->interpretResult($event->getTestResult()) === ResultInterpreter::PASS
+            && $event->getTeardown()->isSuccessful()
+        ) {
             return;
         }
 
-        $feature = $event->getFeature();
-        $scenario = $event->getScenario();
+        $this->addPath(
+            $event->getSuite()->getName(),
+            $event->getFeature()->getFile() . ':' . $event->getScenario()->getLine()
+        );
+    }
+
+    /**
+     * Records the whole feature if its after-feature hook failed.
+     *
+     * No single scenario is responsible, so the feature is re-run as a whole, which is also what
+     * gives the hook the same chance to run again.
+     */
+    public function collectFailedFeature(AfterFeatureTested $event): void
+    {
+        if (!$this->getFileName()) {
+            return;
+        }
+
+        $suitename = $event->getSuite()->getName();
+        $file = $event->getFeature()->getFile();
+
+        if (null !== $file && !in_array($file, $this->features[$suitename] ?? [], true)) {
+            $this->features[$suitename][] = $file;
+        }
+
+        if ($event->getTeardown()->isSuccessful()) {
+            return;
+        }
+
+        $this->addPath($suitename, $file);
+    }
+
+    /**
+     * Records every feature of the suite if one of its suite-level hooks failed.
+     *
+     * The hook belongs to one suite, so only that suite is re-run, and the other ones are left
+     * alone.
+     */
+    public function collectFailedSuite(SuiteTested $event): void
+    {
+        // A suite stopped by --stop-on-failure is dispatched under the same name as an
+        // AfterSuiteAborted, which ran no teardown to look at.
+        if (!$event instanceof AfterSuiteTested) {
+            return;
+        }
+
+        if (!$this->getFileName()) {
+            return;
+        }
+
         $suitename = $event->getSuite()->getName();
 
-        $this->lines[$suitename][] = $feature->getFile() . ':' . $scenario->getLine();
+        if ($event->getTeardown()->isSuccessful() && !isset($this->suitesWithFailedSetup[$suitename])) {
+            return;
+        }
+
+        foreach ($this->features[$suitename] ?? [] as $file) {
+            $this->addPath($suitename, $file);
+        }
+    }
+
+    /**
+     * Queues a path for the re-run of a suite, keeping it free of duplicates and of paths already
+     * covered by a whole feature file.
+     */
+    private function addPath(string $suitename, ?string $path): void
+    {
+        if (null === $path) {
+            return;
+        }
+
+        $lines = $this->lines[$suitename] ?? [];
+
+        // A whole feature file supersedes the scenarios of that file which are already queued.
+        if (!str_contains(basename($path), ':')) {
+            $lines = array_values(array_filter(
+                $lines,
+                static fn (string $line): bool => $line !== $path && !str_starts_with($line, $path . ':')
+            ));
+        } elseif (in_array(substr($path, 0, (int) strrpos($path, ':')), $lines, true)) {
+            return;
+        }
+
+        if (!in_array($path, $lines, true)) {
+            $lines[] = $path;
+        }
+
+        $this->lines[$suitename] = $lines;
     }
 
     /**
